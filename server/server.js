@@ -9,33 +9,38 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps, curl, postman)
-      if (!origin) return callback(null, true);
+// CORS Configuration for Vercel
+app.use((req, res, next) => {
+  const allowedOrigins = [
+    "http://localhost:3000",
+    "https://khushdil-ansari-portfolio-frontend.vercel.app",
+    process.env.CLIENT_URL,
+  ].filter(Boolean);
 
-      const allowedOrigins = [
-        "http://localhost:3000",
-        process.env.CLIENT_URL,
-      ].filter(Boolean);
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin) || origin?.includes('vercel.app')) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  
+  // Handle preflight
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  
+  next();
+});
 
-      if (
-        allowedOrigins.some(
-          (allowed) => origin === allowed || origin.includes("vercel.app")
-        )
-      ) {
-        callback(null, true);
-      } else {
-        callback(null, true); // Allow all for now, you can restrict later
-      }
-    },
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+// Additional CORS middleware
+app.use(cors({
+  origin: true,
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
