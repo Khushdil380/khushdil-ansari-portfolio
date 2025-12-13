@@ -9,43 +9,14 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// CORS Configuration for Vercel
-app.use((req, res, next) => {
-  const allowedOrigins = [
-    "http://localhost:3000",
-    "https://khushdil-ansari-portfolio-frontend.vercel.app",
-    process.env.CLIENT_URL,
-  ].filter(Boolean);
+// Simple CORS - Allow all for now
+app.use(cors({
+  origin: '*',
+  credentials: false,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
 
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin) || origin?.includes("vercel.app")) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  }
-
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, OPTIONS"
-  );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-
-  // Handle preflight
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
-
-  next();
-});
-
-// Additional CORS middleware
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
