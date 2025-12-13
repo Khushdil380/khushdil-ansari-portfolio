@@ -1,0 +1,19 @@
+.about-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 2rem 2rem;
+  background-color: var(--primary-bg);
+}
+
+.about-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 5rem 1rem 2rem;
+  }
+}

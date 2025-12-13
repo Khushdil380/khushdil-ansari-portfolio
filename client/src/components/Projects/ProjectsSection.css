@@ -1,0 +1,21 @@
+.projects-section {
+  min-height: 100vh;
+  padding: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.projects-section__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 70px;
+}
+
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 1rem;
+  }
+
+  .projects-section__container {
+    padding-top: 60px;
+  }
+}

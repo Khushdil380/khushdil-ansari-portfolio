@@ -1,0 +1,119 @@
+.contact-section {
+  min-height: 100vh;
+  padding: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.contact-section__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 70px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact-section__left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-section__image-container {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 3px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: rgba(128, 128, 128, 0.1);
+  align-self: center;
+}
+
+.contact-section__image-placeholder {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.contact-section__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.contact-section__description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 400px;
+}
+
+.contact-section__social {
+  margin-top: 1rem;
+}
+
+.contact-section__social-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 2px solid rgba(128, 128, 128, 0.2);
+  border-radius: 10px;
+}
+
+.contact-section__right {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@media (max-width: 992px) {
+  .contact-section__container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-top: 60px;
+  }
+
+  .contact-section__left {
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-section__description {
+    max-width: 100%;
+  }
+
+  .contact-section__social-grid {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 1rem;
+  }
+
+  .contact-section__container {
+    gap: 2rem;
+  }
+
+  .contact-section__image-container {
+    width: 150px;
+    height: 150px;
+  }
+
+  .contact-section__title {
+    font-size: 1.6rem;
+  }
+
+  .contact-section__description {
+    font-size: 0.95rem;
+  }
+
+  .contact-section__social-grid {
+    padding: 1rem;
+  }
+}

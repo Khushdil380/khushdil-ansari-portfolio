@@ -1,0 +1,92 @@
+.contact-form {
+  width: 100%;
+  max-width: 600px;
+}
+
+.contact-form__field {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.contact-form__input,
+.contact-form__textarea {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  border: 2px solid;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: "Roboto Slab", serif;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.contact-form__input:focus,
+.contact-form__textarea:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(227, 34, 39, 0.1);
+}
+
+.contact-form__input::placeholder,
+.contact-form__textarea::placeholder {
+  opacity: 0.6;
+}
+
+.contact-form__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form__error {
+  display: block;
+  color: #e32227;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.contact-form__status {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: center;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-form__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .contact-form__input,
+  .contact-form__textarea {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .contact-form__field {
+    margin-bottom: 1.2rem;
+  }
+
+  .contact-form__actions {
+    flex-direction: column-reverse;
+  }
+
+  .contact-form__actions button {
+    width: 100%;
+  }
+}

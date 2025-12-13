@@ -1,0 +1,27 @@
+.tech-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tech-icon__circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tech-icon__circle:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #ffffff;
+  transform: scale(1.1);
+}

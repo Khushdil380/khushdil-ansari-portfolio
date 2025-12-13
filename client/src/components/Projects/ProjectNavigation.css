@@ -1,0 +1,57 @@
+.project-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.5rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.project-tabs {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-tab {
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-family: "Roboto Slab", serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.project-tab:hover {
+  border-bottom-color: var(--accent-color);
+  opacity: 0.8;
+}
+
+.project-tab--active {
+  font-weight: 700;
+  border-bottom-color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .project-navigation {
+    gap: 1rem;
+  }
+
+  .project-tabs {
+    flex-wrap: nowrap;
+    overflow: hidden;
+    justify-content: center;
+  }
+
+  .project-tab {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+    flex-shrink: 0;
+  }
+}

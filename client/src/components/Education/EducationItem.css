@@ -1,0 +1,54 @@
+.education-item {
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  max-width: 600px;
+}
+
+.education-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.education-item__institute {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.education-item__details {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.education-item__course {
+  font-weight: 600;
+}
+
+.education-item__separator {
+  opacity: 0.6;
+}
+
+.education-item__year,
+.education-item__score {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .education-item {
+    padding: 0.75rem;
+  }
+
+  .education-item__institute {
+    font-size: 0.95rem;
+  }
+
+  .education-item__details {
+    font-size: 0.8rem;
+  }
+}

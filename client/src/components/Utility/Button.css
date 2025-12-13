@@ -1,0 +1,48 @@
+.button {
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  padding: 12px 32px;
+  border: 2px solid var(--accent-color);
+  background-color: var(--accent-color);
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.button:hover {
+  background-color: transparent;
+  color: var(--accent-color);
+  box-shadow: 0 0 15px var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: var(--accent-color);
+}
+
+.button-secondary:hover {
+  background-color: var(--accent-color);
+  color: #ffffff;
+}
+
+.button-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .button {
+    padding: 10px 24px;
+    font-size: 14px;
+  }
+}

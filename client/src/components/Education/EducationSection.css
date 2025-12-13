@@ -1,0 +1,70 @@
+.education-section {
+  min-height: 100vh;
+  padding: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.education-section__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 70px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.education-section__left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.education-section__work,
+.education-section__education {
+  display: flex;
+  flex-direction: column;
+}
+
+.education-section__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.education-section__skills {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 992px) {
+  .education-section__container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-top: 60px;
+  }
+
+  .education-section__title {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .education-section {
+    padding: 1rem;
+  }
+
+  .education-section__container {
+    gap: 1.5rem;
+  }
+
+  .education-section__left {
+    gap: 1.5rem;
+  }
+
+  .education-section__title {
+    font-size: 1.2rem;
+  }
+}

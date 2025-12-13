@@ -1,0 +1,151 @@
+.about-intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Left Section */
+.about-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.about-profile-pic {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--accent-color, #e32227);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.about-profile-pic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px var(--accent-color, #e32227);
+}
+
+.about-profile-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    var(--heading-color, #bed600),
+    var(--subheading-color, #8be030)
+  );
+  color: #ffffff;
+  font-size: 5rem;
+  font-weight: 700;
+  font-family: "Roboto Slab", serif;
+}
+
+.about-name {
+  font-family: "Roboto Slab", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 1px;
+}
+
+.about-degree {
+  font-family: "Roboto Slab", serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Right Section */
+.about-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-heading {
+  font-family: "Roboto Slab", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.about-content {
+  font-family: "Roboto Slab", serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.about-content p {
+  margin: 0 0 1rem 0;
+}
+
+.about-content p:last-child {
+  margin-bottom: 0;
+}
+
+.about-button-wrapper {
+  margin-top: 1rem;
+}
+
+/* Desktop Layout */
+@media (min-width: 769px) {
+  .about-intro {
+    grid-template-columns: 400px 1fr;
+    gap: 4rem;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .about-intro {
+    grid-template-columns: 350px 1fr;
+    gap: 3rem;
+  }
+
+  .about-profile-pic {
+    width: 240px;
+    height: 240px;
+  }
+
+  .about-profile-placeholder {
+    font-size: 4rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .about-profile-pic {
+    width: 220px;
+    height: 220px;
+  }
+
+  .about-profile-placeholder {
+    font-size: 4rem;
+  }
+
+  .about-name {
+    font-size: 1.6rem;
+  }
+
+  .about-degree {
+    font-size: 1.1rem;
+  }
+
+  .about-heading {
+    font-size: 1.6rem;
+  }
+
+  .about-content {
+    font-size: 1rem;
+  }
+
+  .about-button-wrapper button {
+    width: 100%;
+  }
+}

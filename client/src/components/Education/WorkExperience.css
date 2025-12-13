@@ -1,0 +1,60 @@
+.work-experience {
+  margin-bottom: 1.5rem;
+}
+
+.work-experience__header {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.work-experience__period {
+  border: 2px solid;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.work-experience__company {
+  flex: 1;
+}
+
+.work-experience__company-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.work-experience__details {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.work-experience__role {
+  font-weight: 600;
+}
+
+.work-experience__separator {
+  opacity: 0.6;
+}
+
+.work-experience__location {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .work-experience__header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .work-experience__period {
+    align-self: flex-start;
+  }
+}

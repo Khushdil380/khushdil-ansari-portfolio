@@ -1,0 +1,75 @@
+﻿Folder PATH listing for volume Windows
+Volume serial number is 74EF-57E2
+C:\USERS\ADMIN\DESKTOP\PORTFOLIO\CLIENT\SRC
+|   App.css
+|   App.js
+|   index.css
+|   index.js
+|   
++---assets
+|   \---icons
+|           email.svg
+|           github.svg
+|           linkedin.svg
+|           medium.svg
+|           quora.svg
+|           whatsapp.svg
+|           x.svg
+|           
++---components
+|   |   README.md
+|   |   
+|   +---About
+|   |       AboutIntro.css
+|   |       AboutIntro.js
+|   |       AboutSection.css
+|   |       AboutSection.js
+|   |       StoryCard.css
+|   |       StoryCard.js
+|   |       StorySlider.css
+|   |       StorySlider.js
+|   |       
+|   +---Hero
+|   |       DescriptionComponent.css
+|   |       DescriptionComponent.js
+|   |       HeadlineComponent.css
+|   |       HeadlineComponent.js
+|   |       HeroSection.css
+|   |       HeroSection.js
+|   |       ProfilePicture.css
+|   |       ProfilePicture.js
+|   |       QuoteComponent.css
+|   |       QuoteComponent.js
+|   |       
+|   +---Layout
+|   |       Layout.css
+|   |       Layout.js
+|   |       
+|   +---Navigation
+|   |       CloseButton.css
+|   |       CloseButton.js
+|   |       HamburgerIcon.css
+|   |       HamburgerIcon.js
+|   |       Header.css
+|   |       Header.js
+|   |       ThemeToggle.css
+|   |       ThemeToggle.js
+|   |       
+|   \---Utility
+|           Button.css
+|           Button.js
+|           SocialIcon.css
+|           SocialIcon.js
+|           
++---context
+|       ThemeContext.js
+|       
+\---pages
+        AboutPage.js
+        BlogPage.js
+        ContactPage.js
+        EducationPage.js
+        HomePage.js
+        ProjectsPage.js
+        ServicePage.js
+        

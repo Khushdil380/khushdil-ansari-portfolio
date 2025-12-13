@@ -1,0 +1,24 @@
+.project-display {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 992px) {
+  .project-display {
+    flex-direction: column;
+    width: 100%;
+  }
+}
