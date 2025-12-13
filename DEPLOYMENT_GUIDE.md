@@ -111,7 +111,7 @@ Your project is now ready for deployment with:
    - Go to project overview
    - Copy the domain (e.g., `https://portfolio-backend.vercel.app`)
    - **Save this URL** - you'll need it for frontend
-
+https://khushdil-ansari-portfolio-backend-noq12sm4t.vercel.app
 ---
 
 ### Step 4: Deploy Frontend to Vercel
@@ -151,6 +151,7 @@ Your project is now ready for deployment with:
    - Copy the domain (e.g., `https://portfolio-frontend.vercel.app`)
 
 ---
+https://khushdil-ansari-portfolio-frontend.vercel.app/
 
 ### Step 5: Update Backend CORS
 
