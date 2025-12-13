@@ -21,15 +21,19 @@ app.use(
         process.env.CLIENT_URL,
       ].filter(Boolean);
 
-      if (allowedOrigins.some(allowed => origin === allowed || origin.includes('vercel.app'))) {
+      if (
+        allowedOrigins.some(
+          (allowed) => origin === allowed || origin.includes("vercel.app")
+        )
+      ) {
         callback(null, true);
       } else {
         callback(null, true); // Allow all for now, you can restrict later
       }
     },
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 app.use(express.json());
