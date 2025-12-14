@@ -1,0 +1,58 @@
+.topic-sidebar {
+  width: 220px;
+  height: calc(100vh - 200px);
+  overflow-y: auto;
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  flex-shrink: 0;
+}
+
+.topic-sidebar__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.topic-sidebar__item {
+  padding: 0.6rem 1rem;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  font-family: "Roboto Slab", serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 3px solid;
+}
+
+.topic-sidebar__item:hover {
+  padding-left: 1.2rem;
+}
+
+.topic-sidebar__item--active {
+  font-weight: 600;
+}
+
+/* Scrollbar styling */
+.topic-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.topic-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.topic-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.3);
+  border-radius: 3px;
+}
+
+.topic-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.5);
+}
+
+@media (max-width: 992px) {
+  .topic-sidebar {
+    display: none;
+  }
+}

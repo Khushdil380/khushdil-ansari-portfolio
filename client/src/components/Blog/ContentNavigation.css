@@ -1,0 +1,31 @@
+.content-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  margin: 0;
+}
+
+.content-navigation__indicator {
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .content-navigation {
+    padding: 0.4rem 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .content-navigation__button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .content-navigation__indicator {
+    font-size: 0.75rem;
+  }
+}

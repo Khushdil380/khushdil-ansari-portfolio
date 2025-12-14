@@ -3,14 +3,13 @@ import { useTheme } from "../../context/ThemeContext";
 import PropTypes from "prop-types";
 import "./HamburgerIcon.css";
 
-const HamburgerIcon = ({ onClick, isOpen }) => {
+const HamburgerIcon = ({ onClick, isOpen = false }) => {
   const { theme } = useTheme();
 
   return (
-    <button
+    <div
       onClick={onClick}
       className={`hamburger-icon ${isOpen ? "open" : ""}`}
-      aria-label="Toggle menu"
       style={{
         "--content-color": theme.content,
         "--accent-color": theme.accent,
@@ -19,17 +18,13 @@ const HamburgerIcon = ({ onClick, isOpen }) => {
       <span></span>
       <span></span>
       <span></span>
-    </button>
+    </div>
   );
 };
 
 HamburgerIcon.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   isOpen: PropTypes.bool,
-};
-
-HamburgerIcon.defaultProps = {
-  isOpen: false,
 };
 
 export default HamburgerIcon;

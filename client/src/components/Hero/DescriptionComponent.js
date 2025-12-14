@@ -3,7 +3,7 @@ import { useTheme } from "../../context/ThemeContext";
 import PropTypes from "prop-types";
 import "./DescriptionComponent.css";
 
-const DescriptionComponent = ({ currentRole }) => {
+const DescriptionComponent = ({ currentRole = "Software Engineer" }) => {
   const { theme } = useTheme();
 
   const descriptions = {
@@ -33,10 +33,6 @@ const DescriptionComponent = ({ currentRole }) => {
 
 DescriptionComponent.propTypes = {
   currentRole: PropTypes.string,
-};
-
-DescriptionComponent.defaultProps = {
-  currentRole: "Software Engineer",
 };
 
 export default DescriptionComponent;
