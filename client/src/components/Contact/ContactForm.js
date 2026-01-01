@@ -15,12 +15,12 @@ const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
-  // Auto-dismiss success/error message after 3 seconds
+  // Auto-dismiss success/error message after 6 seconds
   useEffect(() => {
     if (submitStatus) {
       const timer = setTimeout(() => {
         setSubmitStatus(null);
-      }, 3000);
+      }, 6000);
 
       return () => clearTimeout(timer);
     }
