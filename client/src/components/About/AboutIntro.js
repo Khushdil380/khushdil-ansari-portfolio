@@ -24,9 +24,6 @@ const AboutIntro = ({ onKnowMore }) => {
 
       {/* Right Section - About Content */}
       <div className="about-right">
-        <h3 className="about-heading" style={{ color: theme.heading }}>
-          Here a 4-5 line about me
-        </h3>
         <div className="about-content" style={{ color: theme.content }}>
           <p>
             I am a passionate Computer Science Engineer with a deep love for
