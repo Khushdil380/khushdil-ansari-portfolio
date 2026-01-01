@@ -48,16 +48,11 @@ router.post("/send", contactValidation, async (req, res) => {
 
     const { fullName, email, title, message } = req.body;
 
-    // Send thank you email to user
-    await emailService.sendThankYouEmail(email, fullName);
-
-    // Send notification to admin
-    await emailService.sendNotificationEmail({
-      fullName,
-      email,
-      title,
-      message,
-    });
+    // Send both emails in parallel for faster response
+    await Promise.all([
+      emailService.sendThankYouEmail(email, fullName),
+      emailService.sendNotificationEmail({ fullName, email, title, message }),
+    ]);
 
     res.status(200).json({
       success: true,
