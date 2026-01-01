@@ -95,7 +95,16 @@ const ContactForm = () => {
           message:
             "Your query has been submitted successfully! Please check your email for confirmation.",
         });
-        handleClear();
+        // Clear form after showing success message
+        setTimeout(() => {
+          setFormData({
+            fullName: "",
+            email: "",
+            title: "",
+            message: "",
+          });
+          setErrors({});
+        }, 100);
       } else {
         setSubmitStatus({
           type: "error",
