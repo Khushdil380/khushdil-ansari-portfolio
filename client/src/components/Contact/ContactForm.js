@@ -90,7 +90,11 @@ const ContactForm = () => {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        setSubmitStatus({ type: "success", message: data.message });
+        setSubmitStatus({
+          type: "success",
+          message:
+            "Your query has been submitted successfully! Please check your email for confirmation.",
+        });
         handleClear();
       } else {
         setSubmitStatus({
@@ -108,6 +112,36 @@ const ContactForm = () => {
       setIsSubmitting(false);
     }
   };
+
+  // Loading spinner component
+  const LoadingSpinner = () => (
+    <svg
+      className="contact-form__spinner"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeDasharray="32"
+        strokeDashoffset="32"
+      >
+        <animate
+          attributeName="stroke-dashoffset"
+          values="32;0"
+          dur="1s"
+          repeatCount="indefinite"
+        />
+      </circle>
+    </svg>
+  );
 
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
@@ -209,7 +243,14 @@ const ContactForm = () => {
           Clear
         </Button>
         <Button type="submit" variant="primary" disabled={isSubmitting}>
-          {isSubmitting ? "Sending..." : "Submit"}
+          {isSubmitting ? (
+            <span className="contact-form__button-content">
+              <LoadingSpinner />
+              Sending...
+            </span>
+          ) : (
+            "Submit"
+          )}
         </Button>
       </div>
     </form>
