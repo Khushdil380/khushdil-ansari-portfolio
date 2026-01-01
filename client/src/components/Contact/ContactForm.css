@@ -52,6 +52,37 @@
   font-weight: 600;
   text-align: center;
   animation: slideDown 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  position: relative;
+}
+
+.contact-form__status-close {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.contact-form__status-close:hover {
+  opacity: 1;
+}
+
+.contact-form__status span {
+  flex: 1;
 }
 
 @keyframes slideDown {

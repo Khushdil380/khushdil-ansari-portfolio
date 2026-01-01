@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import Button from "../Utility/Button";
 import "./ContactForm.css";
@@ -14,6 +14,17 @@ const ContactForm = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+
+  // Auto-dismiss success/error message after 3 seconds
+  useEffect(() => {
+    if (submitStatus) {
+      const timer = setTimeout(() => {
+        setSubmitStatus(null);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [submitStatus]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -64,6 +75,10 @@ const ContactForm = () => {
       message: "",
     });
     setErrors({});
+    setSubmitStatus(null);
+  };
+
+  const handleCloseStatus = () => {
     setSubmitStatus(null);
   };
 
@@ -238,7 +253,15 @@ const ContactForm = () => {
               submitStatus.type === "success" ? "#8BE030" : "#E32227",
           }}
         >
-          {submitStatus.message}
+          <span>{submitStatus.message}</span>
+          <button
+            type="button"
+            className="contact-form__status-close"
+            onClick={handleCloseStatus}
+            aria-label="Close message"
+          >
+            ×
+          </button>
         </div>
       )}
 
