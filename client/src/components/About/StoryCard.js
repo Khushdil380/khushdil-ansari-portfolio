@@ -19,9 +19,6 @@ const StoryCard = ({ story, theme }) => {
 
       {/* Content Section */}
       <div className="story-content-section">
-        <h2 className="story-title" style={{ color: theme.heading }}>
-          {story.title}
-        </h2>
         <div className="story-text" style={{ color: theme.content }}>
           {story.content.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
