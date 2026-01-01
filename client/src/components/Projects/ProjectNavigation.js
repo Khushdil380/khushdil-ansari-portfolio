@@ -1,94 +1,84 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import PropTypes from "prop-types";
-import ArrowButton from "./ArrowButton";
 import "./ProjectNavigation.css";
 
 const ProjectNavigation = ({ projects, activeIndex, onProjectChange }) => {
   const { theme } = useTheme();
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [visibleStart, setVisibleStart] = useState(0);
-  const mobileVisibleCount = 3;
-  const desktopVisibleCount = 5;
-  const shouldUseSliding = projects.length > 5;
+  const tabsRef = useRef(null);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Update visible window when active index changes
-  useEffect(() => {
-    const visibleCount = isMobile ? mobileVisibleCount : desktopVisibleCount;
-    if (shouldUseSliding || isMobile) {
-      if (activeIndex < visibleStart) {
-        setVisibleStart(activeIndex);
-      } else if (activeIndex >= visibleStart + visibleCount) {
-        setVisibleStart(activeIndex - visibleCount + 1);
-      }
-    }
-  }, [activeIndex, isMobile, visibleStart, shouldUseSliding]);
-
-  const handlePrevious = () => {
+  const handlePrevious = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (activeIndex > 0) {
       onProjectChange(activeIndex - 1);
     }
-  };
-
-  const handleNext = () => {
-    if (activeIndex < projects.length - 1) {
-      onProjectChange(activeIndex + 1);
+    // Also scroll on mobile
+    if (tabsRef.current) {
+      tabsRef.current.scrollBy({ left: -200, behavior: "smooth" });
     }
   };
 
-  const visibleCount = isMobile ? mobileVisibleCount : desktopVisibleCount;
-  const visibleProjects =
-    shouldUseSliding || isMobile
-      ? projects.slice(visibleStart, visibleStart + visibleCount)
-      : projects;
-
-  const getProjectIndex = (project) => {
-    return projects.findIndex((p) => p.id === project.id);
+  const handleNext = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (activeIndex < projects.length - 1) {
+      onProjectChange(activeIndex + 1);
+    }
+    // Also scroll on mobile
+    if (tabsRef.current) {
+      tabsRef.current.scrollBy({ left: 200, behavior: "smooth" });
+    }
   };
 
   return (
-    <div className="project-navigation">
-      <ArrowButton
-        direction="left"
+    <div
+      className="project-navigation"
+      style={{ backgroundColor: theme.secondaryBg }}
+    >
+      <button
+        className="project-navigation__arrow project-navigation__arrow--prev"
         onClick={handlePrevious}
-        disabled={activeIndex === 0}
-      />
+        style={{
+          color: theme.heading,
+        }}
+        aria-label="Previous project"
+        type="button"
+      >
+        ◀
+      </button>
 
-      <div className="project-tabs">
-        {visibleProjects.map((project) => {
-          const index = getProjectIndex(project);
-          return (
-            <button
-              key={project.id}
-              className={`project-tab ${
-                index === activeIndex ? "project-tab--active" : ""
-              }`}
-              onClick={() => onProjectChange(index)}
-              style={{
-                color: index === activeIndex ? theme.heading : theme.content,
-                borderBottomColor:
-                  index === activeIndex ? "var(--accent-color)" : "transparent",
-              }}
-            >
-              {project.name}
-            </button>
-          );
-        })}
+      <div className="project-navigation__tabs" ref={tabsRef}>
+        {projects.map((project, index) => (
+          <button
+            key={project.id}
+            className={`project-navigation__tab ${
+              activeIndex === index ? "project-navigation__tab--active" : ""
+            }`}
+            onClick={() => onProjectChange(index)}
+            style={{
+              color: activeIndex === index ? theme.heading : theme.content,
+              backgroundColor:
+                activeIndex === index ? theme.primaryBg : "transparent",
+              borderColor: activeIndex === index ? theme.accent : "transparent",
+            }}
+          >
+            {project.name}
+          </button>
+        ))}
       </div>
 
-      <ArrowButton
-        direction="right"
+      <button
+        className="project-navigation__arrow project-navigation__arrow--next"
         onClick={handleNext}
-        disabled={activeIndex === projects.length - 1}
-      />
+        style={{
+          color: theme.heading,
+        }}
+        aria-label="Next project"
+        type="button"
+      >
+        ▶
+      </button>
     </div>
   );
 };

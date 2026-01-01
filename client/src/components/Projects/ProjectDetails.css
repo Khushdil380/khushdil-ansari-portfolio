@@ -37,10 +37,6 @@
 }
 
 @media (max-width: 768px) {
-  .project-details__actions {
-    flex-direction: column;
-  }
-
   .project-details__tech-icons {
     justify-content: center;
   }

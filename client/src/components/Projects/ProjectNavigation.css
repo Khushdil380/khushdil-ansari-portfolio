@@ -1,57 +1,92 @@
 .project-navigation {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 0.5rem 0;
+  gap: 0.5rem;
+  padding: 0.5rem;
   margin-bottom: 1.5rem;
 }
 
-.project-tabs {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
+.project-navigation__arrow {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  display: block;
 }
 
-.project-tab {
-  background: transparent;
+.project-navigation__arrow:hover:not(:disabled) {
+  transform: scale(1.2);
+}
+
+.project-navigation__arrow:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.project-navigation__tabs {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex: 1;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.project-navigation__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.project-navigation__tab {
+  padding: 0.35rem 1rem;
   border: none;
-  border-bottom: 3px solid transparent;
-  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  background: none;
   font-size: 0.95rem;
   font-family: "Roboto Slab", serif;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
   white-space: nowrap;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
-.project-tab:hover {
-  border-bottom-color: var(--accent-color);
-  opacity: 0.8;
+.project-navigation__tab:hover {
+  transform: translateY(-1px);
 }
 
-.project-tab--active {
+.project-navigation__tab--active {
   font-weight: 700;
-  border-bottom-color: var(--accent-color);
 }
 
 @media (max-width: 768px) {
   .project-navigation {
-    gap: 1rem;
+    padding: 0;
+    margin-bottom: 1rem;
+    gap: 0.3rem;
   }
 
-  .project-tabs {
-    flex-wrap: nowrap;
-    overflow: hidden;
-    justify-content: center;
-  }
-
-  .project-tab {
-    font-size: 0.85rem;
-    padding: 0.5rem 0.75rem;
+  .project-navigation__arrow {
+    font-size: 1rem;
+    display: block;
     flex-shrink: 0;
+    padding: 0.2rem;
+  }
+
+  .project-navigation__tab {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .project-navigation__tabs {
+    max-width: calc(100vw - 80px);
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
 }
