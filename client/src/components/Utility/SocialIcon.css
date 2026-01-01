@@ -43,13 +43,27 @@
 
 @media (max-width: 768px) {
   .social-icon {
-    width: 40px;
-    height: 40px;
-    margin: 0 6px;
+    width: 36px;
+    height: 36px;
+    margin: 0 4px;
+    border-width: 1.5px;
   }
 
   .social-icon-img {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-icon {
+    width: 34px;
+    height: 34px;
+    margin: 0 3px;
+  }
+
+  .social-icon-img {
+    width: 17px;
+    height: 17px;
   }
 }

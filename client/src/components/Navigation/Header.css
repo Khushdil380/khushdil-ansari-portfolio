@@ -140,6 +140,7 @@
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 1rem;
+  max-width: 100%;
 }
 
 /* Desktop grid layout for navigation */
@@ -179,5 +180,19 @@
 
   .nav-link {
     font-size: 1.3rem;
+  }
+
+  .nav-social-icons {
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    padding: 0 0.5rem;
+  }
+
+  .nav-left-section {
+    gap: 1.5rem;
+  }
+
+  .nav-name {
+    font-size: 1.5rem;
   }
 }
