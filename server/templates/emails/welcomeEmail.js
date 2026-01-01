@@ -26,7 +26,11 @@ const getWelcomeEmailTemplate = (userName) => {
           <!-- Profile Section -->
           <tr>
             <td style="background-color:#fafafa;padding:30px 20px;text-align:center;">
-              <div style="width:90px;height:90px;background:linear-gradient(135deg,#E32227,#ff6666);border-radius:50%;display:inline-block;line-height:90px;font-size:36px;color:#ffffff;font-weight:bold;box-shadow:0 4px 12px rgba(227,34,39,0.25);">KA</div>
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:90px;height:90px;background:linear-gradient(135deg,#E32227,#ff6666);border-radius:50%;margin:0 auto;box-shadow:0 4px 12px rgba(227,34,39,0.25);">
+                <tr>
+                  <td style="text-align:center;vertical-align:middle;font-size:36px;color:#ffffff;font-weight:bold;letter-spacing:2px;">KA</td>
+                </tr>
+              </table>
               <h2 style="margin:15px 0 5px 0;color:#1a1a1a;font-size:22px;font-weight:700;">KHUSHDIL ANSARI</h2>
               <p style="margin:0;color:#666;font-size:15px;">Full Stack Developer | Software Engineer</p>
             </td>
@@ -132,22 +136,22 @@ const getWelcomeEmailTemplate = (userName) => {
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center">
                 <tr>
                   <td style="padding:5px;">
-                    <a href="https://github.com/Khushdil380" style="display:inline-block;width:40px;height:40px;background-color:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.3);border-radius:50%;color:#ffffff;text-decoration:none;font-weight:bold;font-size:13px;line-height:36px;text-align:center;" title="GitHub">GH</a>
+                    <a href="https://github.com/Khushdil380" style="display:inline-block;width:44px;height:44px;background-color:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.3);border-radius:50%;color:#ffffff;text-decoration:none;font-size:20px;line-height:40px;text-align:center;" title="GitHub">🔗</a>
                   </td>
                   <td style="padding:5px;">
-                    <a href="https://www.linkedin.com/in/khushdil-ansari/" style="display:inline-block;width:40px;height:40px;background-color:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.3);border-radius:50%;color:#ffffff;text-decoration:none;font-weight:bold;font-size:13px;line-height:36px;text-align:center;" title="LinkedIn">IN</a>
+                    <a href="https://www.linkedin.com/in/khushdil-ansari/" style="display:inline-block;width:44px;height:44px;background-color:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.3);border-radius:50%;color:#ffffff;text-decoration:none;font-size:20px;line-height:40px;text-align:center;" title="LinkedIn">💼</a>
                   </td>
                   <td style="padding:5px;">
-                    <a href="https://medium.com/@khushdilansari345" style="display:inline-block;width:40px;height:40px;background-color:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.3);border-radius:50%;color:#ffffff;text-decoration:none;font-weight:bold;font-size:13px;line-height:36px;text-align:center;" title="Medium">M</a>
+                    <a href="https://medium.com/@khushdilansari345" style="display:inline-block;width:44px;height:44px;background-color:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.3);border-radius:50%;color:#ffffff;text-decoration:none;font-size:20px;line-height:40px;text-align:center;" title="Medium">📝</a>
                   </td>
                   <td style="padding:5px;">
-                    <a href="https://www.quora.com/profile/Khushdil-Ansari-7" style="display:inline-block;width:40px;height:40px;background-color:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.3);border-radius:50%;color:#ffffff;text-decoration:none;font-weight:bold;font-size:13px;line-height:36px;text-align:center;" title="Quora">Q</a>
+                    <a href="https://www.quora.com/profile/Khushdil-Ansari-7" style="display:inline-block;width:44px;height:44px;background-color:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.3);border-radius:50%;color:#ffffff;text-decoration:none;font-size:20px;line-height:40px;text-align:center;" title="Quora">❓</a>
                   </td>
                   <td style="padding:5px;">
-                    <a href="https://x.com/Khushdil_380" style="display:inline-block;width:40px;height:40px;background-color:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.3);border-radius:50%;color:#ffffff;text-decoration:none;font-weight:bold;font-size:13px;line-height:36px;text-align:center;" title="X">X</a>
+                    <a href="https://x.com/Khushdil_380" style="display:inline-block;width:44px;height:44px;background-color:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.3);border-radius:50%;color:#ffffff;text-decoration:none;font-size:20px;line-height:40px;text-align:center;" title="X">🐦</a>
                   </td>
                   <td style="padding:5px;">
-                    <a href="https://wa.me/918809059380" style="display:inline-block;width:40px;height:40px;background-color:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.3);border-radius:50%;color:#ffffff;text-decoration:none;font-weight:bold;font-size:13px;line-height:36px;text-align:center;" title="WhatsApp">WA</a>
+                    <a href="https://wa.me/918809059380" style="display:inline-block;width:44px;height:44px;background-color:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.3);border-radius:50%;color:#ffffff;text-decoration:none;font-size:20px;line-height:40px;text-align:center;" title="WhatsApp">💬</a>
                   </td>
                 </tr>
               </table>
