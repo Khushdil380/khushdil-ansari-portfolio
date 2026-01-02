@@ -20,9 +20,14 @@ const ProjectDetails = ({ project }) => {
     <div className="project-details">
       <div className="project-details__section">
         <div className="project-details__tech-icons">
-          {project.technologies.map((tech, index) => (
-            <TechIcon key={index} techName={tech} />
-          ))}
+          {project.technologies.map((tech, index) => {
+            // Handle both string format (old) and object format (new with icons)
+            const techName = typeof tech === "string" ? tech : tech.name;
+            const techIcon = typeof tech === "object" ? tech.icon : null;
+            return (
+              <TechIcon key={index} techName={techName} iconPath={techIcon} />
+            );
+          })}
         </div>
       </div>
 

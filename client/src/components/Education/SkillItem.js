@@ -18,14 +18,14 @@ const SkillItem = ({ skill }) => {
 
   // Map skill names to icons
   const skillIcons = {
-    "C": cIcon,
+    C: cIcon,
     "C++": cppIcon,
-    "CSS": cssIcon,
-    "Java": javaIcon,
-    "JavaScript": javascriptIcon,
-    "Python": pythonIcon,
-    "React": reactIcon,
-    "SQL": sqlIcon,
+    CSS: cssIcon,
+    Java: javaIcon,
+    JavaScript: javascriptIcon,
+    Python: pythonIcon,
+    React: reactIcon,
+    SQL: sqlIcon,
   };
 
   const handleSkillClick = () => {
@@ -42,8 +42,8 @@ const SkillItem = ({ skill }) => {
           }}
         >
           {skillIcons[skill.name] ? (
-            <img 
-              src={skillIcons[skill.name]} 
+            <img
+              src={skillIcons[skill.name]}
               alt={skill.name}
               className="skill-item__icon-img"
             />

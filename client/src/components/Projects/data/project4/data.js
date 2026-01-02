@@ -1,3 +1,8 @@
+import reactIcon from "./tech-icon/react.svg";
+import javascriptIcon from "./tech-icon/javascript.svg";
+import pythonIcon from "./tech-icon/python.svg";
+import sqlIcon from "./tech-icon/sql.svg";
+
 const project4 = {
   id: 4,
   name: "Puzzle Game",
@@ -6,7 +11,12 @@ const project4 = {
   endDate: "25 November 2024",
   duration: "46 days",
   category: "Game",
-  technologies: ["Unity", "C#", "Blender", "Photoshop"],
+  technologies: [
+    { name: "Unity", icon: pythonIcon },
+    { name: "C#", icon: javascriptIcon },
+    { name: "Blender", icon: reactIcon },
+    { name: "Photoshop", icon: sqlIcon },
+  ],
   abstract:
     "An engaging 3D puzzle game with progressive difficulty levels and immersive gameplay mechanics. Features include physics-based puzzles, level editor, achievement system, leaderboards, and stunning visual effects with optimized performance for multiple platforms.",
   liveDemo: "https://youtube.com",

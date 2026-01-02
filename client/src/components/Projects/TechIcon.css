@@ -17,6 +17,14 @@
   font-weight: 700;
   transition: all 0.3s ease;
   cursor: pointer;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.tech-icon__img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
 }
 
 .tech-icon__circle:hover {

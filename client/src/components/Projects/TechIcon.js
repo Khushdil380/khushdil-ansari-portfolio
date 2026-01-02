@@ -3,7 +3,7 @@ import { useTheme } from "../../context/ThemeContext";
 import PropTypes from "prop-types";
 import "./TechIcon.css";
 
-const TechIcon = ({ techName }) => {
+const TechIcon = ({ techName, iconPath }) => {
   const { theme } = useTheme();
 
   // Get first letter or two for the icon placeholder
@@ -21,11 +21,16 @@ const TechIcon = ({ techName }) => {
         className="tech-icon__circle"
         style={{
           borderColor: theme.subheading,
-          color: theme.subheading,
         }}
         title={techName}
       >
-        {getIconText(techName)}
+        {iconPath ? (
+          <img src={iconPath} alt={techName} className="tech-icon__img" />
+        ) : (
+          <span style={{ color: theme.subheading }}>
+            {getIconText(techName)}
+          </span>
+        )}
       </div>
     </div>
   );
@@ -33,6 +38,7 @@ const TechIcon = ({ techName }) => {
 
 TechIcon.propTypes = {
   techName: PropTypes.string.isRequired,
+  iconPath: PropTypes.string,
 };
 
 export default TechIcon;
