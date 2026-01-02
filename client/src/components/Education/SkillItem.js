@@ -3,8 +3,30 @@ import { useTheme } from "../../context/ThemeContext";
 import PropTypes from "prop-types";
 import "./SkillItem.css";
 
+// Import skill icons
+import cIcon from "../../assets/skillicon/c.svg";
+import cppIcon from "../../assets/skillicon/cpp.svg";
+import cssIcon from "../../assets/skillicon/css.svg";
+import javaIcon from "../../assets/skillicon/java.svg";
+import javascriptIcon from "../../assets/skillicon/javascript.svg";
+import pythonIcon from "../../assets/skillicon/python.svg";
+import reactIcon from "../../assets/skillicon/react.svg";
+import sqlIcon from "../../assets/skillicon/sql.svg";
+
 const SkillItem = ({ skill }) => {
   const { theme } = useTheme();
+
+  // Map skill names to icons
+  const skillIcons = {
+    "C": cIcon,
+    "C++": cppIcon,
+    "CSS": cssIcon,
+    "Java": javaIcon,
+    "JavaScript": javascriptIcon,
+    "Python": pythonIcon,
+    "React": reactIcon,
+    "SQL": sqlIcon,
+  };
 
   const handleSkillClick = () => {
     window.open(skill.githubRepo, "_blank", "noopener,noreferrer");
@@ -17,10 +39,19 @@ const SkillItem = ({ skill }) => {
           className="skill-item__icon"
           style={{
             borderColor: theme.subheading,
-            color: theme.subheading,
           }}
         >
-          {skill.name.substring(0, 2).toUpperCase()}
+          {skillIcons[skill.name] ? (
+            <img 
+              src={skillIcons[skill.name]} 
+              alt={skill.name}
+              className="skill-item__icon-img"
+            />
+          ) : (
+            <span style={{ color: theme.subheading }}>
+              {skill.name.substring(0, 2).toUpperCase()}
+            </span>
+          )}
         </div>
         <div
           className="skill-item__bar-container"

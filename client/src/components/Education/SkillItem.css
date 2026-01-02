@@ -19,6 +19,14 @@
   font-size: 0.8rem;
   font-weight: 700;
   flex-shrink: 0;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.skill-item__icon-img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
 }
 
 .skill-item__bar-container {
