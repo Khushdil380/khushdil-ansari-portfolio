@@ -76,8 +76,8 @@
 .service-modal__layout {
   display: grid;
   grid-template-columns: 0.8fr 2.2fr;
-  gap: 2rem;
-  padding: 4.5rem 2rem 2rem;
+  gap: 1.5rem;
+  padding: 4rem 1.5rem 1.5rem;
   min-height: 100%;
 }
 
@@ -164,7 +164,7 @@
 .service-modal__right {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   overflow: hidden;
 }
 
@@ -173,7 +173,7 @@
   flex: 1;
   overflow: visible;
   position: relative;
-  padding-top: 2.5rem;
+  padding-top: 2rem;
 }
 
 /* Hide scrollbars */
@@ -470,7 +470,7 @@
   }
 
   .service-modal__testimonials {
-    padding-top: 2rem;
+    padding-top: 1.5rem;
   }
 
   .service-modal__testimonial-text {
