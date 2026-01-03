@@ -18,21 +18,21 @@ const workExperienceData = [
 const educationData = [
   {
     id: 1,
-    instituteName: "Acropolis Institute of Technology",
+    instituteName: "Acropolis Institute of Technology & Research, Indore",
     course: "B.Tech",
     year: "2022-2026",
     score: "7.5 CGPA",
   },
   {
     id: 2,
-    instituteName: "RxK+2 High School BNP",
+    instituteName: "R.K+2 High School Bhawanathpur, Garhwa",
     course: "I.Sc",
     year: "2019-2021",
     score: "75%",
   },
   {
     id: 3,
-    instituteName: "Lohiya Samta High School",
+    instituteName: "Lohiya Samta High School Ketar, Garhwa",
     course: "10th",
     year: "2019",
     score: "90%",
