@@ -1,0 +1,491 @@
+/* ===== MODAL CONTAINER ===== */
+.service-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.service-modal__content {
+  border-radius: 16px;
+  width: 98%;
+  max-width: 1400px;
+  height: 96vh;
+  max-height: 96vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ===== CLOSE BUTTON ===== */
+.service-modal__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.service-modal__close:hover {
+  background-color: rgba(227, 34, 39, 0.1);
+  transform: rotate(90deg);
+}
+
+/* ===== LAYOUT ===== */
+.service-modal__layout {
+  display: grid;
+  grid-template-columns: 0.8fr 2.2fr;
+  gap: 2rem;
+  padding: 4.5rem 2rem 2rem;
+  min-height: 100%;
+}
+
+/* ===== LEFT SIDE - SERVICE INFO ===== */
+.service-modal__left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding-right: 2rem;
+  border-right: 2px solid rgba(227, 34, 39, 0.2);
+}
+
+.service-modal__icon {
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.service-modal__title {
+  font-family: "Roboto Slab", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.service-modal__description {
+  font-family: "Roboto Slab", serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.service-modal__project-count {
+  font-family: "Roboto Slab", serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.service-modal__buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.service-modal__link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: "Roboto Slab", serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid var(--accent-color);
+  background-color: var(--accent-color);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.service-modal__link:hover {
+  background-color: transparent !important;
+  color: var(--accent-color) !important;
+  box-shadow: 0 0 15px var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.service-modal__link:active {
+  transform: translateY(0);
+}
+
+.service-modal__link-icon {
+  font-size: 1.2rem;
+}
+
+/* ===== RIGHT SIDE - PROJECTS & TESTIMONIALS ===== */
+.service-modal__right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow: hidden;
+}
+
+.service-modal__projects,
+.service-modal__testimonials {
+  flex: 1;
+  overflow: visible;
+  position: relative;
+  padding-top: 2.5rem;
+}
+
+/* Hide scrollbars */
+.service-modal__projects::-webkit-scrollbar,
+.service-modal__content::-webkit-scrollbar {
+  display: none;
+}
+
+.service-modal__projects,
+.service-modal__content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ===== PROJECT CAROUSEL ===== */
+.service-modal__projects-carousel {
+  display: flex;
+  gap: 1rem;
+  animation: scrollRight 50s linear infinite;
+  width: max-content;
+}
+
+.service-modal__right:hover .service-modal__projects-carousel {
+  animation-play-state: paused;
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ===== PROJECT CARD ===== */
+.service-modal__project-card {
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  width: 320px;
+  min-width: 320px;
+  max-width: 320px;
+  height: 280px;
+  min-height: 280px;
+  max-height: 280px;
+  flex-shrink: 0;
+}
+
+.service-modal__project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(227, 34, 39, 0.3);
+}
+
+.service-modal__project-name {
+  font-family: "Roboto Slab", serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.service-modal__project-description {
+  font-family: "Roboto Slab", serif;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin: 0;
+  opacity: 0.9;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.service-modal__project-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.service-modal__project-btn {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: "Roboto Slab", serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-align: center;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: inline-block;
+  border: 1px solid var(--accent-color);
+  background-color: var(--accent-color);
+  color: #ffffff;
+}
+
+.service-modal__project-btn:hover {
+  background-color: transparent !important;
+  color: var(--accent-color) !important;
+  box-shadow: 0 0 15px var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.service-modal__project-btn:active {
+  transform: translateY(0);
+}
+
+.service-modal__project-btn--secondary {
+  background-color: transparent;
+  color: var(--accent-color);
+}
+
+.service-modal__project-btn--secondary:hover {
+  background-color: var(--accent-color) !important;
+  color: #ffffff !important;
+}
+
+/* ===== TESTIMONIAL CAROUSEL ===== */
+.service-modal__testimonials-list {
+  display: flex;
+  gap: 1rem;
+  animation: scrollLeft 45s linear infinite;
+  width: max-content;
+  overflow: visible;
+}
+
+.service-modal__right:hover .service-modal__testimonials-list {
+  animation-play-state: paused;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* ===== TESTIMONIAL CARD ===== */
+.service-modal__testimonial-card {
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 3.5rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  width: 320px;
+  min-width: 320px;
+  max-width: 320px;
+  height: 240px;
+  min-height: 240px;
+  max-height: 240px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.service-modal__testimonial-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(227, 34, 39, 0.25);
+}
+
+.service-modal__testimonial-profile {
+  position: absolute;
+  top: -2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  border: 3px solid;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.service-modal__testimonial-profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-modal__testimonial-text {
+  font-family: "Roboto Slab", serif;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+  font-style: italic;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.service-modal__testimonial-client {
+  font-family: "Roboto Slab", serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0.75rem 0 0 0;
+  text-align: right;
+}
+
+/* ===== TABLET RESPONSIVE ===== */
+@media (max-width: 968px) {
+  .service-modal__layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .service-modal__left {
+    border-right: none;
+    border-bottom: 2px solid rgba(227, 34, 39, 0.2);
+    padding-right: 0;
+    padding-bottom: 1.5rem;
+  }
+
+  .service-modal__project-card,
+  .service-modal__testimonial-card {
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+  }
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .service-modal__content {
+    height: 98vh;
+    max-height: 98vh;
+  }
+
+  .service-modal__layout {
+    padding: 3.5rem 1rem 1rem;
+    gap: 1rem;
+  }
+
+  .service-modal__close {
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    width: 35px;
+    height: 35px;
+  }
+
+  .service-modal__icon {
+    font-size: 3rem;
+  }
+
+  .service-modal__title {
+    font-size: 1.5rem;
+  }
+
+  .service-modal__description {
+    font-size: 0.9rem;
+  }
+
+  .service-modal__project-card,
+  .service-modal__testimonial-card {
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+  }
+
+  .service-modal__project-card {
+    height: 260px;
+    min-height: 260px;
+    max-height: 260px;
+  }
+
+  .service-modal__testimonial-card {
+    height: 220px;
+    min-height: 220px;
+    max-height: 220px;
+    padding: 3rem 1rem 1rem;
+  }
+
+  .service-modal__testimonial-profile {
+    width: 4rem;
+    height: 4rem;
+    top: -2rem;
+  }
+
+  .service-modal__testimonials {
+    padding-top: 2rem;
+  }
+
+  .service-modal__testimonial-text {
+    font-size: 0.8rem;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+
+  .service-modal__link {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .service-modal__project-btn {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.7rem;
+  }
+}

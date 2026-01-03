@@ -1,14 +1,13 @@
 import React from "react";
+import ServicesSection from "../components/Services/ServicesSection";
 
 const ServicePage = () => {
   return (
     <section
       className="page-section"
-      style={{ minHeight: "100vh", padding: "6rem 2rem 2rem" }}
+      style={{ minHeight: "100vh", padding: "5rem 0 1rem" }}
     >
-      <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
-        <h1>Services - Coming Soon</h1>
-      </div>
+      <ServicesSection />
     </section>
   );
 };
