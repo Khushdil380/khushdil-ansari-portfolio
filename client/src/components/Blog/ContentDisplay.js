@@ -135,7 +135,15 @@ ContentDisplay.propTypes = {
     title: PropTypes.string,
     sections: PropTypes.arrayOf(
       PropTypes.shape({
-        type: PropTypes.oneOf(["heading", "subheading", "text", "list", "code", "image", "note"]).isRequired,
+        type: PropTypes.oneOf([
+          "heading",
+          "subheading",
+          "text",
+          "list",
+          "code",
+          "image",
+          "note",
+        ]).isRequired,
         content: PropTypes.string,
         items: PropTypes.arrayOf(PropTypes.string),
         language: PropTypes.string,

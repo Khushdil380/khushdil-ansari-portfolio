@@ -1,4 +1,4 @@
-import { createTopic } from '../contentParser';
+import { createTopic } from '../../contentParser';
 import content from './variables-in-c.content';
 
 export default createTopic(

@@ -1,15 +1,15 @@
- /**
+/**
  * TEMPLATE: New Topic Content File
- * 
+ *
  * Instructions:
  * 1. Copy this file
  * 2. Rename to: [your-topic-name].content.js
  * 3. Replace the content between the backticks
  * 4. Use [PAGE_BREAK] to split into multiple pages
- * 
+ *
  * Available Syntax:
  * # Heading
- * ## Subheading  
+ * ## Subheading
  * Regular text paragraph
  * - List item
  * ```language

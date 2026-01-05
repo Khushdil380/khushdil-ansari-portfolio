@@ -80,13 +80,13 @@ Continue writing...
 **File**: `subjects/YourSubject/my-topic.js`
 
 ```javascript
-import { createTopic } from '../contentParser';
-import content from './my-topic.content';
+import { createTopic } from "../contentParser";
+import content from "./my-topic.content";
 
 export default createTopic(
-  'my-topic',           // Unique ID
-  'My Topic Title',     // Display name
-  content               // Your content
+  "my-topic", // Unique ID
+  "My Topic Title", // Display name
+  content // Your content
 );
 ```
 
@@ -100,7 +100,7 @@ import myTopic from "./my-topic";
 export default {
   id: "your-subject",
   name: "Your Subject",
-  topics: [myTopic],  // Add your topic here
+  topics: [myTopic], // Add your topic here
 };
 ```
 
@@ -110,16 +110,16 @@ export default {
 
 ## 📝 Content Syntax Cheat Sheet
 
-| Element | Syntax | Example |
-|---------|--------|---------|
-| **Main Heading** | `# Text` | `# Introduction` |
-| **Subheading** | `## Text` | `## Getting Started` |
-| **Paragraph** | Plain text | `This is a paragraph.` |
-| **List** | `- Item` or `* Item` | `- First point` |
-| **Code Block** | `\`\`\`lang\ncode\n\`\`\`` | `\`\`\`python\nprint("Hi")\n\`\`\`` |
-| **Image** | `![alt](url)` | `![Logo](logo.png)` |
-| **Note/Tip** | `> Text` | `> Tip: Remember this!` |
-| **Page Break** | `[PAGE_BREAK]` | `[PAGE_BREAK]` |
+| Element          | Syntax                     | Example                             |
+| ---------------- | -------------------------- | ----------------------------------- |
+| **Main Heading** | `# Text`                   | `# Introduction`                    |
+| **Subheading**   | `## Text`                  | `## Getting Started`                |
+| **Paragraph**    | Plain text                 | `This is a paragraph.`              |
+| **List**         | `- Item` or `* Item`       | `- First point`                     |
+| **Code Block**   | `\`\`\`lang\ncode\n\`\`\`` | `\`\`\`python\nprint("Hi")\n\`\`\`` |
+| **Image**        | `![alt](url)`              | `![Logo](logo.png)`                 |
+| **Note/Tip**     | `> Text`                   | `> Tip: Remember this!`             |
+| **Page Break**   | `[PAGE_BREAK]`             | `[PAGE_BREAK]`                      |
 
 ---
 
@@ -132,7 +132,7 @@ Everything is automatically styled - you just write content!
 ✅ **Lists** - Clean bullets, proper indentation  
 ✅ **Code** - Monospace, scrollable, background color  
 ✅ **Images** - Responsive, rounded, shadow effects  
-✅ **Notes** - Highlighted boxes with accent borders  
+✅ **Notes** - Highlighted boxes with accent borders
 
 **Light & Dark Mode** - All components adapt automatically!  
 **Mobile Responsive** - Perfect on all screen sizes!
@@ -144,6 +144,7 @@ Everything is automatically styled - you just write content!
 Since `.content.js` files use JavaScript template literals (wrapped in backticks), **code blocks must use escaped backticks**:
 
 ### ✅ Correct:
+
 ```javascript
 export default `
 # Code Example
@@ -155,15 +156,18 @@ const x = 5;
 ```
 
 ### ❌ Wrong:
-```javascript
+
+````javascript
 export default `
 # Code Example
 
 ```javascript  ← This will cause syntax errors!
 const x = 5;
-```
+````
+
 `;
-```
+
+````
 
 **Always use** `\`\`\`` (with backslash) for code blocks inside your content!
 
@@ -172,7 +176,7 @@ const x = 5;
 ## 📚 Supported Code Languages
 
 - `javascript` - JavaScript
-- `python` - Python  
+- `python` - Python
 - `java` - Java
 - `c` - C
 - `cpp` - C++
@@ -302,15 +306,15 @@ const doubled = numbers.map(x => x * 2);
 
 > Note: map() doesn't modify the original array!
 `;
-```
+````
 
 **File**: `subjects/JavaScript/arrays.js`
 
 ```javascript
-import { createTopic } from '../contentParser';
-import content from './arrays.content';
+import { createTopic } from "../contentParser";
+import content from "./arrays.content";
 
-export default createTopic('arrays', 'JavaScript Arrays', content);
+export default createTopic("arrays", "JavaScript Arrays", content);
 ```
 
 **File**: `subjects/JavaScript/index.js`
@@ -330,18 +334,20 @@ export default {
 ## 📦 System Benefits
 
 ### For Content Creators:
+
 ✅ Write content faster - no JSX or component code  
 ✅ Focus on teaching - styling is automatic  
 ✅ Easy organization - one file per topic  
 ✅ Simple updates - just edit the content string  
-✅ Page management - split with one marker  
+✅ Page management - split with one marker
 
 ### For Users:
+
 ✅ Consistent design across all topics  
 ✅ Optimized readability and typography  
 ✅ Perfect dark/light mode support  
 ✅ Mobile-friendly on all devices  
-✅ Fast loading and rendering  
+✅ Fast loading and rendering
 
 ---
 

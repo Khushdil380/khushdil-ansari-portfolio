@@ -1,8 +1,4 @@
-import { createTopic } from '../contentParser';
-import content from './functions.content';
+import { createTopic } from "../contentParser";
+import content from "./functions.content";
 
-export default createTopic(
-  'python-functions',
-  'Python Functions',
-  content
-);
+export default createTopic("python-functions", "Python Functions", content);

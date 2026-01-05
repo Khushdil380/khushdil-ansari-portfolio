@@ -1,5 +1,5 @@
 // Loops in C
-import page1 from "./loops-in-c-page1";
+import page1 from "./page-1";
 
 export default {
   id: "loops-in-c",

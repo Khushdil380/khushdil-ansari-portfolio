@@ -1,7 +1,7 @@
 // Import all C topics
 import introToC from "./intro-to-c";
-import variablesInC from "./variables-in-c";
-import loopsInC from "./loops-in-c";
+import variablesInC from "./variables";
+import loopsInC from "./loops";
 import dataTypes from "./data-types";
 import operators from "./operators";
 import conditionalStatements from "./conditional-statements";
