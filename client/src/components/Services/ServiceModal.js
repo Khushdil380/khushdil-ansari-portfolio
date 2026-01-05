@@ -13,7 +13,10 @@ const ServiceModal = ({ service, onClose }) => {
   };
 
   const duplicatedProjects = [...service.projects, ...service.projects];
-  const duplicatedTestimonials = [...service.testimonials, ...service.testimonials];
+  const duplicatedTestimonials = [
+    ...service.testimonials,
+    ...service.testimonials,
+  ];
 
   return (
     <div className="service-modal" onClick={handleBackdropClick}>
@@ -158,7 +161,12 @@ const ServiceModal = ({ service, onClose }) => {
                       }}
                     >
                       <img
-                        src={testimonial.profilePic || `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.client)}&background=random&size=100`}
+                        src={
+                          testimonial.profilePic ||
+                          `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                            testimonial.client
+                          )}&background=random&size=100`
+                        }
                         alt={testimonial.client}
                       />
                     </div>

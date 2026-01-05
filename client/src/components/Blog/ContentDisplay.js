@@ -30,6 +30,17 @@ const ContentDisplay = ({ pageContent }) => {
           </h3>
         );
 
+      case "subheading":
+        return (
+          <h4
+            key={index}
+            className="content-display__subheading"
+            style={{ color: theme.subheading }}
+          >
+            {section.content}
+          </h4>
+        );
+
       case "text":
         return (
           <p
@@ -65,6 +76,39 @@ const ContentDisplay = ({ pageContent }) => {
           </pre>
         );
 
+      case "image":
+        return (
+          <div key={index} className="content-display__image-wrapper">
+            <img
+              src={section.src}
+              alt={section.alt}
+              className="content-display__image"
+            />
+            {section.alt && (
+              <p
+                className="content-display__image-caption"
+                style={{ color: theme.content }}
+              >
+                {section.alt}
+              </p>
+            )}
+          </div>
+        );
+
+      case "note":
+        return (
+          <div
+            key={index}
+            className="content-display__note"
+            style={{
+              backgroundColor: theme.secondaryBg,
+              borderLeftColor: theme.accent,
+            }}
+          >
+            <p style={{ color: theme.content }}>{section.content}</p>
+          </div>
+        );
+
       default:
         return null;
     }
@@ -88,13 +132,15 @@ const ContentDisplay = ({ pageContent }) => {
 ContentDisplay.propTypes = {
   pageContent: PropTypes.shape({
     page: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     sections: PropTypes.arrayOf(
       PropTypes.shape({
-        type: PropTypes.oneOf(["heading", "text", "list", "code"]).isRequired,
+        type: PropTypes.oneOf(["heading", "subheading", "text", "list", "code", "image", "note"]).isRequired,
         content: PropTypes.string,
         items: PropTypes.arrayOf(PropTypes.string),
         language: PropTypes.string,
+        src: PropTypes.string,
+        alt: PropTypes.string,
       })
     ).isRequired,
   }),

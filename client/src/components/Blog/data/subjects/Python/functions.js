@@ -1,8 +1,8 @@
 import { createTopic } from '../contentParser';
-import content from './variables-in-c.content';
+import content from './functions.content';
 
 export default createTopic(
-  'variables-in-c',
-  'Variables in C',
+  'python-functions',
+  'Python Functions',
   content
 );
