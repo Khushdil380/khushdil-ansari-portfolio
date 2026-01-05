@@ -23,8 +23,7 @@ float grades[3] = {85.5, 92.0, 78.5};`,
     },
     {
       type: "text",
-      content:
-        "Access elements using their index (starting from 0):",
+      content: "Access elements using their index (starting from 0):",
     },
     {
       type: "code",

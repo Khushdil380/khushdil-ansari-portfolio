@@ -1,4 +1,4 @@
-import page1 from "./intro-to-cpp-page1";
+import page1 from "./page-1";
 
 export default {
   id: "intro-to-cpp",

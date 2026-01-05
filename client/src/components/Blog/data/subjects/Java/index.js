@@ -1,26 +1,13 @@
 // Java subject - add your topics here by importing them
-
-const introToJava = {
-  id: "intro-to-java",
-  title: "Introduction to Java",
-  content: [
-    {
-      page: 1,
-      title: "What is Java?",
-      sections: [
-        {
-          type: "text",
-          content: "Java is a popular programming language, created in 1995.",
-        },
-      ],
-    },
-  ],
-};
+import introToJava from "./intro-to-java";
+import oopConcepts from "./oop-concepts";
+import collections from "./collections";
+import exceptions from "./exceptions";
 
 const Java = {
   id: "java",
   name: "Java",
-  topics: [introToJava],
+  topics: [introToJava, oopConcepts, collections, exceptions],
 };
 
 export default Java;
