@@ -1,7 +1,7 @@
-import page1 from "./page-1";
+import { introToJsContent } from "./intro-to-js.content";
 
 export default {
   id: "intro-to-js",
   title: "intro-to-js",
-  content: [page1],
+  content: introToJsContent,
 };

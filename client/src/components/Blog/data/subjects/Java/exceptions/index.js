@@ -1,7 +1,4 @@
-import page1 from "./page-1";
+import { createTopic } from "../../contentParser";
+import content from "./exceptions.content";
 
-export default {
-  id: "exceptions",
-  title: "exceptions",
-  content: [page1],
-};
+export default createTopic("exceptions", "Exceptions", content);

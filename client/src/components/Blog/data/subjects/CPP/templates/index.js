@@ -1,7 +1,4 @@
-import page1 from "./page-1";
+import { createTopic } from "../../contentParser";
+import content from "./templates.content";
 
-export default {
-  id: "cpp-templates",
-  title: "Templates",
-  content: [page1],
-};
+export default createTopic("cpp-templates", "Templates", content);

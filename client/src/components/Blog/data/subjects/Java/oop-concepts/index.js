@@ -1,7 +1,4 @@
-import page1 from "./page-1";
+import { createTopic } from "../../contentParser";
+import content from "./oop-concepts.content";
 
-export default {
-  id: "oop-concepts",
-  title: "oop-concepts",
-  content: [page1],
-};
+export default createTopic("oop-concepts", "OOP Concepts", content);

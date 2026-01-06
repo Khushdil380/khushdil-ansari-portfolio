@@ -1,9 +1,4 @@
-// Import all pages for Introduction to C
-import page1 from "./page-1";
-import page2 from "./page-2";
+import { createTopic } from "../../contentParser";
+import content from "./intro-to-c.content";
 
-export default {
-  id: "intro-to-c",
-  title: "Introduction to C",
-  content: [page1, page2],
-};
+export default createTopic("intro-to-c", "Introduction to C", content);

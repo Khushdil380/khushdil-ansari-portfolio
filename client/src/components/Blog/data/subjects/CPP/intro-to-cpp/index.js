@@ -1,7 +1,4 @@
-import page1 from "./page-1";
+import { createTopic } from "../../contentParser";
+import content from "./intro-to-cpp.content";
 
-export default {
-  id: "intro-to-cpp",
-  title: "Introduction to C++",
-  content: [page1],
-};
+export default createTopic("intro-to-cpp", "Introduction to C++", content);

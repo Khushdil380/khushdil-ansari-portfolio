@@ -1,7 +1,7 @@
-import page1 from "./page-1";
+import { asyncProgrammingContent } from "./async-programming.content";
 
 export default {
   id: "async-programming",
   title: "async-programming",
-  content: [page1],
+  content: asyncProgrammingContent,
 };

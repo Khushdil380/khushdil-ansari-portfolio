@@ -1,7 +1,4 @@
-import page1 from "./page-1";
+import { createTopic } from "../../contentParser";
+import content from "./intro-to-java.content";
 
-export default {
-  id: "intro-to-java",
-  title: "intro-to-java",
-  content: [page1],
-};
+export default createTopic("intro-to-java", "Introduction to Java", content);

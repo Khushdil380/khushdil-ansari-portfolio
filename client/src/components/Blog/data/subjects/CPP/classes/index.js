@@ -1,7 +1,4 @@
-import page1 from "./page-1";
+import { createTopic } from "../../contentParser";
+import content from "./classes.content";
 
-export default {
-  id: "cpp-classes",
-  title: "Classes and Objects",
-  content: [page1],
-};
+export default createTopic("cpp-classes", "Classes and Objects", content);

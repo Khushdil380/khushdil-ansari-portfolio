@@ -1,8 +1,4 @@
-// Loops in C
-import page1 from "./page-1";
+import { createTopic } from "../../contentParser";
+import content from "./loops.content";
 
-export default {
-  id: "loops-in-c",
-  title: "Loops in C",
-  content: [page1],
-};
+export default createTopic("loops-in-c", "Loops in C", content);

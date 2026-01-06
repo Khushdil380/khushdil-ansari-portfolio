@@ -1,8 +1,4 @@
-import page1 from "./page-1";
-import page2 from "./page-2";
+import { createTopic } from "../../contentParser";
+import content from "./arrays.content";
 
-export default {
-  id: "arrays",
-  title: "Arrays",
-  content: [page1, page2],
-};
+export default createTopic("arrays", "Arrays", content);

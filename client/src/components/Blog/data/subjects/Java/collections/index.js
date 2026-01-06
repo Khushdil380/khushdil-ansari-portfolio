@@ -1,7 +1,4 @@
-import page1 from "./page-1";
+import { createTopic } from "../../contentParser";
+import content from "./collections.content";
 
-export default {
-  id: "collections",
-  title: "collections",
-  content: [page1],
-};
+export default createTopic("collections", "Collections", content);

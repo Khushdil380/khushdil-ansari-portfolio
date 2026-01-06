@@ -1,7 +1,7 @@
-import page1 from "./page-1";
+import { arraysContent } from "./arrays.content";
 
 export default {
   id: "arrays",
   title: "arrays",
-  content: [page1],
+  content: arraysContent,
 };

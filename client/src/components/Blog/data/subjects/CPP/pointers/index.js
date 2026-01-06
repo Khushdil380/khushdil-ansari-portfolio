@@ -1,7 +1,4 @@
-import page1 from "./page-1";
+import { createTopic } from "../../contentParser";
+import content from "./pointers.content";
 
-export default {
-  id: "cpp-pointers",
-  title: "Pointers in C++",
-  content: [page1],
-};
+export default createTopic("cpp-pointers", "Pointers in C++", content);
