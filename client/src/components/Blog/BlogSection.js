@@ -51,6 +51,8 @@ const BlogSection = () => {
           activeTopic,
           currentPage
         );
+
+        console.log("Loaded page content:", content); // Debug log
         setPageContent(content);
 
         // Get total pages for the topic
@@ -63,6 +65,7 @@ const BlogSection = () => {
             "./data/subjects/contentParser"
           );
           const loadedTopic = await loadTopicContent(currentTopicData);
+          console.log("Loaded topic:", loadedTopic); // Debug log
           setTotalPages(loadedTopic?.content?.length || 0);
         } else {
           setTotalPages(

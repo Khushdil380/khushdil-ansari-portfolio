@@ -1,12 +1,9 @@
-// Import all C topics
-import introToC from "./intro-to-c";
-import variablesInC from "./variables";
-import loopsInC from "./loops";
+// C subject - lazy loading for better performance
+import { createLazyTopic } from "../contentParser";
 import dataTypes from "./data-types";
 import operators from "./operators";
 import conditionalStatements from "./conditional-statements";
 import functions from "./functions";
-import arrays from "./arrays";
 import pointers from "./pointers";
 import strings from "./strings";
 import structures from "./structures";
@@ -22,14 +19,22 @@ export default {
   id: "c",
   name: "C",
   topics: [
-    introToC,
-    variablesInC,
+    createLazyTopic("intro-to-c", "Introduction to C", () =>
+      import("./intro-to-c/intro-to-c.content")
+    ),
+    createLazyTopic("variables-in-c", "Variables in C", () =>
+      import("./variables/variables-in-c.content")
+    ),
     dataTypes,
     operators,
     conditionalStatements,
-    loopsInC,
+    createLazyTopic("loops-in-c", "Loops in C", () =>
+      import("./loops/loops.content")
+    ),
     functions,
-    arrays,
+    createLazyTopic("arrays", "Arrays", () =>
+      import("./arrays/arrays.content")
+    ),
     pointers,
     strings,
     structures,

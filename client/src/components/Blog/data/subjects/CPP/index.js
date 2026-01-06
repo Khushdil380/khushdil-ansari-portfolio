@@ -1,10 +1,21 @@
-import introToCpp from "./intro-to-cpp";
-import classes from "./classes";
-import pointers from "./pointers";
-import templates from "./templates";
+// C++ subject - lazy loading for better performance
+import { createLazyTopic } from "../contentParser";
 
 export default {
   id: "cpp",
   name: "C++",
-  topics: [introToCpp, classes, pointers, templates],
+  topics: [
+    createLazyTopic("intro-to-cpp", "Introduction to C++", () =>
+      import("./intro-to-cpp/intro-to-cpp.content")
+    ),
+    createLazyTopic("cpp-classes", "Classes and Objects", () =>
+      import("./classes/classes.content")
+    ),
+    createLazyTopic("cpp-pointers", "Pointers in C++", () =>
+      import("./pointers/pointers.content")
+    ),
+    createLazyTopic("cpp-templates", "Templates", () =>
+      import("./templates/templates.content")
+    ),
+  ],
 };
