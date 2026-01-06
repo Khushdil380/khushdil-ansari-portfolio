@@ -1,13 +1,23 @@
-// JavaScript subject
-import introToJS from "./intro-to-js";
-import arrays from "./arrays";
-import functions from "./functions";
-import asyncProgramming from "./async-programming";
+// JavaScript subject - topics with lazy loading for better performance
+import { createLazyTopic } from "../contentParser";
 
 const JavaScript = {
   id: "javascript",
   name: "JavaScript",
-  topics: [introToJS, arrays, functions, asyncProgramming],
+  topics: [
+    createLazyTopic("intro-to-js", "Introduction to JavaScript", () =>
+      import("./intro-to-js/intro-to-js.content")
+    ),
+    createLazyTopic("arrays", "Arrays", () =>
+      import("./arrays/arrays.content")
+    ),
+    createLazyTopic("functions", "Functions", () =>
+      import("./functions/functions.content")
+    ),
+    createLazyTopic("async-programming", "Async Programming", () =>
+      import("./async-programming/async-programming.content")
+    ),
+  ],
 };
 
 export default JavaScript;

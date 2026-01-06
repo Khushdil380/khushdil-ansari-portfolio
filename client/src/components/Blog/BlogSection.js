@@ -22,6 +22,9 @@ const BlogSection = () => {
   const [activeTopic, setActiveTopic] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [pageContent, setPageContent] = useState(null);
+  const [totalPages, setTotalPages] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Initialize first topic when subject changes
   useEffect(() => {
@@ -31,6 +34,54 @@ const BlogSection = () => {
       setCurrentPage(1);
     }
   }, [activeSubject]);
+
+  // Load content when topic or page changes
+  useEffect(() => {
+    const loadContent = async () => {
+      if (!activeTopic) {
+        setPageContent(null);
+        setTotalPages(0);
+        return;
+      }
+
+      setIsLoading(true);
+      try {
+        const content = await getPageContent(
+          activeSubject,
+          activeTopic,
+          currentPage
+        );
+        setPageContent(content);
+
+        // Get total pages for the topic
+        const topics = getTopicsForSubject(activeSubject);
+        const currentTopicData = topics.find((t) => t.id === activeTopic);
+
+        // For lazy topics, we need to load content to get page count
+        if (currentTopicData?._isLazy && !currentTopicData._cachedContent) {
+          const { loadTopicContent } = await import(
+            "./data/subjects/contentParser"
+          );
+          const loadedTopic = await loadTopicContent(currentTopicData);
+          setTotalPages(loadedTopic?.content?.length || 0);
+        } else {
+          setTotalPages(
+            currentTopicData?.content?.length ||
+              currentTopicData?._cachedContent?.length ||
+              0
+          );
+        }
+      } catch (error) {
+        console.error("Error loading content:", error);
+        setPageContent(null);
+        setTotalPages(0);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadContent();
+  }, [activeSubject, activeTopic, currentPage]);
 
   const handleSubjectChange = (subject) => {
     setActiveSubject(subject);
@@ -46,11 +97,6 @@ const BlogSection = () => {
   };
 
   const topics = getTopicsForSubject(activeSubject);
-  const currentTopic = topics.find((t) => t.id === activeTopic);
-  const pageContent = activeTopic
-    ? getPageContent(activeSubject, activeTopic, currentPage)
-    : null;
-  const totalPages = currentTopic?.content?.length || 0;
 
   return (
     <section
@@ -95,7 +141,16 @@ const BlogSection = () => {
 
           {/* Content Area */}
           <div className="blog-section__main">
-            <ContentDisplay pageContent={pageContent} />
+            {isLoading ? (
+              <div
+                className="content-display content-display--loading"
+                style={{ color: theme.content }}
+              >
+                <p>Loading content...</p>
+              </div>
+            ) : (
+              <ContentDisplay pageContent={pageContent} />
+            )}
 
             <ContentNavigation
               currentPage={currentPage}

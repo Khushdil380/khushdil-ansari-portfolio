@@ -1,13 +1,23 @@
-// Java subject - add your topics here by importing them
-import introToJava from "./intro-to-java";
-import oopConcepts from "./oop-concepts";
-import collections from "./collections";
-import exceptions from "./exceptions";
+// Java subject - topics with lazy loading for better performance
+import { createLazyTopic } from "../contentParser";
 
 const Java = {
   id: "java",
   name: "Java",
-  topics: [introToJava, oopConcepts, collections, exceptions],
+  topics: [
+    createLazyTopic("intro-to-java", "Introduction to Java", () =>
+      import("./intro-to-java/intro-to-java.content")
+    ),
+    createLazyTopic("oop-concepts", "OOP Concepts", () =>
+      import("./oop-concepts/oop-concepts.content")
+    ),
+    createLazyTopic("collections", "Collections", () =>
+      import("./collections/collections.content")
+    ),
+    createLazyTopic("exceptions", "Exceptions", () =>
+      import("./exceptions/exceptions.content")
+    ),
+  ],
 };
 
 export default Java;

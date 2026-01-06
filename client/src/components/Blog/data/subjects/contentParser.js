@@ -177,4 +177,57 @@ export const createTopic = (id, title, contentString) => {
   };
 };
 
-export default { parseContent, createTopic };
+/**
+ * Creates a lazy-loaded topic metadata without parsing content
+ * Content will be loaded only when accessed
+ * @param {string} id - Topic ID
+ * @param {string} title - Topic title
+ * @param {Function} contentLoader - Function that returns the content module
+ * @returns {object} Topic metadata with lazy content loader
+ */
+export const createLazyTopic = (id, title, contentLoader) => {
+  return {
+    id,
+    title,
+    _isLazy: true,
+    _contentLoader: contentLoader,
+    _cachedContent: null,
+  };
+};
+
+/**
+ * Loads content for a lazy topic if not already loaded
+ * @param {object} topic - Topic object (may be lazy or eager)
+ * @returns {Promise<object>} Resolved topic with content
+ */
+export const loadTopicContent = async (topic) => {
+  // If not a lazy topic, return as is
+  if (!topic._isLazy) {
+    return topic;
+  }
+
+  // If already cached, return cached version
+  if (topic._cachedContent) {
+    return {
+      id: topic.id,
+      title: topic.title,
+      content: topic._cachedContent,
+    };
+  }
+
+  // Load content dynamically
+  const contentModule = await topic._contentLoader();
+  const contentString = contentModule.default;
+  const pages = parseContent(contentString);
+
+  // Cache the parsed content
+  topic._cachedContent = pages;
+
+  return {
+    id: topic.id,
+    title: topic.title,
+    content: pages,
+  };
+};
+
+export default { parseContent, createTopic, createLazyTopic, loadTopicContent };

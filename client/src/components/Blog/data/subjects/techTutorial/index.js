@@ -1,10 +1,14 @@
-// tech Tutorial subject - add your topics here by importing them
-import whatIsCodeEditor from "./what-is-code-editor";
+// tech Tutorial subject - topics with lazy loading for better performance
+import { createLazyTopic } from "../contentParser";
 
 const techTutorial = {
   id: "tech-tutorial",
   name: "tech Tutorial",
-  topics: [whatIsCodeEditor],
+  topics: [
+    createLazyTopic("what-is-code-editor", "What is Code Editor", () =>
+      import("./what-is-code-editor/what-is-code-editor.content")
+    ),
+  ],
 };
 
 export default techTutorial;
