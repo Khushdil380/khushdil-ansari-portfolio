@@ -6,6 +6,7 @@ import Python from "./subjects/Python";
 import DBMS from "./subjects/DBMS";
 import OS from "./subjects/OS";
 import JavaScript from "./subjects/JavaScript";
+import techTutorial from "./subjects/techTutorial";
 
 // Main blog data structure
 export const blogData = {
@@ -16,6 +17,7 @@ export const blogData = {
   DBMS: DBMS,
   OS: OS,
   JavaScript: JavaScript,
+  "tech Tutorial": techTutorial,
 };
 
 // Helper functions to work with the modular data
