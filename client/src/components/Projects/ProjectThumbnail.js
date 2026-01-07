@@ -1,19 +1,59 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import PropTypes from "prop-types";
 import "./ProjectThumbnail.css";
 
 const ProjectThumbnail = ({ project }) => {
   const { theme } = useTheme();
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    // Use IntersectionObserver to detect when image comes into viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        rootMargin: "50px", // Start loading 50px before entering viewport
+      }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => {
+      if (imgRef.current) {
+        observer.unobserve(imgRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="project-thumbnail">
-      <div className="project-thumbnail__image-container">
-        <img
-          src={project.thumbnail}
-          alt={`${project.name} thumbnail`}
-          className="project-thumbnail__image"
-        />
+      <div ref={imgRef} className="project-thumbnail__image-container">
+        {isInView && (
+          <img
+            src={project.thumbnail}
+            alt={`${project.name} thumbnail`}
+            className={`project-thumbnail__image ${isLoaded ? "loaded" : ""}`}
+            loading="lazy"
+            onLoad={() => setIsLoaded(true)}
+          />
+        )}
+        {!isLoaded && (
+          <div
+            className="project-thumbnail__placeholder"
+            style={{ backgroundColor: theme.secondaryBg }}
+          />
+        )}
       </div>
 
       <div className="project-thumbnail__metadata">
