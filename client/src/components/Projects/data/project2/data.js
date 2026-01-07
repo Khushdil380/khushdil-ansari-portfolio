@@ -2,11 +2,12 @@ import reactIcon from "./tech-icon/react.svg";
 import javascriptIcon from "./tech-icon/javascript.svg";
 import pythonIcon from "./tech-icon/python.svg";
 import sqlIcon from "./tech-icon/sql.svg";
+import thumbnail from "./2.png";
 
 const project2 = {
   id: 2,
   name: "Task Management App",
-  thumbnail: "/placeholder-project2.jpg",
+  thumbnail: thumbnail,
   startDate: "15 May 2024",
   endDate: "30 June 2024",
   duration: "45 days",

@@ -2,11 +2,12 @@ import reactIcon from "./tech-icon/react.svg";
 import javascriptIcon from "./tech-icon/javascript.svg";
 import pythonIcon from "./tech-icon/python.svg";
 import sqlIcon from "./tech-icon/sql.svg";
+import thumbnail from "./3.png";
 
 const project3 = {
   id: 3,
   name: "Weather Dashboard",
-  thumbnail: "/placeholder-project3.jpg",
+  thumbnail: thumbnail,
   startDate: "1 August 2024",
   endDate: "15 September 2024",
   duration: "1.5 months",

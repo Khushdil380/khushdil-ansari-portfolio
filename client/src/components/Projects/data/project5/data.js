@@ -2,11 +2,12 @@ import reactIcon from "./tech-icon/react.svg";
 import javascriptIcon from "./tech-icon/javascript.svg";
 import pythonIcon from "./tech-icon/python.svg";
 import sqlIcon from "./tech-icon/sql.svg";
+import thumbnail from "./5.png";
 
 const project5 = {
   id: 5,
   name: "Social Media Dashboard",
-  thumbnail: "/placeholder-project5.jpg",
+  thumbnail: thumbnail,
   startDate: "1 December 2024",
   endDate: "31 December 2024",
   duration: "1 month",

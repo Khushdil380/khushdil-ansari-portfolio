@@ -2,11 +2,12 @@ import reactIcon from "./tech-icon/react.svg";
 import javascriptIcon from "./tech-icon/javascript.svg";
 import pythonIcon from "./tech-icon/python.svg";
 import sqlIcon from "./tech-icon/sql.svg";
+import thumbnail from "./1.png";
 
 const project1 = {
   id: 1,
   name: "E-Commerce Platform",
-  thumbnail: "/placeholder-project1.jpg",
+  thumbnail: thumbnail,
   startDate: "3 March 2024",
   endDate: "6 April 2024",
   duration: "1 month",

@@ -2,11 +2,12 @@ import reactIcon from "./tech-icon/react.svg";
 import javascriptIcon from "./tech-icon/javascript.svg";
 import pythonIcon from "./tech-icon/python.svg";
 import sqlIcon from "./tech-icon/sql.svg";
+import thumbnail from "./4.png";
 
 const project4 = {
   id: 4,
   name: "Puzzle Game",
-  thumbnail: "/placeholder-project4.jpg",
+  thumbnail: thumbnail,
   startDate: "10 October 2024",
   endDate: "25 November 2024",
   duration: "46 days",
