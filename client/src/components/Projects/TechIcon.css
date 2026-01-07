@@ -19,12 +19,50 @@
   cursor: pointer;
   overflow: hidden;
   background-color: #ffffff;
+  position: relative;
+}
+
+.tech-icon__placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    90deg,
+    rgba(240, 240, 240, 0.8) 0%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(240, 240, 240, 0.8) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  z-index: 1;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 .tech-icon__img {
   width: 70%;
   height: 70%;
   object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  position: relative;
+  z-index: 2;
+}
+
+.tech-icon__img.loaded {
+  opacity: 1;
 }
 
 .tech-icon__circle:hover {
