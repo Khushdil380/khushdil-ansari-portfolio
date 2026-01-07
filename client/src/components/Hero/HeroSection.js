@@ -5,6 +5,7 @@ import QuoteComponent from "./QuoteComponent";
 import ProfilePicture from "./ProfilePicture";
 import HeadlineComponent from "./HeadlineComponent";
 import DescriptionComponent from "./DescriptionComponent";
+import AnimatedBackground from "./AnimatedBackground";
 import Button from "../Utility/Button";
 import "./HeroSection.css";
 
@@ -32,6 +33,9 @@ const HeroSection = () => {
         "--primary-bg": theme.primaryBg,
       }}
     >
+      {/* Animated Background */}
+      <AnimatedBackground />
+
       {/* Quote centered at top */}
       <div className="hero-quote-wrapper">
         <QuoteComponent />
