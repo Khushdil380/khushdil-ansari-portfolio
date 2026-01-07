@@ -7,14 +7,12 @@ import "./App.css";
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
       <Preloader />
       <BrowserRouter>
-        <ThemeProvider>
-          <Layout />
-        </ThemeProvider>
+        <Layout />
       </BrowserRouter>
-    </>
+    </ThemeProvider>
   );
 }
 
