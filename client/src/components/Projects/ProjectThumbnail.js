@@ -9,6 +9,12 @@ const ProjectThumbnail = ({ project }) => {
   const [isInView, setIsInView] = useState(false);
   const imgRef = useRef(null);
 
+  // Reset loading state when thumbnail changes (project switch)
+  useEffect(() => {
+    setIsLoaded(false);
+    setIsInView(false);
+  }, [project.thumbnail]);
+
   useEffect(() => {
     // Use IntersectionObserver to detect when image comes into viewport
     const observer = new IntersectionObserver(
@@ -34,7 +40,7 @@ const ProjectThumbnail = ({ project }) => {
         observer.unobserve(imgRef.current);
       }
     };
-  }, []);
+  }, [project.thumbnail]);
 
   return (
     <div className="project-thumbnail">
