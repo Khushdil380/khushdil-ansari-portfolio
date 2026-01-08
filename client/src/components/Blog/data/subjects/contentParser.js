@@ -129,16 +129,11 @@ export const parseContent = (contentString) => {
           currentList = null;
         }
 
-        // Check if previous section is text and append to it
-        const lastSection = sections[sections.length - 1];
-        if (lastSection && lastSection.type === "text") {
-          lastSection.content += " " + trimmedLine;
-        } else {
-          sections.push({
-            type: "text",
-            content: trimmedLine,
-          });
-        }
+        // Always create a new text paragraph for separate lines
+        sections.push({
+          type: "text",
+          content: trimmedLine,
+        });
       });
 
       // Flush any remaining list
