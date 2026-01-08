@@ -5,7 +5,7 @@ Before you learn how to write good code, you must learn where and how to write i
 
 ## The First Day Experience
 
-Think back to your very first programming day. Most students experience it like this: you watched a YouTube video, attended your first college lecture, or read a blog post. Then you saw something like this:
+Think back to your very first programming day. Most students experience it like this,  you watched a YouTube video, attended your first college lecture, or read a blog post. Then you saw something like this:
 
 \`\`\`c
 #include<stdio.h>
@@ -19,20 +19,20 @@ Now comes the first real question: "Where do I write this?" Nobody explains this
 
 Technically — yes. Practically — no. And this is where the problem starts.
 
+[PAGE_BREAK]
+
+
 ## Why Writing Code in Notepad Fails
 
 Let's be very honest. Can you write code in Notepad? Yes. Should you? No — and here's why.
 
-**Problem 1: Code Looks Like a Wall of Text**
-
+- Problem 1: Code Looks Like a Wall of Text
 In Notepad, everything appears the same: same color, same size, same importance. Your brain struggles to identify keywords and understand structure. The code becomes visually overwhelming and mentally exhausting to read.
 
-**Problem 2: No Feedback While Typing**
-
+- Problem 2: No Feedback While Typing
 If you type \`prnt("Hello")\` instead of \`print("Hello")\`, Notepad says "Looks fine to me." But Python will throw an error when you run it. Who warns you before running? Nobody. You discover mistakes too late, after already investing time and mental energy.
 
-**Problem 3: Small Mistakes Become Big Nightmares**
-
+- Problem 3: Small Mistakes Become Big Nightmares
 Missing one bracket, one semicolon, or one quote suddenly makes your entire code stop working. Beginners lose confidence, and the "Programming is hard" mindset begins. This is dangerous for learning.
 
 > Note: Programming is challenging enough without fighting against your tools. Your editor should help you, not hinder you.
