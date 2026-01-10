@@ -162,10 +162,10 @@ const getWelcomeEmailTemplate = (userName) => {
             <td style="background-color:#e0efff;padding:20px;">
               <img src="cid:hello" alt="Hello" width="212" style="width:212px;max-width:100%;margin:0 auto 15px;" />
               <h4 style="margin:0 0 12px;color:#000;font-size:18px;">Hello ${userName} 👋</h4>
-              <p style="margin:0 0 12px;color:#000;font-size:16px;font-weight:700;">Thank you for reaching out! I will get back to you within <span style="color:#ff0000;">${
+              <p style="margin:0 0 12px;color:#000;font-size:16px;font-weight:700;">Thank you for reaching out through my portfolio. I truly appreciate your interest! Your message has been received, and I will get back to you within <span style="color:#ff0000;">${
                 personal.responseTime
               }</span>.</p>
-              <p style="margin:0;color:#000;font-size:16px;font-weight:700;">Feel free to explore my work and connect with me!</p>
+              <p style="margin:0;color:#000;font-size:16px;font-weight:700;">Feel free to explore my work and connect with me. I'm always excited to discuss new opportunities and collaborations!</p>
             </td>
           </tr>
 

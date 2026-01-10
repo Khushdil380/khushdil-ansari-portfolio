@@ -2,7 +2,7 @@ const path = require("path");
 
 // Email image attachments configuration
 const getEmailAttachments = () => {
-  const imagePath = path.join(__dirname, "../canvaEmail/images");
+  const imagePath = path.join(__dirname, "images");
 
   return [
     {
