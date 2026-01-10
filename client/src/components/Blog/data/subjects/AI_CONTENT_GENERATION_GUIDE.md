@@ -75,6 +75,28 @@ Languages: javascript, python, java, c, cpp, html, css, sql, bash
 
 Must be EXACTLY `[PAGE_BREAK]` (all caps, on its own line)
 
+## Page Length Guidelines
+
+**Important:** Each page should fit in the content display area without scrolling (approximately).
+
+**Recommended content per page:**
+
+- 1 main heading (`# Title`)
+- 2-3 section headings (`##`)
+- 3-5 paragraphs (2-4 sentences each)
+- 1-2 code blocks (10-15 lines each)
+- 1-2 lists (3-5 items each)
+- 1-2 notes/tips
+
+**Approximate line count:** 40-60 lines of content per page
+
+**When to use `[PAGE_BREAK]`:**
+
+- After covering 2-3 related concepts
+- When content becomes too long (more than 60 lines)
+- Before starting a new major topic
+- To keep each page focused and readable
+
 ## Template Structure
 
 ```javascript
