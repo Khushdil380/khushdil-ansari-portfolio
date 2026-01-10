@@ -51,7 +51,7 @@ const sendNotificationEmail = async ({ fullName, email, title, message }) => {
       },
       to: process.env.EMAIL_USER,
       subject: `New Contact Form Submission: ${title}`,
-    html: `
+      html: `
       <!DOCTYPE html>
       <html>
       <head>
@@ -89,11 +89,13 @@ const sendNotificationEmail = async ({ fullName, email, title, message }) => {
       </body>
       </html>
     `,
-    replyTo: email,
-  };
+      replyTo: email,
+    };
 
-  await transporter.sendMail(mailOptions);
-  console.log(`Notification email sent successfully for submission from: ${email}`);
+    await transporter.sendMail(mailOptions);
+    console.log(
+      `Notification email sent successfully for submission from: ${email}`
+    );
   } catch (error) {
     console.error("Error sending notification email:", error);
     throw error;

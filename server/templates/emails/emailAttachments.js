@@ -3,8 +3,21 @@ const fs = require("fs");
 
 // Email image attachments configuration
 const getEmailAttachments = () => {
-  // Use absolute path that works on Vercel serverless
-  const imagePath = path.join(process.cwd(), "templates", "emails", "images");
+  // Try multiple paths for compatibility with both local and Vercel
+  let imagePath = path.join(__dirname, "images");
+  
+  // If running on Vercel serverless, try alternative path
+  if (!fs.existsSync(imagePath)) {
+    imagePath = path.join(process.cwd(), "templates", "emails", "images");
+  }
+  
+  // If still not found, try from root
+  if (!fs.existsSync(imagePath)) {
+    imagePath = path.join(process.cwd(), "server", "templates", "emails", "images");
+  }
+
+  console.log("Image path resolved to:", imagePath);
+  console.log("Image path exists:", fs.existsSync(imagePath));
 
   return [
     {
