@@ -1,8 +1,10 @@
 const path = require("path");
+const fs = require("fs");
 
 // Email image attachments configuration
 const getEmailAttachments = () => {
-  const imagePath = path.join(__dirname, "images");
+  // Use absolute path that works on Vercel serverless
+  const imagePath = path.join(process.cwd(), "templates", "emails", "images");
 
   return [
     {

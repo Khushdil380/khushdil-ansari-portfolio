@@ -17,33 +17,40 @@ const createTransporter = () => {
 
 // Send thank you email to user
 const sendThankYouEmail = async (userEmail, userName) => {
-  const transporter = createTransporter();
+  try {
+    const transporter = createTransporter();
 
-  const mailOptions = {
-    from: {
-      name: "Khushdil Ansari - Portfolio",
-      address: process.env.EMAIL_USER,
-    },
-    to: userEmail,
-    subject: "Thank You for Reaching Out! - Khushdil Ansari",
-    html: getWelcomeEmailTemplate(userName),
-    attachments: getEmailAttachments(),
-  };
+    const mailOptions = {
+      from: {
+        name: "Khushdil Ansari - Portfolio",
+        address: process.env.EMAIL_USER,
+      },
+      to: userEmail,
+      subject: "Thank You for Reaching Out! - Khushdil Ansari",
+      html: getWelcomeEmailTemplate(userName),
+      attachments: getEmailAttachments(),
+    };
 
-  await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions);
+    console.log(`Thank you email sent successfully to: ${userEmail}`);
+  } catch (error) {
+    console.error("Error sending thank you email:", error);
+    throw error;
+  }
 };
 
 // Send notification email to admin
 const sendNotificationEmail = async ({ fullName, email, title, message }) => {
-  const transporter = createTransporter();
+  try {
+    const transporter = createTransporter();
 
-  const mailOptions = {
-    from: {
-      name: "Portfolio Contact Form",
-      address: process.env.EMAIL_USER,
-    },
-    to: process.env.EMAIL_USER,
-    subject: `New Contact Form Submission: ${title}`,
+    const mailOptions = {
+      from: {
+        name: "Portfolio Contact Form",
+        address: process.env.EMAIL_USER,
+      },
+      to: process.env.EMAIL_USER,
+      subject: `New Contact Form Submission: ${title}`,
     html: `
       <!DOCTYPE html>
       <html>
@@ -86,6 +93,11 @@ const sendNotificationEmail = async ({ fullName, email, title, message }) => {
   };
 
   await transporter.sendMail(mailOptions);
+  console.log(`Notification email sent successfully for submission from: ${email}`);
+  } catch (error) {
+    console.error("Error sending notification email:", error);
+    throw error;
+  }
 };
 
 module.exports = {
