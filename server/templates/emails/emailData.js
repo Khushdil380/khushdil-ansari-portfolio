@@ -11,27 +11,32 @@ const emailData = {
   services: [
     {
       name: "Full Stack Development",
-      description: "Scalable web applications with modern tech stack",
+      description:
+        "End-to-end web applications using React, Node.js, and modern frameworks. Building scalable solutions with clean architecture.",
       icon: "💻",
     },
     {
       name: "Android Development",
-      description: "Native and cross-platform mobile solutions",
+      description:
+        "Native Android apps with Java/Kotlin. Creating intuitive mobile experiences with Material Design principles.",
       icon: "📱",
     },
     {
       name: "UI/UX Development",
-      description: "Beautiful, user-centric interface design",
+      description:
+        "User-centered design with Figma and Adobe XD. Crafting interfaces that are both beautiful and functional.",
       icon: "🎨",
     },
     {
       name: "Machine Learning",
-      description: "AI-powered solutions and data analytics",
+      description:
+        "ML models with Python, TensorFlow, and PyTorch. Implementing intelligent solutions for real-world problems.",
       icon: "🤖",
     },
     {
       name: "Teaching",
-      description: "Technical mentorship and knowledge sharing",
+      description:
+        "Technical mentorship and training in web development, programming, and software engineering best practices.",
       icon: "👨‍🏫",
     },
   ],
@@ -45,27 +50,32 @@ const emailData = {
     {
       label: "Projects",
       url: "https://khushdil-ansari-portfolio-frontend.vercel.app/projects",
-      description: "Explore my latest work and case studies",
+      description:
+        "Browse through my portfolio of web apps, mobile solutions, and ML projects showcasing real-world implementations",
     },
     {
       label: "Skills",
       url: "https://khushdil-ansari-portfolio-frontend.vercel.app/education",
-      description: "Technical expertise and technologies",
+      description:
+        "View my technical stack including React, Node.js, Python, Java, and cloud technologies I work with",
     },
     {
       label: "Education",
       url: "https://khushdil-ansari-portfolio-frontend.vercel.app/education",
-      description: "Academic background and certifications",
+      description:
+        "Discover my academic background, certifications, and continuous learning journey in computer science",
     },
     {
       label: "Services",
       url: "https://khushdil-ansari-portfolio-frontend.vercel.app/services",
-      description: "What I can offer you",
+      description:
+        "Learn about the development services I offer from web apps to mobile solutions and consulting",
     },
     {
       label: "Blog",
       url: "https://khushdil-ansari-portfolio-frontend.vercel.app/blog",
-      description: "Insights and technical articles",
+      description:
+        "Read my articles on software development, tech trends, coding tutorials, and industry insights",
     },
   ],
 
