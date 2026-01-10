@@ -145,8 +145,12 @@ const getImprovedWelcomeEmailTemplate = (userName) => {
                     <img src="cid:service1" alt="Full Stack" width="104" style="width:100%; max-width:104px;" />
                   </td>
                   <td width="77%" style="vertical-align:top;">
-                    <h4 style="margin:0 0 8px 0; color:#bed600; font-size:16px; font-weight:700;">Full Stack Development</h4>
-                    <p style="margin:0; color:#ffffff; font-size:13px; line-height:1.5;">Scalable web application</p>
+                    <h4 style="margin:0 0 8px 0; color:#bed600; font-size:16px; font-weight:700;">${
+                      services[0].name
+                    }</h4>
+                    <p style="margin:0; color:#ffffff; font-size:13px; line-height:1.5;">${
+                      services[0].description
+                    }</p>
                   </td>
                 </tr>
               </table>
@@ -162,8 +166,12 @@ const getImprovedWelcomeEmailTemplate = (userName) => {
                     <img src="cid:service2" alt="Android" width="104" style="width:100%; max-width:104px;" />
                   </td>
                   <td width="77%" style="vertical-align:top;">
-                    <h4 style="margin:0 0 8px 0; color:#bed600; font-size:16px; font-weight:700;">Android Development</h4>
-                    <p style="margin:0; color:#ffffff; font-size:13px; line-height:1.5;">Description will be here</p>
+                    <h4 style="margin:0 0 8px 0; color:#bed600; font-size:16px; font-weight:700;">${
+                      services[1].name
+                    }</h4>
+                    <p style="margin:0; color:#ffffff; font-size:13px; line-height:1.5;">${
+                      services[1].description
+                    }</p>
                   </td>
                 </tr>
               </table>
@@ -179,7 +187,12 @@ const getImprovedWelcomeEmailTemplate = (userName) => {
                     <img src="cid:service3" alt="UI/UX" width="104" style="width:100%; max-width:104px;" />
                   </td>
                   <td width="77%" style="vertical-align:top;">
-                    <h4 style="margin:0; color:#bed600; font-size:16px; font-weight:700;">UI / UX Development</h4>
+                    <h4 style="margin:0 0 8px 0; color:#bed600; font-size:16px; font-weight:700;">${
+                      services[2].name
+                    }</h4>
+                    <p style="margin:0; color:#ffffff; font-size:13px; line-height:1.5;">${
+                      services[2].description
+                    }</p>
                   </td>
                 </tr>
               </table>
@@ -195,7 +208,12 @@ const getImprovedWelcomeEmailTemplate = (userName) => {
                     <img src="cid:service4" alt="ML" width="104" style="width:100%; max-width:104px;" />
                   </td>
                   <td width="77%" style="vertical-align:top;">
-                    <h4 style="margin:0; color:#bed600; font-size:16px; font-weight:700;">Machine Learning</h4>
+                    <h4 style="margin:0 0 8px 0; color:#bed600; font-size:16px; font-weight:700;">${
+                      services[3].name
+                    }</h4>
+                    <p style="margin:0; color:#ffffff; font-size:13px; line-height:1.5;">${
+                      services[3].description
+                    }</p>
                   </td>
                 </tr>
               </table>
@@ -211,7 +229,12 @@ const getImprovedWelcomeEmailTemplate = (userName) => {
                     <img src="cid:service5" alt="Teaching" width="104" style="width:100%; max-width:104px;" />
                   </td>
                   <td width="77%" style="vertical-align:top;">
-                    <h4 style="margin:0; color:#bed600; font-size:16px; font-weight:700;">Teaching</h4>
+                    <h4 style="margin:0 0 8px 0; color:#bed600; font-size:16px; font-weight:700;">${
+                      services[4].name
+                    }</h4>
+                    <p style="margin:0; color:#ffffff; font-size:13px; line-height:1.5;">${
+                      services[4].description
+                    }</p>
                   </td>
                 </tr>
               </table>
@@ -282,7 +305,9 @@ const getImprovedWelcomeEmailTemplate = (userName) => {
               }</a>
                   </td>
                   <td width="73%" style="vertical-align:middle; padding-left:10px;">
-                    <p style="margin:0; color:#ffffff; font-size:13px;">Real ptoke/.....</p>
+                    <p style="margin:0; color:#ffffff; font-size:13px;">${
+                      item.description
+                    }</p>
                   </td>
                 </tr>
               </table>
@@ -295,7 +320,9 @@ const getImprovedWelcomeEmailTemplate = (userName) => {
           <!-- Portfolio Button -->
           <tr>
             <td style="background-color:#000a1b; padding:15px 20px; text-align:center;">
-              <a href="${personal.portfolioUrl}" target="_blank" style="display:inline-block; text-decoration:none;">
+              <a href="${
+                personal.portfolioUrl
+              }" target="_blank" style="display:inline-block; text-decoration:none;">
                 <img src="cid:portfolio" alt="Portfolio" width="213" style="width:213px; max-width:100%; margin:0 auto;" />
               </a>
             </td>
