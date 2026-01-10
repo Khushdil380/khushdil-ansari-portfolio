@@ -295,7 +295,9 @@ const getImprovedWelcomeEmailTemplate = (userName) => {
           <!-- Portfolio Button -->
           <tr>
             <td style="background-color:#000a1b; padding:15px 20px; text-align:center;">
-              <img src="cid:portfolio" alt="Portfolio" width="213" style="width:213px; max-width:100%; margin:0 auto;" />
+              <a href="${personal.portfolioUrl}" target="_blank" style="display:inline-block; text-decoration:none;">
+                <img src="cid:portfolio" alt="Portfolio" width="213" style="width:213px; max-width:100%; margin:0 auto;" />
+              </a>
             </td>
           </tr>
 
