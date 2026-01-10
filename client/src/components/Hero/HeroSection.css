@@ -7,39 +7,35 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem 2rem 2rem;
+  padding: 5rem 2rem 2rem;
   background-color: var(--primary-bg);
   position: relative;
   overflow: hidden;
 }
 
-/* Quote Text Section */
 .hero-quote-wrapper {
   max-width: 1400px;
   width: 100%;
-  margin: 0 auto 2rem;
+  margin: 0 auto 1.5rem;
   text-align: center;
 }
 
-/* Main Content Container */
 .hero-container {
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
   width: 100%;
 }
 
-/* Text Content Wrapper */
 .hero-content {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-/* Action Buttons */
 .hero-buttons {
   display: flex;
   gap: 1.5rem;
@@ -47,7 +43,6 @@
   flex-wrap: wrap;
 }
 
-/* Image Display - Mobile shows at top, Desktop shows on right */
 .hero-image-mobile {
   display: flex;
   justify-content: center;
@@ -62,46 +57,37 @@
    RESPONSIVE BREAKPOINTS
    ======================================== */
 
-/* MOBILE: 0px - 480px (Phones) */
 @media (max-width: 480px) {
   .hero-section {
-    padding: 3.5rem 1rem 2rem;
+    padding: 4.5rem 1rem 2rem;
   }
 
   .hero-quote-wrapper {
     margin: 0 auto 1rem;
   }
 
-  .hero-container {
-    gap: 1.5rem;
-  }
-
   .hero-buttons {
-    gap: 0.8rem;
+    gap: 1rem;
   }
 }
 
-/* TABLET: 481px - 1024px (iPads, Tablets) */
-@media (min-width: 481px) and (max-width: 1024px) {
+@media (min-width: 481px) and (max-width: 768px) {
   .hero-section {
     padding: 4.5rem 1.5rem 2rem;
   }
 
   .hero-quote-wrapper {
-    margin: 0 auto 1.5rem;
-  }
-
-  .hero-container {
-    gap: 1.5rem;
+    margin: 0 auto 1.2rem;
   }
 }
 
-/* DESKTOP/LAPTOP: 1025px+ (Large screens) */
-@media (min-width: 1025px) {
-  .hero-quote-wrapper {
-    margin: 0 auto 1.5rem;
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-section {
+    padding: 5rem 1.5rem 2rem;
   }
+}
 
+@media (min-width: 1025px) {
   .hero-container {
     grid-template-columns: 1fr 1fr;
   }
