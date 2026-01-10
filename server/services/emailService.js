@@ -1,3 +1,4 @@
+// @ts-nocheck
 const nodemailer = require("nodemailer");
 const {
   getWelcomeEmailTemplate,
@@ -7,11 +8,8 @@ const { getEmailAttachments } = require("../templates/emails/emailAttachments");
 // Create transporter
 const createTransporter = () => {
   if (!process.env.EMAIL_USER || !process.env.EMAIL_APP_PASSWORD) {
-    console.error("Missing email credentials in environment variables");
     throw new Error("Email configuration is missing");
   }
-
-  console.log(`Creating transporter with user: ${process.env.EMAIL_USER}`);
 
   return nodemailer.createTransport({
     service: "gmail",
@@ -25,12 +23,7 @@ const createTransporter = () => {
 // Send thank you email to user
 const sendThankYouEmail = async (userEmail, userName) => {
   try {
-    console.log(`Attempting to send thank you email to: ${userEmail}`);
-    
     const transporter = createTransporter();
-    const attachments = getEmailAttachments();
-    
-    console.log(`Number of attachments: ${attachments.length}`);
 
     const mailOptions = {
       from: {
@@ -40,14 +33,11 @@ const sendThankYouEmail = async (userEmail, userName) => {
       to: userEmail,
       subject: "Thank You for Reaching Out! - Khushdil Ansari",
       html: getWelcomeEmailTemplate(userName),
-      attachments: attachments,
+      attachments: getEmailAttachments(),
     };
 
-    const info = await transporter.sendMail(mailOptions);
-    console.log(`Thank you email sent successfully to: ${userEmail}`, info.messageId);
-    return info;
+    await transporter.sendMail(mailOptions);
   } catch (error) {
-    console.error("Error sending thank you email:", error.message || error);
     throw error;
   }
 };
@@ -106,11 +96,7 @@ const sendNotificationEmail = async ({ fullName, email, title, message }) => {
     };
 
     await transporter.sendMail(mailOptions);
-    console.log(
-      `Notification email sent successfully for submission from: ${email}`
-    );
   } catch (error) {
-    console.error("Error sending notification email:", error);
     throw error;
   }
 };

@@ -48,8 +48,6 @@ router.post("/send", contactValidation, async (req, res) => {
 
     const { fullName, email, title, message } = req.body;
 
-    console.log(`Contact form submission from: ${email}`);
-
     try {
       // Send both emails in parallel (faster than sequential)
       await Promise.all([
@@ -57,16 +55,12 @@ router.post("/send", contactValidation, async (req, res) => {
         emailService.sendNotificationEmail({ fullName, email, title, message }),
       ]);
 
-      console.log(`Emails sent successfully to: ${email}`);
-
       return res.status(200).json({
         success: true,
         message:
           "Your message has been successfully submitted! Check your email for confirmation.",
       });
     } catch (emailError) {
-      console.error("Email sending failed:", emailError);
-      
       // Still return success to user even if email fails
       return res.status(200).json({
         success: true,

@@ -22,9 +22,6 @@ const getEmailAttachments = () => {
     );
   }
 
-  console.log("Image path resolved to:", imagePath);
-  console.log("Image path exists:", fs.existsSync(imagePath));
-
   return [
     {
       filename: "heart.gif",
