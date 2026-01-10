@@ -1,12 +1,8 @@
 const nodemailer = require("nodemailer");
-const { getWelcomeEmailTemplate } = require("../templates/emails/welcomeEmail");
 const {
-  getImprovedWelcomeEmailTemplate,
-} = require("../templates/emails/improvedWelcomeEmail");
-const {
-  getImprovedWelcomeEmailTemplate: getEmailWithImages,
-  getEmailAttachments,
-} = require("../templates/emails/improvedWelcomeEmailWithImages");
+  getWelcomeEmailTemplate,
+} = require("../templates/emails/welcomeEmailTemplate");
+const { getEmailAttachments } = require("../templates/emails/emailAttachments");
 
 // Create transporter
 const createTransporter = () => {
@@ -30,7 +26,7 @@ const sendThankYouEmail = async (userEmail, userName) => {
     },
     to: userEmail,
     subject: "Thank You for Reaching Out! - Khushdil Ansari",
-    html: getEmailWithImages(userName),
+    html: getWelcomeEmailTemplate(userName),
     attachments: getEmailAttachments(),
   };
 
