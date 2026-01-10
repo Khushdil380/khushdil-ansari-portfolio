@@ -1,13 +1,9 @@
-.quote-component {
-  margin-bottom: 0.5rem;
-}
-
 .quote-text {
   font-family: "Roboto Slab", serif;
   font-size: 1.2rem;
   font-weight: 300;
   font-style: italic;
-  min-height: 2rem;
+  line-height: 1.6;
   margin: 0;
 }
 
@@ -30,10 +26,5 @@
 @media (max-width: 768px) {
   .quote-text {
     font-size: 0.95rem;
-    line-height: 1.5;
-  }
-  
-  .quote-component {
-    margin-bottom: 1rem;
   }
 }
