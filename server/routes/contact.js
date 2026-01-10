@@ -48,21 +48,32 @@ router.post("/send", contactValidation, async (req, res) => {
 
     const { fullName, email, title, message } = req.body;
 
-    // Send response immediately for better UX
-    res.status(200).json({
-      success: true,
-      message:
-        "Your message has been successfully submitted! If you entered a correct email address, you will receive a confirmation email shortly. Check your email now.",
-    });
+    console.log(`Contact form submission from: ${email}`);
 
-    // Send emails asynchronously in the background
-    Promise.all([
-      emailService.sendThankYouEmail(email, fullName),
-      emailService.sendNotificationEmail({ fullName, email, title, message }),
-    ]).catch((error) => {
-      console.error("Email sending error:", error);
-      // Emails failed but user already got success response
-    });
+    try {
+      // Send both emails in parallel (faster than sequential)
+      await Promise.all([
+        emailService.sendThankYouEmail(email, fullName),
+        emailService.sendNotificationEmail({ fullName, email, title, message }),
+      ]);
+
+      console.log(`Emails sent successfully to: ${email}`);
+
+      return res.status(200).json({
+        success: true,
+        message:
+          "Your message has been successfully submitted! Check your email for confirmation.",
+      });
+    } catch (emailError) {
+      console.error("Email sending failed:", emailError);
+      
+      // Still return success to user even if email fails
+      return res.status(200).json({
+        success: true,
+        message:
+          "Your message has been received! However, there was an issue sending the confirmation email. We'll respond soon.",
+      });
+    }
   } catch (error) {
     console.error("Contact form error:", error);
     res.status(500).json({
