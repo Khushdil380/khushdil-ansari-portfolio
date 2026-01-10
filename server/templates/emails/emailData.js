@@ -91,9 +91,17 @@ const emailData = {
       icon: "📝",
       url: "https://medium.com/@khushdilansari345",
     },
-    { name: "Twitter", icon: "🐦", url: "https://x.com/Khushdil_380" },
-    { name: "Email", icon: "📧", url: "mailto:khushdilansari345@gmail.com" },
-    { name: "WhatsApp", icon: "💬", url: "https://wa.me/918809059380" },
+    {
+      name: "Quora",
+      icon: "🔍",
+      url: "https://www.quora.com/profile/Khushdil-Ansari-7",
+    },
+    { name: "X", icon: "🐦", url: "https://x.com/Khushdil_380" },
+    {
+      name: "WhatsApp",
+      icon: "💬",
+      url: "https://wa.me/918809059380?text=Hi%20Khushdil!%20I%20found%20your%20portfolio%20and%20would%20love%20to%20connect%20with%20you.%20I'm%20interested%20in%20discussing%20potential%20opportunities%20or%20collaboration.%20Looking%20forward%20to%20connecting!",
+    },
   ],
 
   footer: {
