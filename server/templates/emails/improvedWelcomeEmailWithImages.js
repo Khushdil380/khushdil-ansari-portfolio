@@ -10,12 +10,36 @@ const getImprovedWelcomeEmailTemplate = (userName) => {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="color-scheme" content="light only">
+  <meta name="supported-color-schemes" content="light">
   <title>Thank You - ${personal.name}</title>
   <style>
     body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
     table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
-    img { -ms-interpolation-mode: bicubic; border: 0; display: block; height: auto; line-height: 100%; outline: none; text-decoration: none; max-width: 100%; }
+    img { 
+      -ms-interpolation-mode: bicubic; 
+      border: 0; 
+      display: block; 
+      height: auto; 
+      line-height: 100%; 
+      outline: none; 
+      text-decoration: none; 
+      max-width: 100%; 
+    }
     body { margin: 0 !important; padding: 0 !important; width: 100% !important; }
+    
+    /* Prevent dark mode inversion */
+    [data-ogsc] img,
+    [data-ogsb] img {
+      filter: none !important;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      img {
+        filter: none !important;
+        opacity: 1 !important;
+      }
+    }
     
     @media only screen and (max-width: 600px) {
       .container { width: 100% !important; }
@@ -142,7 +166,7 @@ const getImprovedWelcomeEmailTemplate = (userName) => {
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td width="23%" style="vertical-align:top; padding-right:10px;">
-                    <img src="cid:service1" alt="Full Stack" width="104" style="width:100%; max-width:104px;" />
+                    <img src="cid:service5" alt="Teaching" width="104" style="width:100%; max-width:104px; color-scheme: light only; filter: none !important;" />
                   </td>
                   <td width="77%" style="vertical-align:top;">
                     <h4 style="margin:0 0 8px 0; color:#bed600; font-size:16px; font-weight:700;">${
@@ -163,7 +187,7 @@ const getImprovedWelcomeEmailTemplate = (userName) => {
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td width="23%" style="vertical-align:top; padding-right:10px;">
-                    <img src="cid:service2" alt="Android" width="104" style="width:100%; max-width:104px;" />
+                    <img src="cid:service4" alt="ML" width="104" style="width:100%; max-width:104px; color-scheme: light only; filter: none !important;" />
                   </td>
                   <td width="77%" style="vertical-align:top;">
                     <h4 style="margin:0 0 8px 0; color:#bed600; font-size:16px; font-weight:700;">${
@@ -184,7 +208,7 @@ const getImprovedWelcomeEmailTemplate = (userName) => {
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td width="23%" style="vertical-align:top; padding-right:10px;">
-                    <img src="cid:service3" alt="UI/UX" width="104" style="width:100%; max-width:104px;" />
+                    <img src="cid:service3" alt="UI/UX" width="104" style="width:100%; max-width:104px; color-scheme: light only; filter: none !important;" />
                   </td>
                   <td width="77%" style="vertical-align:top;">
                     <h4 style="margin:0 0 8px 0; color:#bed600; font-size:16px; font-weight:700;">${
@@ -205,7 +229,7 @@ const getImprovedWelcomeEmailTemplate = (userName) => {
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td width="23%" style="vertical-align:top; padding-right:10px;">
-                    <img src="cid:service4" alt="ML" width="104" style="width:100%; max-width:104px;" />
+                    <img src="cid:service2" alt="Web" width="104" style="width:100%; max-width:104px; color-scheme: light only; filter: none !important;" />
                   </td>
                   <td width="77%" style="vertical-align:top;">
                     <h4 style="margin:0 0 8px 0; color:#bed600; font-size:16px; font-weight:700;">${
@@ -226,7 +250,7 @@ const getImprovedWelcomeEmailTemplate = (userName) => {
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td width="23%" style="vertical-align:top; padding-right:10px;">
-                    <img src="cid:service5" alt="Teaching" width="104" style="width:100%; max-width:104px;" />
+                    <img src="cid:service1" alt="Coding" width="104" style="width:100%; max-width:104px; color-scheme: light only; filter: none !important;" />
                   </td>
                   <td width="77%" style="vertical-align:top;">
                     <h4 style="margin:0 0 8px 0; color:#bed600; font-size:16px; font-weight:700;">${
@@ -295,7 +319,7 @@ const getImprovedWelcomeEmailTemplate = (userName) => {
                   <td width="11%" style="vertical-align:middle; text-align:center;">
                     <img src="cid:nav${idx + 1}" alt="${
                 item.label
-              }" width="35" style="width:100%; max-width:40px;" />
+              }" width="35" style="width:100%; max-width:40px; color-scheme: light only; filter: none !important;" />
                   </td>
                   <td width="16%" style="vertical-align:middle; padding:0 10px;">
                     <a href="${
@@ -355,42 +379,42 @@ const getImprovedWelcomeEmailTemplate = (userName) => {
                     }" target="_blank" style="display:inline-block; text-decoration:none;">
                       <img src="cid:social1" alt="${
                         social[0].name
-                      }" width="40" style="width:40px; margin:0 5px; display:inline-block;" />
+                      }" width="40" style="width:40px; margin:0 5px; display:inline-block; color-scheme: light only; filter: none !important;" />
                     </a>
                     <a href="${
                       social[1].url
                     }" target="_blank" style="display:inline-block; text-decoration:none;">
                       <img src="cid:social2" alt="${
                         social[1].name
-                      }" width="40" style="width:40px; margin:0 5px; display:inline-block;" />
+                      }" width="40" style="width:40px; margin:0 5px; display:inline-block; color-scheme: light only; filter: none !important;" />
                     </a>
                     <a href="${
                       social[2].url
                     }" target="_blank" style="display:inline-block; text-decoration:none;">
                       <img src="cid:social3" alt="${
                         social[2].name
-                      }" width="45" style="width:45px; margin:0 5px; display:inline-block;" />
+                      }" width="45" style="width:45px; margin:0 5px; display:inline-block; color-scheme: light only; filter: none !important;" />
                     </a>
                     <a href="${
                       social[3].url
                     }" target="_blank" style="display:inline-block; text-decoration:none;">
                       <img src="cid:social4" alt="${
                         social[3].name
-                      }" width="41" style="width:41px; margin:0 5px; display:inline-block;" />
+                      }" width="41" style="width:41px; margin:0 5px; display:inline-block; color-scheme: light only; filter: none !important;" />
                     </a>
                     <a href="${
                       social[4].url
                     }" target="_blank" style="display:inline-block; text-decoration:none;">
                       <img src="cid:social5" alt="${
                         social[4].name
-                      }" width="36" style="width:36px; margin:0 5px; display:inline-block;" />
+                      }" width="36" style="width:36px; margin:0 5px; display:inline-block; color-scheme: light only; filter: none !important;" />
                     </a>
                     <a href="${
                       social[5].url
                     }" target="_blank" style="display:inline-block; text-decoration:none;">
                       <img src="cid:social6" alt="${
                         social[5].name
-                      }" width="39" style="width:39px; margin:0 5px; display:inline-block;" />
+                      }" width="39" style="width:39px; margin:0 5px; display:inline-block; color-scheme: light only; filter: none !important;" />
                     </a>
                   </td>
                 </tr>
