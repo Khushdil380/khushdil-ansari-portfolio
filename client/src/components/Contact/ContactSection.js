@@ -67,9 +67,6 @@ const ContactSection = () => {
           <div
             ref={imageRef}
             className="contact-section__image-container"
-            style={{
-              borderColor: theme.subheading,
-            }}
           >
             {!isImageLoaded ? (
               <div className="contact-section__image-placeholder">
