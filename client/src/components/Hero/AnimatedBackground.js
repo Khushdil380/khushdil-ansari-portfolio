@@ -131,14 +131,15 @@ const AnimatedBackground = () => {
       mouseRef.current.y = null;
     };
 
-    canvas.addEventListener("mousemove", handleMouseMove);
-    canvas.addEventListener("mouseleave", handleMouseLeave);
+    // Listen on window so background stays non-blocking (pointer-events: none)
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseleave", handleMouseLeave);
 
     // Cleanup
     return () => {
       window.removeEventListener("resize", resizeCanvas);
-      canvas.removeEventListener("mousemove", handleMouseMove);
-      canvas.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseleave", handleMouseLeave);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
