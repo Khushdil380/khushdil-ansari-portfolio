@@ -6,12 +6,57 @@
  * [PAGE_BREAK] - Splits content into multiple pages
  * # Heading - Creates a heading section
  * ## Subheading - Creates a subheading section
+ * **text** - Bold text (inline formatting)
  * ![alt](url) - Creates an image section
  * - List item - Creates list items (consecutive items become one list)
  * ``` code ``` - Creates code blocks
  * > Quote - Creates quote/note sections
  * Regular text - Creates text paragraphs
  */
+
+/**
+ * Parse inline bold markdown (**text**) and return an array of text segments
+ * Each segment is either { type: 'text', content: '...' } or { type: 'bold', content: '...' }
+ */
+export const parseInlineBold = (text) => {
+  const segments = [];
+  const boldPattern = /\*\*(.*?)\*\*/g;
+  let lastIndex = 0;
+  let match;
+
+  while ((match = boldPattern.exec(text)) !== null) {
+    // Add text before the bold part
+    if (match.index > lastIndex) {
+      segments.push({
+        type: "text",
+        content: text.slice(lastIndex, match.index),
+      });
+    }
+
+    // Add the bold part
+    segments.push({
+      type: "bold",
+      content: match[1],
+    });
+
+    lastIndex = match.index + match[0].length;
+  }
+
+  // Add remaining text after last bold
+  if (lastIndex < text.length) {
+    segments.push({
+      type: "text",
+      content: text.slice(lastIndex),
+    });
+  }
+
+  // If no bold text found, return the original text
+  if (segments.length === 0) {
+    segments.push({ type: "text", content: text });
+  }
+
+  return segments;
+};
 
 export const parseContent = (contentString) => {
   const pages = contentString
@@ -65,9 +110,11 @@ export const parseContent = (contentString) => {
             sections.push(currentList);
             currentList = null;
           }
+          const headingText = trimmedLine.slice(2).trim();
           sections.push({
             type: "heading",
-            content: trimmedLine.slice(2).trim(),
+            content: headingText,
+            segments: parseInlineBold(headingText),
           });
           return;
         }
@@ -78,9 +125,11 @@ export const parseContent = (contentString) => {
             sections.push(currentList);
             currentList = null;
           }
+          const subheadingText = trimmedLine.slice(3).trim();
           sections.push({
             type: "subheading",
-            content: trimmedLine.slice(3).trim(),
+            content: subheadingText,
+            segments: parseInlineBold(subheadingText),
           });
           return;
         }
@@ -106,7 +155,10 @@ export const parseContent = (contentString) => {
           if (!currentList) {
             currentList = { type: "list", items: [] };
           }
-          currentList.items.push(item);
+          currentList.items.push({
+            text: item,
+            segments: parseInlineBold(item), // Add parsed segments for bold support in lists
+          });
           return;
         }
 
@@ -116,9 +168,11 @@ export const parseContent = (contentString) => {
             sections.push(currentList);
             currentList = null;
           }
+          const noteText = trimmedLine.slice(2).trim();
           sections.push({
             type: "note",
-            content: trimmedLine.slice(2).trim(),
+            content: noteText,
+            segments: parseInlineBold(noteText),
           });
           return;
         }
@@ -133,6 +187,7 @@ export const parseContent = (contentString) => {
         sections.push({
           type: "text",
           content: trimmedLine,
+          segments: parseInlineBold(trimmedLine), // Add parsed segments for bold support
         });
       });
 

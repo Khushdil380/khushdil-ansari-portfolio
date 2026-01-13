@@ -3,6 +3,20 @@ import PropTypes from "prop-types";
 import { useTheme } from "../../context/ThemeContext";
 import "./ContentDisplay.css";
 
+// Utility function to render text with bold segments
+const renderTextWithBold = (segments) => {
+  if (!segments || segments.length === 0) {
+    return null;
+  }
+
+  return segments.map((segment, idx) => {
+    if (segment.type === "bold") {
+      return <strong key={idx}>{segment.content}</strong>;
+    }
+    return <React.Fragment key={idx}>{segment.content}</React.Fragment>;
+  });
+};
+
 const ContentDisplay = ({ pageContent }) => {
   const { theme } = useTheme();
 
@@ -26,7 +40,9 @@ const ContentDisplay = ({ pageContent }) => {
             className="content-display__heading"
             style={{ color: theme.heading }}
           >
-            {section.content}
+            {section.segments
+              ? renderTextWithBold(section.segments)
+              : section.content}
           </h3>
         );
 
@@ -37,7 +53,9 @@ const ContentDisplay = ({ pageContent }) => {
             className="content-display__subheading"
             style={{ color: theme.subheading }}
           >
-            {section.content}
+            {section.segments
+              ? renderTextWithBold(section.segments)
+              : section.content}
           </h4>
         );
 
@@ -48,7 +66,9 @@ const ContentDisplay = ({ pageContent }) => {
             className="content-display__text"
             style={{ color: theme.content }}
           >
-            {section.content}
+            {section.segments
+              ? renderTextWithBold(section.segments)
+              : section.content}
           </p>
         );
 
@@ -60,7 +80,13 @@ const ContentDisplay = ({ pageContent }) => {
             style={{ color: theme.content }}
           >
             {section.items.map((item, i) => (
-              <li key={i}>{item}</li>
+              <li key={i}>
+                {typeof item === "object" && item.segments
+                  ? renderTextWithBold(item.segments)
+                  : typeof item === "object"
+                  ? item.text
+                  : item}
+              </li>
             ))}
           </ul>
         );
@@ -105,7 +131,11 @@ const ContentDisplay = ({ pageContent }) => {
               borderLeftColor: theme.accent,
             }}
           >
-            <p style={{ color: theme.content }}>{section.content}</p>
+            <p style={{ color: theme.content }}>
+              {section.segments
+                ? renderTextWithBold(section.segments)
+                : section.content}
+            </p>
           </div>
         );
 
