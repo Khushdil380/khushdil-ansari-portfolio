@@ -40,6 +40,13 @@
   opacity: 0.9;
 }
 
+.content-display__subsubheading {
+  font-size: 0.98rem;
+  font-weight: 500;
+  margin: 0.2rem 0;
+  opacity: 0.85;
+}
+
 .content-display__text {
   font-size: 0.95rem;
   line-height: 1.6;

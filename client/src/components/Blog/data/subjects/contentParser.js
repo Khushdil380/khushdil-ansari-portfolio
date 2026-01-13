@@ -6,6 +6,7 @@
  * [PAGE_BREAK] - Splits content into multiple pages
  * # Heading - Creates a heading section
  * ## Subheading - Creates a subheading section
+ * ### Sub-subheading - Creates a sub-subheading section
  * **text** - Bold text (inline formatting)
  * ![alt](url) - Creates an image section
  * - List item - Creates list items (consecutive items become one list)
@@ -130,6 +131,21 @@ export const parseContent = (contentString) => {
             type: "subheading",
             content: subheadingText,
             segments: parseInlineBold(subheadingText),
+          });
+          return;
+        }
+
+        // Sub-subheading (### Sub-subheading)
+        if (trimmedLine.startsWith("### ")) {
+          if (currentList) {
+            sections.push(currentList);
+            currentList = null;
+          }
+          const subsubheadingText = trimmedLine.slice(4).trim();
+          sections.push({
+            type: "subsubheading",
+            content: subsubheadingText,
+            segments: parseInlineBold(subsubheadingText),
           });
           return;
         }

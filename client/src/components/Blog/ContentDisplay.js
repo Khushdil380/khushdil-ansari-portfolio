@@ -59,6 +59,19 @@ const ContentDisplay = ({ pageContent }) => {
           </h4>
         );
 
+      case "subsubheading":
+        return (
+          <h5
+            key={index}
+            className="content-display__subsubheading"
+            style={{ color: theme.subheading }}
+          >
+            {section.segments
+              ? renderTextWithBold(section.segments)
+              : section.content}
+          </h5>
+        );
+
       case "text":
         return (
           <p
@@ -168,6 +181,7 @@ ContentDisplay.propTypes = {
         type: PropTypes.oneOf([
           "heading",
           "subheading",
+          "subsubheading",
           "text",
           "list",
           "code",
