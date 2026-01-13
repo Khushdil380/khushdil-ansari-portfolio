@@ -13,6 +13,11 @@ const techTutorial = {
     createLazyTopic("what-is-code-editor", "What is Code Editor", () =>
       import("./what-is-code-editor/what-is-code-editor.content")
     ),
+    createLazyTopic(
+      "why-beginners-struggle",
+      "Why Most Beginners Struggle With Programming (And How to Fix It)",
+      () => import("./why-beginners-struggle/why-beginners-struggle.content")
+    ),
   ],
 };
 
