@@ -15,12 +15,12 @@ const techTutorial = {
     ),
     createLazyTopic(
       "why-beginners-struggle",
-      "Why Most Beginners Struggle With Programming (And How to Fix It)",
+      "Beginners Struggle With Programming",
       () => import("./why-beginners-struggle/why-beginners-struggle.content")
     ),
     createLazyTopic(
       "student-to-developer",
-      "From Student to Developer: A Practical Roadmap to Become Job-Ready",
+      "From Student to Developer",
       () => import("./student-to-developer/student-to-developer.content")
     ),
   ],
