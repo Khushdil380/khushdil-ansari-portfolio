@@ -18,6 +18,11 @@ const techTutorial = {
       "Why Most Beginners Struggle With Programming (And How to Fix It)",
       () => import("./why-beginners-struggle/why-beginners-struggle.content")
     ),
+    createLazyTopic(
+      "student-to-developer",
+      "From Student to Developer: A Practical Roadmap to Become Job-Ready",
+      () => import("./student-to-developer/student-to-developer.content")
+    ),
   ],
 };
 
