@@ -68,7 +68,6 @@
 }
 
 .service-modal__close:hover {
-  background-color: rgba(227, 34, 39, 0.1);
   transform: rotate(90deg);
 }
 
