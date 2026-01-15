@@ -57,21 +57,21 @@ const getWelcomeEmailTemplate = (userName) => {
     ];
     return `
     <tr>
-      <td style="background-color:#000a1b; padding:12px 20px;">
+      <td style="background-color:#000a1b; padding:15px 20px;">
         <table width="100%" cellpadding="0" cellspacing="0" border="0">
           <tr>
-            <td width="11%" style="vertical-align:middle; text-align:center;">
+            <td width="50" style="vertical-align:middle; text-align:center; padding-right:12px;">
               ${iconWrapper(navImages[idx], item.label, 40)}
             </td>
-            <td width="16%" style="vertical-align:middle; padding:0 10px;">
+            <td width="100" style="vertical-align:middle; padding-right:15px;">
               <a href="${
                 item.url
-              }" style="display:inline-block; background-color:#ff0000; color:#ffffff; padding:8px 15px; text-decoration:none; border-radius:25px; font-size:12px; font-weight:700;">${
+              }" style="display:inline-block; background-color:#ff0000; color:#ffffff; padding:10px 18px; text-decoration:none; border-radius:25px; font-size:12px; font-weight:700; text-align:center; min-width:80px;">${
       item.label
     }</a>
             </td>
-            <td width="73%" style="vertical-align:middle; padding-left:10px;">
-              <p style="margin:0; color:#ffffff; font-size:13px;">${
+            <td style="vertical-align:middle; padding-left:5px;">
+              <p style="margin:0; color:#ffffff; font-size:13px; line-height:1.4;">${
                 item.description
               }</p>
             </td>
