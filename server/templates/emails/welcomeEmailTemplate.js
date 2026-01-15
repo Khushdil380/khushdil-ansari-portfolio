@@ -92,7 +92,7 @@ const getWelcomeEmailTemplate = (userName) => {
     ];
     return `<a href="${
       social[idx].url
-    }" target="_blank" style="display:inline-block; text-decoration:none; margin:0 8px;">${iconWrapper(
+    }" target="_blank" style="display:inline-block; text-decoration:none; margin:0 4px;">${iconWrapper(
       socialImages[idx],
       social[idx].name,
       width
@@ -259,13 +259,13 @@ const getWelcomeEmailTemplate = (userName) => {
             <td style="background-color:#ff0000;padding:20px;text-align:center;">
               <h3 style="margin:0 0 8px;color:#fff;font-size:22px;">Let's Connect</h3>
               <p style="margin:0 0 15px;color:#fff;font-size:13px;">Follow me for updates and insights</p>
-              <div style="text-align:center; max-width:500px; margin:0 auto;">
-                ${socialIcon(0, 32)}
-                ${socialIcon(1, 32)}
-                ${socialIcon(2, 32)}
-                ${socialIcon(3, 32)}
-                ${socialIcon(4, 32)}
-                ${socialIcon(5, 32)}
+              <div style="text-align:center; white-space:nowrap;">
+                ${socialIcon(0, 28)}
+                ${socialIcon(1, 28)}
+                ${socialIcon(2, 28)}
+                ${socialIcon(3, 28)}
+                ${socialIcon(4, 28)}
+                ${socialIcon(5, 28)}
               </div>
             </td>
           </tr>
