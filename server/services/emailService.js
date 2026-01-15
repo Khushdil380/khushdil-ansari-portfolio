@@ -3,7 +3,6 @@ const nodemailer = require("nodemailer");
 const {
   getWelcomeEmailTemplate,
 } = require("../templates/emails/welcomeEmailTemplate");
-const { getEmailAttachments } = require("../templates/emails/emailAttachments");
 
 // Create transporter
 const createTransporter = () => {
@@ -33,7 +32,6 @@ const sendThankYouEmail = async (userEmail, userName) => {
       to: userEmail,
       subject: "Thank You for Reaching Out! - Khushdil Ansari",
       html: getWelcomeEmailTemplate(userName),
-      attachments: getEmailAttachments(),
     };
 
     await transporter.sendMail(mailOptions);

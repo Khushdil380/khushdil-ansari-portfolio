@@ -1,5 +1,9 @@
 // Email template data configuration
 const emailData = {
+  // Base URL for hosted email images
+  baseImageUrl:
+    "https://khushdil-ansari-portfolio-frontend.vercel.app/email-images",
+
   personal: {
     name: "KHUSHDIL ANSARI (HE)",
     title: "Computer Science Engineer | Software Developer",

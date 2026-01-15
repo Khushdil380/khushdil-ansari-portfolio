@@ -3,19 +3,35 @@ const { emailData } = require("./emailData");
 // Common styles
 const commonImgStyle =
   "color-scheme: light only !important; filter: none !important; -webkit-filter: none !important; background-color: transparent !important;";
-const iconWrapper = (cid, alt, width) =>
-  `<div class="icon-fix" style="background-color: transparent; padding: 3px; display: inline-block;"><img src="cid:${cid}" alt="${alt}" width="${width}" style="width:100%; max-width:${width}px; ${commonImgStyle}" /></div>`;
+const iconWrapper = (imageName, alt, width) =>
+  `<div class="icon-fix" style="background-color: transparent; padding: 3px; display: inline-block;"><img src="${emailData.baseImageUrl}/${imageName}" alt="${alt}" width="${width}" style="width:100%; max-width:${width}px; ${commonImgStyle}" /></div>`;
 
 const getWelcomeEmailTemplate = (userName) => {
-  const { personal, services, stats, navigation, social, footer } = emailData;
+  const {
+    baseImageUrl,
+    personal,
+    services,
+    stats,
+    navigation,
+    social,
+    footer,
+  } = emailData;
 
-  const serviceRow = (idx) => `
+  const serviceRow = (idx) => {
+    const serviceImages = [
+      "fullstack-dev.gif",
+      "android-dev.gif",
+      "uiux-dev.gif",
+      "machine-learning.gif",
+      "teaching.gif",
+    ];
+    return `
     <tr>
       <td style="background-color:#000a1b; padding:12px 20px;">
         <table width="100%" cellpadding="0" cellspacing="0" border="0">
           <tr>
             <td width="23%" style="vertical-align:top; padding-right:10px;">
-              ${iconWrapper(`service${idx + 1}`, services[idx].name, 104)}
+              ${iconWrapper(serviceImages[idx], services[idx].name, 104)}
             </td>
             <td width="77%" style="vertical-align:top;">
               <h4 style="margin:0 0 8px 0; color:#bed600; font-size:16px; font-weight:700;">${
@@ -29,21 +45,30 @@ const getWelcomeEmailTemplate = (userName) => {
         </table>
       </td>
     </tr>`;
+  };
 
-  const navRow = (item, idx) => `
+  const navRow = (item, idx) => {
+    const navImages = [
+      "nav-projects.png",
+      "nav-skills.png",
+      "nav-education.png",
+      "nav-services.png",
+      "nav-blog.png",
+    ];
+    return `
     <tr>
       <td style="background-color:#000a1b; padding:12px 20px;">
         <table width="100%" cellpadding="0" cellspacing="0" border="0">
           <tr>
             <td width="11%" style="vertical-align:middle; text-align:center;">
-              ${iconWrapper(`nav${idx + 1}`, item.label, 40)}
+              ${iconWrapper(navImages[idx], item.label, 40)}
             </td>
             <td width="16%" style="vertical-align:middle; padding:0 10px;">
               <a href="${
                 item.url
               }" style="display:inline-block; background-color:#ff0000; color:#ffffff; padding:8px 15px; text-decoration:none; border-radius:25px; font-size:12px; font-weight:700;">${
-    item.label
-  }</a>
+      item.label
+    }</a>
             </td>
             <td width="73%" style="vertical-align:middle; padding-left:10px;">
               <p style="margin:0; color:#ffffff; font-size:13px;">${
@@ -54,15 +79,25 @@ const getWelcomeEmailTemplate = (userName) => {
         </table>
       </td>
     </tr>`;
+  };
 
-  const socialIcon = (idx, width) =>
-    `<a href="${
+  const socialIcon = (idx, width) => {
+    const socialImages = [
+      "social-github.png",
+      "social-linkedin.png",
+      "social-medium.png",
+      "social-quora.png",
+      "social-x.png",
+      "social-whatsapp.png",
+    ];
+    return `<a href="${
       social[idx].url
     }" target="_blank" style="display:inline-block; text-decoration:none;">${iconWrapper(
-      `social${idx + 1}`,
+      socialImages[idx],
       social[idx].name,
       width
     )}</a>`;
+  };
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -98,7 +133,7 @@ const getWelcomeEmailTemplate = (userName) => {
           <!-- Hero -->
           <tr>
             <td style="background-color:#000a1b;padding:20px;text-align:center;">
-              <img src="cid:heart" alt="Heart" width="220" style="width:220px;margin:0 auto;" />
+              <img src="${baseImageUrl}/heart.gif" alt="Heart" width="220" style="width:220px;margin:0 auto;" />
               <p style="margin:10px 0 0;color:#fff;font-size:13px;">Hooray! You have noticed my portfolio 🤗</p>
             </td>
           </tr>
@@ -109,7 +144,7 @@ const getWelcomeEmailTemplate = (userName) => {
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td width="27%" style="padding:10px;vertical-align:middle;">
-                    <img src="cid:message" alt="Message" width="114" style="width:100%;max-width:114px;margin:0 auto;" />
+                    <img src="${baseImageUrl}/messaging.gif" alt="Message" width="114" style="width:100%;max-width:114px;margin:0 auto;" />
                   </td>
                   <td width="73%" style="padding:10px;vertical-align:middle;text-align:center;">
                     <h1 style="margin:0 0 8px;color:#ff0000;font-size:36px;font-weight:700;">Thank You</h1>
@@ -123,7 +158,7 @@ const getWelcomeEmailTemplate = (userName) => {
           <!-- Profile -->
           <tr>
             <td style="background-color:#000a1b;padding:20px;text-align:center;">
-              <img src="cid:profile" alt="Profile" width="209" style="width:209px;margin:0 auto 15px;border-radius:50%;" />
+              <img src="${baseImageUrl}/profile.png" alt="Profile" width="209" style="width:209px;margin:0 auto 15px;border-radius:50%;" />
               <h2 style="margin:0 0 8px;color:#bed600;font-size:26px;font-weight:700;">${
                 personal.name
               }</h2>
@@ -139,7 +174,7 @@ const getWelcomeEmailTemplate = (userName) => {
               <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#e0efff;border-radius:10px;">
                 <tr>
                   <td width="10%" style="padding:8px;vertical-align:top;">
-                    <img src="cid:quotestart" alt="" width="28" style="width:100%;max-width:28px;" />
+                    <img src="${baseImageUrl}/quote-start.png" alt="" width="28" style="width:100%;max-width:28px;" />
                   </td>
                   <td width="80%" style="padding:10px 0;text-align:center;">
                     <p style="margin:0;color:#1854d7;font-size:13px;font-weight:700;">${
@@ -147,7 +182,7 @@ const getWelcomeEmailTemplate = (userName) => {
                     }</p>
                   </td>
                   <td width="10%" style="padding:8px;vertical-align:bottom;text-align:right;">
-                    <img src="cid:quoteend" alt="" width="28" style="width:100%;max-width:28px;" />
+                    <img src="${baseImageUrl}/quote-end.png" alt="" width="28" style="width:100%;max-width:28px;" />
                   </td>
                 </tr>
               </table>
@@ -160,7 +195,7 @@ const getWelcomeEmailTemplate = (userName) => {
           <tr><td style="padding:0 20px 10px;"><h3 style="margin:0;color:#fff;font-size:20px;">💬 My Message</h3></td></tr>
           <tr>
             <td style="background-color:#e0efff;padding:20px;">
-              <img src="cid:hello" alt="Hello" width="212" style="width:212px;max-width:100%;margin:0 auto 15px;" />
+              <img src="${baseImageUrl}/hello.gif" alt="Hello" width="212" style="width:212px;max-width:100%;margin:0 auto 15px;" />
               <h4 style="margin:0 0 12px;color:#000;font-size:18px;">Hello ${userName} 👋</h4>
               <p style="margin:0 0 12px;color:#000;font-size:16px;font-weight:700;">Thank you for reaching out through my portfolio. I truly appreciate your interest! Your message has been received, and I will get back to you within <span style="color:#ff0000;">${
                 personal.responseTime
@@ -211,7 +246,7 @@ const getWelcomeEmailTemplate = (userName) => {
               <a href="${
                 personal.portfolioUrl
               }" target="_blank" style="display:inline-block;text-decoration:none;">
-                <img src="cid:portfolio" alt="Portfolio" width="213" style="width:213px;max-width:100%;margin:0 auto;" />
+                <img src="${baseImageUrl}/portfolio-button.gif" alt="Portfolio" width="213" style="width:213px;max-width:100%;margin:0 auto;" />
               </a>
             </td>
           </tr>
