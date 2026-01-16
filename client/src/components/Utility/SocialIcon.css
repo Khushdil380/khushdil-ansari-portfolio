@@ -9,7 +9,7 @@
   color: var(--content-color);
   text-decoration: none;
   transition: all 0.3s ease;
-  margin: 0 8px;
+  margin: 0;
   background-color: transparent;
 }
 
@@ -45,7 +45,7 @@
   .social-icon {
     width: 36px;
     height: 36px;
-    margin: 0 4px;
+    margin: 0;
     border-width: 1.5px;
   }
 
@@ -59,7 +59,7 @@
   .social-icon {
     width: 34px;
     height: 34px;
-    margin: 0 3px;
+    margin: 0;
   }
 
   .social-icon-img {

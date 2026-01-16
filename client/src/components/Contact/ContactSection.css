@@ -17,7 +17,7 @@
 .contact-section__left {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .contact-section__image-container {
@@ -59,15 +59,15 @@
 }
 
 .contact-section__social {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .contact-section__social-grid {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.8rem;
-  padding: 1.2rem;
-  justify-content: center;
+  padding: 0;
+  justify-content: flex-start;
 }
 
 .contact-section__right {
@@ -86,6 +86,7 @@
   .contact-section__left {
     align-items: center;
     text-align: center;
+    gap: 0.6rem;
   }
 
   .contact-section__description {
@@ -95,7 +96,7 @@
   .contact-section__social-grid {
     justify-content: center;
     gap: 0.6rem;
-    padding: 1rem;
+    padding: 0;
   }
 }
 
