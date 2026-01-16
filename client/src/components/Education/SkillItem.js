@@ -1,6 +1,7 @@
 import React from "react";
 import { useTheme } from "../../context/ThemeContext";
 import PropTypes from "prop-types";
+import "../Utility/TechIconStyles.css";
 import "./SkillItem.css";
 
 // Import skill icons
@@ -36,8 +37,9 @@ const SkillItem = ({ skill }) => {
     <div className="skill-item">
       <div className="skill-item__row">
         <div
-          className="skill-item__icon"
+          className="tech-icon-circle tech-icon-circle--small"
           style={{
+            "--border-color": theme.subheading,
             borderColor: theme.subheading,
           }}
         >
@@ -45,7 +47,7 @@ const SkillItem = ({ skill }) => {
             <img
               src={skillIcons[skill.name]}
               alt={skill.name}
-              className="skill-item__icon-img"
+              className="tech-icon-img loaded"
             />
           ) : (
             <span style={{ color: theme.subheading }}>

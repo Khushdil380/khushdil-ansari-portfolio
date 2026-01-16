@@ -1,0 +1,141 @@
+/* Centralized Tech Icon Utility - For skill icons, tech icons, etc. */
+
+.tech-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Base icon circle styling */
+.tech-icon-circle {
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  background-color: #ffffff;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Default size (medium - 60px) */
+.tech-icon-circle {
+  width: 60px;
+  height: 60px;
+  font-size: 1rem;
+}
+
+/* Size variants */
+.tech-icon-circle--small {
+  width: 45px;
+  height: 45px;
+  font-size: 0.8rem;
+}
+
+.tech-icon-circle--large {
+  width: 80px;
+  height: 80px;
+  font-size: 1.2rem;
+}
+
+/* Icon image inside circle */
+.tech-icon-img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.tech-icon-img.loaded {
+  opacity: 1;
+}
+
+/* Loading placeholder shimmer effect */
+.tech-icon-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    90deg,
+    rgba(240, 240, 240, 0.8) 0%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(240, 240, 240, 0.8) 100%
+  );
+  background-size: 200% 100%;
+  animation: techIconShimmer 1.5s infinite;
+  z-index: 1;
+}
+
+@keyframes techIconShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Hover effects */
+.tech-icon-circle--hoverable {
+  cursor: pointer;
+}
+
+.tech-icon-circle--hoverable:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .tech-icon-circle {
+    width: 50px;
+    height: 50px;
+    font-size: 0.9rem;
+  }
+
+  .tech-icon-circle--small {
+    width: 40px;
+    height: 40px;
+    font-size: 0.75rem;
+  }
+
+  .tech-icon-circle--large {
+    width: 65px;
+    height: 65px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-icon-circle {
+    width: 45px;
+    height: 45px;
+    font-size: 0.85rem;
+  }
+
+  .tech-icon-circle--small {
+    width: 36px;
+    height: 36px;
+    font-size: 0.7rem;
+  }
+
+  .tech-icon-circle--large {
+    width: 55px;
+    height: 55px;
+    font-size: 0.95rem;
+  }
+}

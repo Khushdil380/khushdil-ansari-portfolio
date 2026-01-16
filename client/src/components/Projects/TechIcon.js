@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import PropTypes from "prop-types";
+import "../Utility/TechIconStyles.css";
 import "./TechIcon.css";
 
 const TechIcon = ({ techName, iconPath }) => {
@@ -61,8 +62,10 @@ const TechIcon = ({ techName, iconPath }) => {
   return (
     <div className="tech-icon" ref={iconRef}>
       <div
-        className="tech-icon__circle"
+        className="tech-icon-circle tech-icon-circle--hoverable"
         style={{
+          "--border-color": theme.subheading,
+          "--accent-color": theme.accent,
           borderColor: theme.subheading,
         }}
         title={techName}
@@ -70,7 +73,7 @@ const TechIcon = ({ techName, iconPath }) => {
         {iconPath ? (
           <>
             {!isLoaded && (
-              <div className="tech-icon__placeholder">
+              <div className="tech-icon-placeholder">
                 <span style={{ color: theme.subheading }}>
                   {getIconText(techName)}
                 </span>
@@ -80,7 +83,7 @@ const TechIcon = ({ techName, iconPath }) => {
               <img
                 src={iconPath}
                 alt={techName}
-                className={`tech-icon__img ${isLoaded ? "loaded" : ""}`}
+                className={`tech-icon-img ${isLoaded ? "loaded" : ""}`}
                 onLoad={() => setIsLoaded(true)}
                 loading="lazy"
               />
