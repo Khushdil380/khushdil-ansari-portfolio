@@ -26,14 +26,13 @@ const ServiceModal = ({ service, onClose }) => {
           backgroundColor: theme.primaryBg,
           color: theme.content,
           "--accent-color": theme.accent,
-          "--accent-color-opacity": `${theme.accent}33`,
-          "--accent-color-shadow": `${theme.accent}4D`,
+          "--border-color": theme.subheading,
         }}
       >
         <button
           className="service-modal__close"
           onClick={onClose}
-          style={{ color: theme.accent }}
+          style={{ color: theme.content }}
           aria-label="Close modal"
         >
           ✕
@@ -101,10 +100,7 @@ const ServiceModal = ({ service, onClose }) => {
                   <div
                     key={index}
                     className="service-modal__project-card"
-                    style={{
-                      backgroundColor: theme.secondaryBg,
-                      borderColor: theme.accent,
-                    }}
+                    style={{ backgroundColor: theme.secondaryBg }}
                   >
                     <h4
                       className="service-modal__project-name"
@@ -151,17 +147,11 @@ const ServiceModal = ({ service, onClose }) => {
                   <div
                     key={index}
                     className="service-modal__testimonial-card"
-                    style={{
-                      backgroundColor: theme.secondaryBg,
-                      borderColor: theme.accent,
-                    }}
+                    style={{ backgroundColor: theme.secondaryBg }}
                   >
                     <div
                       className="service-modal__testimonial-profile"
-                      style={{
-                        backgroundColor: theme.secondaryBg,
-                        borderColor: theme.accent,
-                      }}
+                      style={{ backgroundColor: theme.secondaryBg }}
                     >
                       <img
                         src={

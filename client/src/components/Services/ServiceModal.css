@@ -90,7 +90,7 @@
   text-align: center;
   gap: 1rem;
   padding-right: 2rem;
-  border-right: 2px solid var(--accent-color-opacity);
+  border-right: 2px solid var(--border-color);
 }
 
 .service-modal__icon {
@@ -223,7 +223,7 @@
 /* Cards */
 .service-modal__project-card,
 .service-modal__testimonial-card {
-  border: 2px solid;
+  border: 2px solid var(--border-color);
   border-radius: 10px;
   padding: 1.25rem;
   display: flex;
@@ -240,7 +240,7 @@
 
 .service-modal__project-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 16px var(--accent-color-shadow);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 .service-modal__project-name {
@@ -295,7 +295,7 @@
 
 .service-modal__testimonial-card:hover {
   transform: translateX(4px);
-  box-shadow: 0 4px 12px var(--accent-color-shadow);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .service-modal__testimonial-profile {
@@ -306,7 +306,7 @@
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  border: 3px solid;
+  border: 3px solid var(--border-color);
   overflow: hidden;
   z-index: 1;
 }
@@ -344,7 +344,7 @@
 
   .service-modal__left {
     border-right: none;
-    border-bottom: 2px solid var(--accent-color-opacity);
+    border-bottom: 2px solid var(--border-color);
     padding-right: 0;
     padding-bottom: 1.5rem;
   }
