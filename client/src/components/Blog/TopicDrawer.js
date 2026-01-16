@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useTheme } from "../../context/ThemeContext";
-import CloseButton from "../Navigation/CloseButton";
+import CloseButton from "../Utility/CloseButton";
 import "./TopicDrawer.css";
 
 const TopicDrawer = ({

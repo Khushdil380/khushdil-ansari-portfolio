@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
 import ThemeToggle from "./ThemeToggle";
 import HamburgerIcon from "./HamburgerIcon";
-import CloseButton from "./CloseButton";
+import CloseButton from "../Utility/CloseButton";
 import SocialIcon from "../Utility/SocialIcon";
 import "./Header.css";
 

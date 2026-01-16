@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useTheme } from "../../context/ThemeContext";
 import Button from "../Utility/Button";
+import CloseButton from "../Utility/CloseButton";
 import "./ServiceModal.css";
 
 const ServiceModal = ({ service, onClose }) => {
@@ -30,14 +31,9 @@ const ServiceModal = ({ service, onClose }) => {
           "--border-color": theme.subheading,
         }}
       >
-        <button
-          className="service-modal__close"
-          onClick={onClose}
-          style={{ color: theme.content }}
-          aria-label="Close modal"
-        >
-          ✕
-        </button>
+        <div className="service-modal__close">
+          <CloseButton onClick={onClose} />
+        </div>
 
         <div className="service-modal__layout">
           {/* Left Side - Service Details */}

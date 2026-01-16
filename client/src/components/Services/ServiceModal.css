@@ -55,22 +55,7 @@
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  background: transparent;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
   z-index: 10;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
-.service-modal__close:hover {
-  transform: rotate(90deg);
 }
 
 /* Layout */
