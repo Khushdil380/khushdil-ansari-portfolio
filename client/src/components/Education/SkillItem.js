@@ -1,6 +1,7 @@
 import React from "react";
 import { useTheme } from "../../context/ThemeContext";
 import PropTypes from "prop-types";
+import { createTechBubble } from "../Utility/BubbleEffect/index";
 import "../Utility/TechIconStyles.css";
 import "./SkillItem.css";
 
@@ -33,6 +34,10 @@ const SkillItem = ({ skill }) => {
     window.open(skill.githubRepo, "_blank", "noopener,noreferrer");
   };
 
+  const handleIconHover = () => {
+    createTechBubble(skill.name);
+  };
+
   return (
     <div className="skill-item">
       <div className="skill-item__row">
@@ -42,6 +47,7 @@ const SkillItem = ({ skill }) => {
             "--border-color": theme.subheading,
             "--accent-color": theme.accent,
           }}
+          onMouseEnter={handleIconHover}
         >
           {skillIcons[skill.name] ? (
             <img

@@ -1,0 +1,271 @@
+/* Bubble Container */
+.tech-bubble-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Bubble Effect */
+.tech-bubble {
+  position: absolute;
+  padding: 0.7rem 1.3rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+  transform-origin: center;
+  pointer-events: none;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(
+    135deg,
+    var(--bubble-bg1) 0%,
+    var(--bubble-bg2) 100%
+  );
+  color: var(--bubble-text-color);
+}
+
+.tech-bubble::before {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--bubble-bg1);
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+}
+
+.tech-bubble::after {
+  content: "✨";
+  position: absolute;
+  top: -12px;
+  right: -8px;
+  font-size: 1.3rem;
+}
+
+/* Animation Styles */
+.tech-bubble.anim-1 {
+  animation: bubbleFly1 1.8s ease-out forwards;
+}
+
+.tech-bubble.anim-1::after {
+  animation: sparkle1 1.8s ease-out forwards;
+}
+
+.tech-bubble.anim-2 {
+  animation: bubbleFly2 1.5s ease-out forwards;
+}
+
+.tech-bubble.anim-2::after {
+  animation: sparkle2 1.5s ease-out forwards;
+}
+
+.tech-bubble.anim-3 {
+  animation: bubbleFly3 2s ease-out forwards;
+}
+
+.tech-bubble.anim-3::after {
+  animation: sparkle3 2s ease-out forwards;
+}
+
+.tech-bubble.anim-4 {
+  animation: bubbleFly4 1.6s ease-out forwards;
+}
+
+.tech-bubble.anim-4::after {
+  animation: sparkle4 1.6s ease-out forwards;
+}
+
+.tech-bubble.anim-5 {
+  animation: bubbleFly5 1.7s ease-out forwards;
+}
+
+.tech-bubble.anim-5::after {
+  animation: sparkle5 1.7s ease-out forwards;
+}
+
+/* Flying Animations */
+@keyframes bubbleFly1 {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(20px);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.15) translateY(-15px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.7) translateY(-80px);
+  }
+}
+
+@keyframes bubbleFly2 {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) translate(0, 20px);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1.1) translate(-10px, -10px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.6) translate(-40px, -70px);
+  }
+}
+
+@keyframes bubbleFly3 {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translate(0, 20px) rotate(0deg);
+  }
+  15% {
+    opacity: 1;
+    transform: scale(1.2) translate(5px, -10px) rotate(5deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) translate(35px, -90px) rotate(8deg);
+  }
+}
+
+@keyframes bubbleFly4 {
+  0% {
+    opacity: 0;
+    transform: scale(0.1) translateY(15px);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.25) translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.4) translateY(-75px);
+  }
+}
+
+@keyframes bubbleFly5 {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translate(0, 20px) rotate(0deg);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.1) translate(-8px, -15px) rotate(-15deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.6) translate(-5px, -85px) rotate(-25deg);
+  }
+}
+
+/* Sparkle Animations */
+@keyframes sparkle1 {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.3) rotate(180deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3) rotate(540deg);
+  }
+}
+
+@keyframes sparkle2 {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.2) translate(-5px, -5px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.4) translate(-10px, -15px);
+  }
+}
+
+@keyframes sparkle3 {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1.5) rotate(90deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.2) rotate(360deg);
+  }
+}
+
+@keyframes sparkle4 {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3) translateY(-10px);
+  }
+}
+
+@keyframes sparkle5 {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.3) rotate(120deg) translate(5px, 5px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.2) rotate(360deg) translate(10px, -10px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tech-bubble {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-bubble {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .tech-bubble::before {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid var(--bubble-bg1);
+  }
+
+  .tech-bubble::after {
+    font-size: 1.1rem;
+  }
+}

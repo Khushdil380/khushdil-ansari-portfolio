@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import PropTypes from "prop-types";
+import { createTechBubble } from "../Utility/BubbleEffect/index";
 import "../Utility/TechIconStyles.css";
 import "./TechIcon.css";
 
@@ -17,6 +18,10 @@ const TechIcon = ({ techName, iconPath }) => {
       return (words[0][0] + words[1][0]).toUpperCase();
     }
     return name.substring(0, 2).toUpperCase();
+  };
+
+  const handleIconHover = () => {
+    createTechBubble(techName);
   };
 
   // Reset loading state when iconPath changes
@@ -68,6 +73,7 @@ const TechIcon = ({ techName, iconPath }) => {
           "--accent-color": theme.accent,
         }}
         title={techName}
+        onMouseEnter={handleIconHover}
       >
         {iconPath ? (
           <>
