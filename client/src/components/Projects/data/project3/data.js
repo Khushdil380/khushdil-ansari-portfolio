@@ -2,6 +2,8 @@ import reactIcon from "../../../../assets/techIcons/react.svg";
 import javascriptIcon from "../../../../assets/techIcons/javascript.svg";
 import pythonIcon from "../../../../assets/techIcons/python.svg";
 import sqlIcon from "../../../../assets/techIcons/sql.svg";
+import cssIcon from "../../../../assets/techIcons/css.svg";
+import javaIcon from "../../../../assets/techIcons/java.svg";
 import thumbnail from "./3.png";
 
 const project3 = {
@@ -13,10 +15,10 @@ const project3 = {
   duration: "1.5 months",
   category: "Web App",
   technologies: [
-    { name: "Vue.js", icon: reactIcon },
-    { name: "OpenWeather API", icon: javascriptIcon },
-    { name: "Chart.js", icon: javascriptIcon },
-    { name: "Tailwind", icon: reactIcon },
+    { name: "React", icon: reactIcon },
+    { name: "Python", icon: pythonIcon },
+    { name: "JavaScript", icon: javascriptIcon },
+    { name: "CSS", icon: cssIcon },
   ],
   abstract:
     "An interactive weather dashboard providing real-time weather data, forecasts, and historical climate information. Features include geolocation-based weather, customizable widgets, severe weather alerts, and beautiful data visualizations with charts and graphs.",

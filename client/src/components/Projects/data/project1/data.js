@@ -2,6 +2,8 @@ import reactIcon from "../../../../assets/techIcons/react.svg";
 import javascriptIcon from "../../../../assets/techIcons/javascript.svg";
 import pythonIcon from "../../../../assets/techIcons/python.svg";
 import sqlIcon from "../../../../assets/techIcons/sql.svg";
+import cssIcon from "../../../../assets/techIcons/css.svg";
+import javaIcon from "../../../../assets/techIcons/java.svg";
 import thumbnail from "./1.png";
 
 const project1 = {
@@ -14,10 +16,9 @@ const project1 = {
   category: "Web App",
   technologies: [
     { name: "React", icon: reactIcon },
-    { name: "Node.js", icon: javascriptIcon },
-    { name: "MongoDB", icon: sqlIcon },
-    { name: "Express", icon: javascriptIcon },
-    { name: "Redux", icon: reactIcon },
+    { name: "JavaScript", icon: javascriptIcon },
+    { name: "SQL", icon: sqlIcon },
+    { name: "Java", icon: javaIcon },
   ],
   abstract:
     "A full-stack e-commerce platform with user authentication, product catalog, shopping cart, payment integration, and admin dashboard. Features include real-time inventory management, order tracking, and responsive design for mobile and desktop users.",
