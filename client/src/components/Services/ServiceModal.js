@@ -25,12 +25,15 @@ const ServiceModal = ({ service, onClose }) => {
         style={{
           backgroundColor: theme.primaryBg,
           color: theme.content,
+          "--accent-color": theme.accent,
+          "--accent-color-opacity": `${theme.accent}33`,
+          "--accent-color-shadow": `${theme.accent}4D`,
         }}
       >
         <button
           className="service-modal__close"
           onClick={onClose}
-          style={{ color: theme.heading }}
+          style={{ color: theme.accent }}
           aria-label="Close modal"
         >
           ✕

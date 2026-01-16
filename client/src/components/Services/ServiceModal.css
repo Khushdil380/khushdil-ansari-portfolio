@@ -90,7 +90,7 @@
   text-align: center;
   gap: 1rem;
   padding-right: 2rem;
-  border-right: 2px solid rgba(227, 34, 39, 0.2);
+  border-right: 2px solid var(--accent-color-opacity);
 }
 
 .service-modal__icon {
@@ -240,7 +240,7 @@
 
 .service-modal__project-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(227, 34, 39, 0.3);
+  box-shadow: 0 6px 16px var(--accent-color-shadow);
 }
 
 .service-modal__project-name {
@@ -295,7 +295,7 @@
 
 .service-modal__testimonial-card:hover {
   transform: translateX(4px);
-  box-shadow: 0 4px 12px rgba(227, 34, 39, 0.25);
+  box-shadow: 0 4px 12px var(--accent-color-shadow);
 }
 
 .service-modal__testimonial-profile {
@@ -344,7 +344,7 @@
 
   .service-modal__left {
     border-right: none;
-    border-bottom: 2px solid rgba(227, 34, 39, 0.2);
+    border-bottom: 2px solid var(--accent-color-opacity);
     padding-right: 0;
     padding-bottom: 1.5rem;
   }
