@@ -66,7 +66,6 @@ const TechIcon = ({ techName, iconPath }) => {
         style={{
           "--border-color": theme.subheading,
           "--accent-color": theme.accent,
-          borderColor: theme.subheading,
         }}
         title={techName}
       >

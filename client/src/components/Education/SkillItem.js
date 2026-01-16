@@ -37,10 +37,10 @@ const SkillItem = ({ skill }) => {
     <div className="skill-item">
       <div className="skill-item__row">
         <div
-          className="tech-icon-circle tech-icon-circle--small"
+          className="tech-icon-circle tech-icon-circle--small tech-icon-circle--hoverable"
           style={{
             "--border-color": theme.subheading,
-            borderColor: theme.subheading,
+            "--accent-color": theme.accent,
           }}
         >
           {skillIcons[skill.name] ? (

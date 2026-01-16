@@ -49,7 +49,7 @@
   position: relative;
   z-index: 2;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, filter 0.3s ease, transform 0.3s ease;
 }
 
 .tech-icon-img.loaded {
@@ -92,11 +92,27 @@
 }
 
 .tech-icon-circle--hoverable:hover {
-  background-color: var(--accent-color);
-  border-color: var(--accent-color);
-  color: #ffffff;
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: scale(1.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tech-icon-circle--hoverable:hover .tech-icon-img {
+  transform: scale(1.05);
+}
+
+@keyframes rotateTechIcon {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
 
 /* Mobile responsive */
