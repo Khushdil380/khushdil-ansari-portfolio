@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useTheme } from "../../context/ThemeContext";
+import Button from "../Utility/Button";
 import "./ServiceCard.css";
 
 const ServiceCard = ({ service, onKnowMore }) => {
@@ -23,16 +24,9 @@ const ServiceCard = ({ service, onKnowMore }) => {
       <p className="service-card__description" style={{ color: theme.content }}>
         {service.shortDescription}
       </p>
-      <button
-        className="service-card__button"
-        onClick={() => onKnowMore(service)}
-        style={{
-          backgroundColor: theme.accent,
-          color: "#ffffff",
-        }}
-      >
+      <Button onClick={() => onKnowMore(service)} variant="primary">
         Know More
-      </button>
+      </Button>
     </div>
   );
 };

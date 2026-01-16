@@ -411,12 +411,4 @@
     -webkit-line-clamp: 3;
     line-clamp: 3;
   }
-  .service-modal__link {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.75rem;
-  }
-  .service-modal__project-btn {
-    padding: 0.3rem 0.5rem;
-    font-size: 0.7rem;
-  }
 }

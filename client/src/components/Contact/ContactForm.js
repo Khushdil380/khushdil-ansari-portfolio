@@ -178,7 +178,7 @@ const ContactForm = () => {
           onChange={handleChange}
           className="contact-form__input"
           style={{
-            borderColor: errors.fullName ? "#E32227" : theme.subheading,
+            borderColor: errors.fullName ? theme.accent : theme.subheading,
             color: theme.content,
             backgroundColor: theme.secondaryBg,
           }}
@@ -197,7 +197,7 @@ const ContactForm = () => {
           onChange={handleChange}
           className="contact-form__input"
           style={{
-            borderColor: errors.email ? "#E32227" : theme.subheading,
+            borderColor: errors.email ? theme.accent : theme.subheading,
             color: theme.content,
             backgroundColor: theme.secondaryBg,
           }}
@@ -216,7 +216,7 @@ const ContactForm = () => {
           onChange={handleChange}
           className="contact-form__input"
           style={{
-            borderColor: errors.title ? "#E32227" : theme.subheading,
+            borderColor: errors.title ? theme.accent : theme.subheading,
             color: theme.content,
             backgroundColor: theme.secondaryBg,
           }}
@@ -235,7 +235,7 @@ const ContactForm = () => {
           className="contact-form__textarea"
           rows="6"
           style={{
-            borderColor: errors.message ? "#E32227" : theme.subheading,
+            borderColor: errors.message ? theme.accent : theme.subheading,
             color: theme.content,
             backgroundColor: theme.secondaryBg,
           }}
@@ -250,7 +250,7 @@ const ContactForm = () => {
           className={`contact-form__status contact-form__status--${submitStatus.type}`}
           style={{
             backgroundColor:
-              submitStatus.type === "success" ? "#8BE030" : "#E32227",
+              submitStatus.type === "success" ? theme.subheading : theme.accent,
           }}
         >
           <span>{submitStatus.message}</span>

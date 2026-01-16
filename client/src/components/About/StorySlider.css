@@ -28,8 +28,4 @@
     flex-direction: row;
     gap: 1rem;
   }
-
-  .story-navigation button {
-    flex: 1;
-  }
 }

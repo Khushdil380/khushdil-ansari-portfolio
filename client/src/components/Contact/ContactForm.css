@@ -142,11 +142,6 @@
     justify-content: center;
   }
 
-  .contact-form__actions button {
-    flex: 1;
-    min-width: 0;
-  }
-
   .contact-form__status {
     padding: 0.85rem;
     margin-bottom: 1.1rem;

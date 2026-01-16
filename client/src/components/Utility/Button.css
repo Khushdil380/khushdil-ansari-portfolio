@@ -40,9 +40,17 @@
   pointer-events: none;
 }
 
+/* Mobile Responsive */
 @media (max-width: 768px) {
   .button {
     padding: 0.3rem 0.6rem;
     font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    padding: 0.28rem 0.55rem;
+    font-size: 0.73rem;
   }
 }

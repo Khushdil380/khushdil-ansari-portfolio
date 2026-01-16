@@ -23,7 +23,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(227, 34, 39, 0.1),
+    rgba(255, 255, 255, 0.05),
     transparent
   );
   transition: left 0.6s ease;
@@ -35,8 +35,6 @@
 
 .service-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(227, 34, 39, 0.3);
-  border-color: var(--accent-color);
 }
 
 .service-card__icon {
@@ -69,29 +67,6 @@
   flex: 1;
 }
 
-.service-card__button {
-  padding: 0.4rem 0.8rem;
-  border: 1px solid;
-  border-radius: 4px;
-  font-family: "Roboto Slab", serif;
-  font-size: 0.85rem;
-  font-weight: 400;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.service-card__button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 15px;
-}
-
-.service-card__button:active {
-  transform: translateY(0);
-}
-
 @media (max-width: 768px) {
   .service-card {
     padding: 1rem 0.75rem;
@@ -107,10 +82,5 @@
 
   .service-card__description {
     font-size: 0.9rem;
-  }
-
-  .service-card__button {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.75rem;
   }
 }
