@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useTheme } from "../../context/ThemeContext";
 import Button from "../Utility/Button";
+import "../Utility/AnimatedBorder.css";
 import "./ServiceCard.css";
 
 const ServiceCard = ({ service, onKnowMore }) => {
@@ -9,10 +10,14 @@ const ServiceCard = ({ service, onKnowMore }) => {
 
   return (
     <div
-      className="service-card"
+      className="service-card animated-border"
       style={{
         backgroundColor: theme.secondaryBg,
         borderColor: theme.subheading,
+        "--accent-color": theme.accent,
+        "--heading-color": theme.heading,
+        "--primary-bg": theme.primaryBg,
+        "--card-bg": theme.secondaryBg,
       }}
     >
       <div className="service-card__icon" style={{ color: theme.accent }}>
