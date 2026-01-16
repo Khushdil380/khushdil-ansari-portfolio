@@ -6,6 +6,7 @@
 .contact-form__field {
   margin-bottom: 1.5rem;
   position: relative;
+  isolation: isolate;
 }
 
 .contact-form__input,
@@ -13,16 +14,17 @@
   width: 100%;
   padding: 0.9rem 1.2rem;
   border: 2px solid;
-  border-radius: 8px;
+  border-radius: 4px;
   font-size: 0.95rem;
   font-family: "Roboto Slab", serif;
   transition: all 0.3s ease;
   outline: none;
+  position: relative;
+  z-index: 1;
 }
 
 .contact-form__input:focus,
 .contact-form__textarea:focus {
-  border-color: var(--accent-color);
   box-shadow: 0 0 0 3px rgba(227, 34, 39, 0.1);
 }
 
