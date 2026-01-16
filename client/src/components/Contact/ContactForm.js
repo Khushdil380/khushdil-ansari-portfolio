@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import Button from "../Utility/Button";
-import "../Utility/AnimatedBorder.css";
 import "./ContactForm.css";
 
 const ContactForm = () => {
@@ -170,13 +169,7 @@ const ContactForm = () => {
 
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
-      <div
-        className="contact-form__field animated-border animated-border--thin"
-        style={{
-          "--accent-color": theme.accent,
-          "--heading-color": theme.heading,
-        }}
-      >
+      <div className="contact-form__field">
         <input
           type="text"
           name="fullName"
@@ -185,7 +178,7 @@ const ContactForm = () => {
           onChange={handleChange}
           className="contact-form__input"
           style={{
-            borderColor: errors.fullName ? theme.accent : "transparent",
+            borderColor: errors.fullName ? theme.accent : theme.subheading,
             color: theme.content,
             backgroundColor: theme.secondaryBg,
           }}
@@ -195,13 +188,7 @@ const ContactForm = () => {
         )}
       </div>
 
-      <div
-        className="contact-form__field animated-border animated-border--thin"
-        style={{
-          "--accent-color": theme.accent,
-          "--heading-color": theme.heading,
-        }}
-      >
+      <div className="contact-form__field">
         <input
           type="email"
           name="email"
@@ -210,7 +197,7 @@ const ContactForm = () => {
           onChange={handleChange}
           className="contact-form__input"
           style={{
-            borderColor: errors.email ? theme.accent : "transparent",
+            borderColor: errors.email ? theme.accent : theme.subheading,
             color: theme.content,
             backgroundColor: theme.secondaryBg,
           }}
@@ -220,13 +207,7 @@ const ContactForm = () => {
         )}
       </div>
 
-      <div
-        className="contact-form__field animated-border animated-border--thin"
-        style={{
-          "--accent-color": theme.accent,
-          "--heading-color": theme.heading,
-        }}
-      >
+      <div className="contact-form__field">
         <input
           type="text"
           name="title"
@@ -235,7 +216,7 @@ const ContactForm = () => {
           onChange={handleChange}
           className="contact-form__input"
           style={{
-            borderColor: errors.title ? theme.accent : "transparent",
+            borderColor: errors.title ? theme.accent : theme.subheading,
             color: theme.content,
             backgroundColor: theme.secondaryBg,
           }}
@@ -245,13 +226,7 @@ const ContactForm = () => {
         )}
       </div>
 
-      <div
-        className="contact-form__field animated-border animated-border--thin"
-        style={{
-          "--accent-color": theme.accent,
-          "--heading-color": theme.heading,
-        }}
-      >
+      <div className="contact-form__field">
         <textarea
           name="message"
           placeholder="Message"
@@ -260,7 +235,7 @@ const ContactForm = () => {
           className="contact-form__textarea"
           rows="6"
           style={{
-            borderColor: errors.message ? theme.accent : "transparent",
+            borderColor: errors.message ? theme.accent : theme.subheading,
             color: theme.content,
             backgroundColor: theme.secondaryBg,
           }}
