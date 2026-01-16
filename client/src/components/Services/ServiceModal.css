@@ -104,9 +104,7 @@
 .service-modal__project-name,
 .service-modal__project-description,
 .service-modal__testimonial-text,
-.service-modal__testimonial-client,
-.service-modal__link,
-.service-modal__project-btn {
+.service-modal__testimonial-client {
   font-family: "Roboto Slab", serif;
   margin: 0;
 }
@@ -133,44 +131,9 @@
   justify-content: center;
 }
 
-/* Shared Button Styles */
-.service-modal__link,
-.service-modal__project-btn {
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: 400;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  border: 1px solid var(--accent-color);
-  background-color: var(--accent-color);
-  color: #fff;
-  cursor: pointer;
-}
-
-.service-modal__link {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-}
-
-.service-modal__link:hover,
-.service-modal__project-btn:hover {
-  background-color: transparent !important;
-  color: var(--accent-color) !important;
-  box-shadow: 0 0 15px var(--accent-color);
-  transform: translateY(-2px);
-}
-
-.service-modal__link:active,
-.service-modal__project-btn:active {
-  transform: translateY(0);
-}
-
 .service-modal__link-icon {
   font-size: 1.2rem;
+  line-height: 1;
 }
 
 /* Right Side */
@@ -267,22 +230,9 @@
   margin-top: auto;
 }
 
-.service-modal__project-btn {
+.service-modal__project-buttons .button {
   flex: 1;
-  padding: 0.4rem 0.6rem;
   font-size: 0.75rem;
-  text-align: center;
-  display: inline-block;
-}
-
-.service-modal__project-btn--secondary {
-  background-color: transparent;
-  color: var(--accent-color);
-}
-
-.service-modal__project-btn--secondary:hover {
-  background-color: var(--accent-color) !important;
-  color: #fff !important;
 }
 
 /* Testimonial Card */

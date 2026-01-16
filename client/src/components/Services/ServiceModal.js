@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useTheme } from "../../context/ThemeContext";
+import Button from "../Utility/Button";
 import "./ServiceModal.css";
 
 const ServiceModal = ({ service, onClose }) => {
@@ -61,32 +62,16 @@ const ServiceModal = ({ service, onClose }) => {
 
             <div className="service-modal__buttons">
               {service.githubLink && (
-                <a
-                  href={service.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="service-modal__link service-modal__link--github"
-                  style={{
-                    "--accent-color": theme.accent,
-                  }}
-                >
+                <Button href={service.githubLink} variant="primary">
                   <span className="service-modal__link-icon">💻</span>
                   GitHub
-                </a>
+                </Button>
               )}
               {service.liveDemoLink && (
-                <a
-                  href={service.liveDemoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="service-modal__link service-modal__link--demo"
-                  style={{
-                    "--accent-color": theme.accent,
-                  }}
-                >
+                <Button href={service.liveDemoLink} variant="primary">
                   <span className="service-modal__link-icon">🚀</span>
                   Live Demo
-                </a>
+                </Button>
               )}
             </div>
           </div>
@@ -112,28 +97,12 @@ const ServiceModal = ({ service, onClose }) => {
                       {project.description}
                     </p>
                     <div className="service-modal__project-buttons">
-                      <a
-                        href={project.codeLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="service-modal__project-btn"
-                        style={{
-                          "--accent-color": theme.accent,
-                        }}
-                      >
+                      <Button href={project.codeLink} variant="primary">
                         Code
-                      </a>
-                      <a
-                        href={project.demoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="service-modal__project-btn service-modal__project-btn--secondary"
-                        style={{
-                          "--accent-color": theme.accent,
-                        }}
-                      >
+                      </Button>
+                      <Button href={project.demoLink} variant="secondary">
                         Demo
-                      </a>
+                      </Button>
                     </div>
                   </div>
                 ))}
