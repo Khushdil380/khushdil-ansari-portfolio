@@ -1,7 +1,7 @@
-import reactIcon from "./tech-icon/react.svg";
-import javascriptIcon from "./tech-icon/javascript.svg";
-import pythonIcon from "./tech-icon/python.svg";
-import sqlIcon from "./tech-icon/sql.svg";
+import reactIcon from "../../../../assets/techIcons/react.svg";
+import javascriptIcon from "../../../../assets/techIcons/javascript.svg";
+import pythonIcon from "../../../../assets/techIcons/python.svg";
+import sqlIcon from "../../../../assets/techIcons/sql.svg";
 import thumbnail from "./4.png";
 
 const project4 = {

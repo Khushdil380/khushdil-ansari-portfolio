@@ -5,14 +5,14 @@ import "../Utility/TechIconStyles.css";
 import "./SkillItem.css";
 
 // Import skill icons
-import cIcon from "../../assets/skillicon/c.svg";
-import cppIcon from "../../assets/skillicon/cpp.svg";
-import cssIcon from "../../assets/skillicon/css.svg";
-import javaIcon from "../../assets/skillicon/java.svg";
-import javascriptIcon from "../../assets/skillicon/javascript.svg";
-import pythonIcon from "../../assets/skillicon/python.svg";
-import reactIcon from "../../assets/skillicon/react.svg";
-import sqlIcon from "../../assets/skillicon/sql.svg";
+import cIcon from "../../assets/techIcons/c.svg";
+import cppIcon from "../../assets/techIcons/cpp.svg";
+import cssIcon from "../../assets/techIcons/css.svg";
+import javaIcon from "../../assets/techIcons/java.svg";
+import javascriptIcon from "../../assets/techIcons/javascript.svg";
+import pythonIcon from "../../assets/techIcons/python.svg";
+import reactIcon from "../../assets/techIcons/react.svg";
+import sqlIcon from "../../assets/techIcons/sql.svg";
 
 const SkillItem = ({ skill }) => {
   const { theme } = useTheme();
