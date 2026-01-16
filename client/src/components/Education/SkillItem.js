@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import PropTypes from "prop-types";
-import { createTechBubble } from "../Utility/BubbleEffect/index";
 import "../Utility/TechIconStyles.css";
 import "./SkillItem.css";
 
@@ -17,6 +16,7 @@ import sqlIcon from "../../assets/skillicon/sql.svg";
 
 const SkillItem = ({ skill }) => {
   const { theme } = useTheme();
+  const bubbleModuleRef = useRef(null);
 
   // Map skill names to icons
   const skillIcons = {
@@ -34,8 +34,18 @@ const SkillItem = ({ skill }) => {
     window.open(skill.githubRepo, "_blank", "noopener,noreferrer");
   };
 
-  const handleIconHover = () => {
-    createTechBubble(skill.name);
+  const handleIconHover = async () => {
+    // Lazy load bubble effect on first hover
+    if (!bubbleModuleRef.current) {
+      try {
+        const module = await import("../Utility/BubbleEffect/index");
+        bubbleModuleRef.current = module.createTechBubble;
+      } catch (error) {
+        console.error("Failed to load bubble effect:", error);
+        return;
+      }
+    }
+    bubbleModuleRef.current(skill.name);
   };
 
   return (

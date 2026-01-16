@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import PropTypes from "prop-types";
-import { createTechBubble } from "../Utility/BubbleEffect/index";
 import "../Utility/TechIconStyles.css";
 import "./TechIcon.css";
 
@@ -10,6 +9,7 @@ const TechIcon = ({ techName, iconPath }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const iconRef = useRef(null);
+  const bubbleModuleRef = useRef(null);
 
   // Get first letter or two for the icon placeholder
   const getIconText = (name) => {
@@ -20,8 +20,18 @@ const TechIcon = ({ techName, iconPath }) => {
     return name.substring(0, 2).toUpperCase();
   };
 
-  const handleIconHover = () => {
-    createTechBubble(techName);
+  const handleIconHover = async () => {
+    // Lazy load bubble effect on first hover
+    if (!bubbleModuleRef.current) {
+      try {
+        const module = await import("../Utility/BubbleEffect/index");
+        bubbleModuleRef.current = module.createTechBubble;
+      } catch (error) {
+        console.error("Failed to load bubble effect:", error);
+        return;
+      }
+    }
+    bubbleModuleRef.current(techName);
   };
 
   // Reset loading state when iconPath changes
