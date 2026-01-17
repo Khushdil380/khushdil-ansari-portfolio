@@ -1,0 +1,94 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: |
+            client/package-lock.json
+            server/package-lock.json
+      
+      - name: Install client dependencies
+        run: |
+          cd client
+          npm ci
+      
+      - name: Build client
+        run: |
+          cd client
+          npm run build
+      
+      - name: Run client tests
+        run: |
+          cd client
+          CI=true npm test -- --passWithNoTests
+      
+      - name: Install server dependencies
+        run: |
+          cd server
+          npm ci
+      
+      - name: Create build archive
+        run: |
+          mkdir -p release-artifacts
+          tar -czf release-artifacts/client-build.tar.gz -C client/build .
+          tar -czf release-artifacts/server.tar.gz -C server .
+      
+      - name: Generate changelog
+        id: changelog
+        run: |
+          # Get the previous tag
+          PREVIOUS_TAG=$(git tag --sort=-version:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sed -n '2p')
+          CURRENT_TAG=${GITHUB_REF#refs/tags/}
+          
+          echo "Current tag: $CURRENT_TAG"
+          echo "Previous tag: $PREVIOUS_TAG"
+          
+          # Generate changelog
+          if [ -z "$PREVIOUS_TAG" ]; then
+            echo "## Changes" > changelog.md
+            git log --pretty=format:"- %s (%h)" >> changelog.md
+          else
+            echo "## Changes" > changelog.md
+            git log ${PREVIOUS_TAG}..${CURRENT_TAG} --pretty=format:"- %s (%h)" >> changelog.md
+          fi
+          
+          cat changelog.md
+      
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          body_path: changelog.md
+          files: |
+            release-artifacts/client-build.tar.gz
+            release-artifacts/server.tar.gz
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Release summary
+        run: |
+          echo "✅ Release ${GITHUB_REF#refs/tags/} created successfully!"
+          echo "📦 Artifacts uploaded:"
+          echo "   - client-build.tar.gz"
+          echo "   - server.tar.gz"
