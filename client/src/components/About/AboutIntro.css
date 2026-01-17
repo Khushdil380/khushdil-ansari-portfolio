@@ -1,7 +1,8 @@
+/* Desktop Layout (Default) */
 .about-intro {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
+  grid-template-columns: 400px 1fr;
+  gap: 4rem;
   align-items: start;
 }
 
@@ -93,18 +94,10 @@
   margin-top: 1rem;
 }
 
-/* Desktop Layout */
-@media (min-width: 769px) {
-  .about-intro {
-    grid-template-columns: 400px 1fr;
-    gap: 4rem;
-  }
-}
-
 /* Tablet */
-@media (max-width: 1024px) and (min-width: 769px) {
+@media (max-width: 768px) {
   .about-intro {
-    grid-template-columns: 350px 1fr;
+    grid-template-columns: 1fr;
     gap: 3rem;
   }
 
@@ -119,14 +112,14 @@
 }
 
 /* Mobile */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
+  .about-intro {
+    gap: 2rem;
+  }
+
   .about-profile-pic {
     width: 220px;
     height: 220px;
-  }
-
-  .about-profile-placeholder {
-    font-size: 4rem;
   }
 
   .about-name {
