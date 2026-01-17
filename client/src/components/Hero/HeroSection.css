@@ -101,11 +101,11 @@
   }
 
   .hero-quote-wrapper {
-    margin: 0 auto 1rem;
+    margin: 0 auto 1.5rem;
   }
 
   .hero-container {
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .hero-buttons {
