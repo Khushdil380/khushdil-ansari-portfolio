@@ -95,16 +95,17 @@ jobs:
           if [ -z "$PREVIOUS_TAG" ]; then
             echo "## What's Changed" > changelog.md
             echo "" >> changelog.md
+            echo "Initial release" >> changelog.md
+            echo "" >> changelog.md
             git log --pretty=format:"- %s (%h)" >> changelog.md
           else
             echo "## What's Changed" > changelog.md
             echo "" >> changelog.md
             git log ${PREVIOUS_TAG}..HEAD --pretty=format:"- %s (%h)" >> changelog.md
+            echo "" >> changelog.md
+            echo "" >> changelog.md
+            echo "**Full Changelog**: https://github.com/${{ github.repository }}/compare/${PREVIOUS_TAG}...${TAG}" >> changelog.md
           fi
-          
-          echo "" >> changelog.md
-          echo "" >> changelog.md
-          echo "**Full Changelog**: https://github.com/${{ github.repository }}/compare/${PREVIOUS_TAG}...${TAG}" >> changelog.md
           
           cat changelog.md
       
