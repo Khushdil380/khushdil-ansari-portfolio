@@ -65,10 +65,9 @@ const RequestResumeModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="resume-modal-overlay" onClick={onClose}>
+    <div className="resume-modal-overlay">
       <div
         className="resume-modal-content animated-border"
-        onClick={(e) => e.stopPropagation()}
         style={{
           "--secondary-bg": theme.secondaryBg,
           "--heading-color": theme.heading,
@@ -172,8 +171,19 @@ const RequestResumeModal = ({ isOpen, onClose }) => {
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting ? "Sending..." : "Submit Request"}
             </Button>
-            <Button type="button" variant="secondary" onClick={onClose}>
-              Cancel
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={() =>
+                setFormData({
+                  companyName: "",
+                  receiverEmail: "",
+                  requirement: "",
+                  description: "",
+                })
+              }
+            >
+              Clear
             </Button>
           </div>
         </form>

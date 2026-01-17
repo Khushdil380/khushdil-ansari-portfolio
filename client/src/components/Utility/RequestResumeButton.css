@@ -1,5 +1,6 @@
 .resume-request-button {
   position: relative;
+  background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
@@ -7,7 +8,6 @@
   transition: transform 0.3s ease;
   display: inline-block;
   border-radius: 12px;
-  background: transparent;
   isolation: isolate;
 }
 
@@ -38,13 +38,21 @@
 }
 
 @media (max-width: 768px) {
+  .resume-request-button {
+    margin: 1rem 0;
+  }
+
   .resume-request-gif {
-    width: 150px;
+    width: 180px;
   }
 }
 
 @media (max-width: 480px) {
+  .resume-request-button {
+    margin: 0.75rem 0;
+  }
+
   .resume-request-gif {
-    width: 130px;
+    width: 150px;
   }
 }
