@@ -7,12 +7,15 @@ import HeadlineComponent from "./HeadlineComponent";
 import DescriptionComponent from "./DescriptionComponent";
 import AnimatedBackground from "./AnimatedBackground";
 import Button from "../Utility/Button";
+import RequestResumeButton from "../Utility/RequestResumeButton";
+import RequestResumeModal from "../Utility/RequestResumeModal";
 import "./HeroSection.css";
 
 const HeroSection = () => {
   const { theme } = useTheme();
   const navigate = useNavigate();
   const [currentRole, setCurrentRole] = useState("Software Engineer");
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   const handleRoleChange = (role) => {
     setCurrentRole(role);
@@ -57,6 +60,10 @@ const HeroSection = () => {
               About me
             </Button>
           </div>
+
+          <div className="hero-resume-request">
+            <RequestResumeButton onClick={() => setIsResumeModalOpen(true)} />
+          </div>
         </div>
 
         {/* Desktop: Photo on right */}
@@ -64,6 +71,12 @@ const HeroSection = () => {
           <ProfilePicture />
         </div>
       </div>
+
+      {/* Resume Request Modal */}
+      <RequestResumeModal
+        isOpen={isResumeModalOpen}
+        onClose={() => setIsResumeModalOpen(false)}
+      />
     </section>
   );
 };

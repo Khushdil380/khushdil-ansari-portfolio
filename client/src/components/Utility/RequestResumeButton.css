@@ -1,0 +1,49 @@
+.resume-request-button {
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 3px;
+  margin: 1.5rem 0;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  border-radius: 12px;
+  overflow: visible;
+  isolation: isolate;
+}
+
+.resume-request-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--primary-bg, #000);
+  border-radius: 12px;
+  z-index: -1;
+}
+
+.resume-request-button:hover {
+  transform: scale(1.05);
+}
+
+.resume-request-button:active {
+  transform: scale(0.95);
+}
+
+.resume-request-gif {
+  width: 240px;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .resume-request-gif {
+    width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-request-gif {
+    width: 130px;
+  }
+}
