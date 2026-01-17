@@ -59,11 +59,13 @@
 
 @media (max-width: 480px) {
   .hero-section {
-    padding: 1.5rem 1rem 2rem;
+    padding: 5rem 1rem 2rem 1rem;
+    justify-content: flex-start;
   }
 
   .hero-quote-wrapper {
     margin: 0 auto 1rem;
+    padding-top: 0;
   }
 
   .hero-container {
