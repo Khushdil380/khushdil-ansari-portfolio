@@ -3,7 +3,9 @@ const nodemailer = require("nodemailer");
 // Create transporter
 const createTransporter = () => {
   if (!process.env.EMAIL_USER || !process.env.EMAIL_APP_PASSWORD) {
-    console.error("Email configuration is missing - EMAIL_USER or EMAIL_APP_PASSWORD not set");
+    console.error(
+      "Email configuration is missing - EMAIL_USER or EMAIL_APP_PASSWORD not set",
+    );
     throw new Error("Email configuration is missing");
   }
 
@@ -24,6 +26,10 @@ const sendResumeRequestNotification = async ({
   description,
 }) => {
   try {
+    console.log("[Email Service] Creating transporter...");
+    console.log("[Email Service] EMAIL_USER:", process.env.EMAIL_USER ? "Set" : "NOT SET");
+    console.log("[Email Service] EMAIL_APP_PASSWORD:", process.env.EMAIL_APP_PASSWORD ? "Set" : "NOT SET");
+    
     const transporter = createTransporter();
 
     const mailOptions = {
@@ -179,10 +185,13 @@ const sendResumeRequestNotification = async ({
       replyTo: receiverEmail,
     };
 
+    console.log("[Email Service] Attempting to send email to:", process.env.EMAIL_USER);
     await transporter.sendMail(mailOptions);
-    console.log(`Resume request email sent successfully for ${companyName}`);
+    console.log(`[Email Service] ✓ Resume request email sent successfully for ${companyName}`);
   } catch (error) {
-    console.error("Error sending resume request email:", error);
+    console.error("[Email Service] ✗ Error sending resume request email:", error);
+    console.error("[Email Service] Error code:", error.code);
+    console.error("[Email Service] Error response:", error.response);
     throw error;
   }
 };

@@ -54,6 +54,14 @@ router.post("/", resumeRequestValidation, async (req, res) => {
 
   // Send email in background using setImmediate (true fire and forget)
   setImmediate(() => {
+    console.log("[Resume Request] Starting email send process...");
+    console.log("[Resume Request] Data:", {
+      companyName,
+      receiverEmail,
+      requirement,
+      description: description ? "provided" : "not provided",
+    });
+
     resumeEmailService
       .sendResumeRequestNotification({
         companyName,
@@ -62,10 +70,13 @@ router.post("/", resumeRequestValidation, async (req, res) => {
         description,
       })
       .then(() => {
-        console.log(`Resume request email sent successfully for ${companyName}`);
+        console.log(
+          `[Resume Request] ✓ Email sent successfully for ${companyName}`,
+        );
       })
       .catch((error) => {
-        console.error("Failed to send resume request email:", error);
+        console.error("[Resume Request] ✗ Failed to send email:", error);
+        console.error("[Resume Request] Error details:", error.message);
       });
   });
 });
