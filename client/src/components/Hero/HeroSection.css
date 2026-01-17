@@ -101,7 +101,11 @@
   }
 
   .hero-quote-wrapper {
-    margin: 2 auto 3rem;  
+    margin: 1.5rem auto;
+  }
+
+  .hero-image-mobile {
+    margin-top: 1.5rem;
   }
 
   .hero-container {
