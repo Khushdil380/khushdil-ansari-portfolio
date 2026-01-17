@@ -48,10 +48,6 @@ const RequestResumeModal = ({ isOpen, onClose }) => {
           requirement: "",
           description: "",
         });
-        setTimeout(() => {
-          onClose();
-          setSubmitStatus(null);
-        }, 2000);
       } else {
         setSubmitStatus("error");
       }
