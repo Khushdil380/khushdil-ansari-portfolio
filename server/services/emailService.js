@@ -1,10 +1,27 @@
 // @ts-nocheck
+
+/**
+ * EMAIL SERVICE - Centralized email handling for portfolio
+ * 
+ * This service manages all email functionality using Nodemailer with Gmail SMTP.
+ * Environment variables required: EMAIL_USER, EMAIL_APP_PASSWORD
+ * 
+ * Functions:
+ * 1. createTransporter() - Creates Gmail SMTP transporter
+ * 2. sendThankYouEmail() - Sends confirmation to contact form users
+ * 3. sendNotificationEmail() - Sends contact form data to admin
+ * 4. sendResumeRequestEmail() - Sends resume request details to admin
+ */
+
 const nodemailer = require("nodemailer");
 const {
   getWelcomeEmailTemplate,
 } = require("../templates/emails/welcomeEmailTemplate");
 
 // Create transporter
+// Creates and configures Nodemailer transporter for Gmail SMTP
+// Validates EMAIL_USER and EMAIL_APP_PASSWORD environment variables
+// Returns: Configured transporter instance
 const createTransporter = () => {
   if (!process.env.EMAIL_USER || !process.env.EMAIL_APP_PASSWORD) {
     throw new Error("Email configuration is missing");
@@ -20,6 +37,11 @@ const createTransporter = () => {
 };
 
 // Send thank you email to user
+// CONTACT FORM: Sends confirmation email to user who submitted contact form
+// Parameters: userEmail (string), userName (string)
+// Sends to: User's email address
+// Template: Uses welcomeEmailTemplate.js with portfolio branding
+// Called from: /api/contact route
 const sendThankYouEmail = async (userEmail, userName) => {
   try {
     const transporter = createTransporter();
@@ -41,6 +63,12 @@ const sendThankYouEmail = async (userEmail, userName) => {
 };
 
 // Send notification email to admin
+// CONTACT FORM: Notifies admin of new contact form submission
+// Parameters: { fullName, email, title, message }
+// Sends to: EMAIL_USER (admin's email)
+// Format: HTML email with styled template (colors: #0E1524, #BED600, #E32227)
+// Reply-To: User's email (allows direct reply from admin's email client)
+// Called from: /api/contact route
 const sendNotificationEmail = async ({ fullName, email, title, message }) => {
   try {
     const transporter = createTransporter();
@@ -101,6 +129,13 @@ const sendNotificationEmail = async ({ fullName, email, title, message }) => {
 
 // ===== RESUME REQUEST EMAIL =====
 // Send resume request notification to admin
+// RESUME REQUEST: Notifies admin when recruiter/company requests resume
+// Parameters: { companyName, receiverEmail, requirement, description }
+// Sends to: EMAIL_USER (admin's email)
+// Format: HTML email with company highlight and action reminder
+// Reply-To: receiverEmail (company's email)
+// IMPORTANT: Called WITHOUT await in /api/resume-request (fire-and-forget pattern)
+// This allows instant user response while email sends in background
 const sendResumeRequestEmail = async ({
   companyName,
   receiverEmail,
@@ -169,6 +204,10 @@ const sendResumeRequestEmail = async ({
   }
 };
 
+// Export all email service functions
+// Usage: const emailService = require('../services/emailService');
+// Contact form: await emailService.sendThankYouEmail() and await emailService.sendNotificationEmail()
+// Resume request: emailService.sendResumeRequestEmail().catch() - fire-and-forget pattern
 module.exports = {
   sendThankYouEmail,
   sendNotificationEmail,
