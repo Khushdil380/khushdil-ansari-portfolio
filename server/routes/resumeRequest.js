@@ -32,11 +32,6 @@ const resumeRequestValidation = [
     .withMessage("Description must not exceed 1000 characters"),
 ];
 
-// OPTIONS handler for CORS preflight
-router.options("/", (req, res) => {
-  res.status(200).end();
-});
-
 // POST /api/resume-request
 router.post("/", resumeRequestValidation, async (req, res) => {
   try {
