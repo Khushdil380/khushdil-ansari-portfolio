@@ -31,7 +31,8 @@ const RequestResumeModal = ({ isOpen, onClose }) => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch("/api/resume-request", {
+      const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:5000";
+      const response = await fetch(`${apiUrl}/api/resume-request`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
