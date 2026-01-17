@@ -31,7 +31,7 @@ const RequestResumeModal = ({ isOpen, onClose }) => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch("/api/contact/resume-request", {
+      const response = await fetch("/api/resume-request", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -108,8 +108,7 @@
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 3px var(--accent-color, rgba(227, 34, 39, 0.1));
+  border-color: var(--heading-color);
 }
 
 .form-group textarea {
