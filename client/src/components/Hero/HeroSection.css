@@ -1,13 +1,13 @@
 /* ========================================
-   HERO SECTION - BASE STYLES
+   HERO SECTION - BASE STYLES (DESKTOP)
    ======================================== */
 
 .hero-section {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 2rem 2rem 2rem;
+  justify-content: flex-start;
+  padding: 5rem 2rem 2rem;
   background-color: var(--primary-bg);
   position: relative;
   overflow: hidden;
@@ -16,7 +16,7 @@
 .hero-quote-wrapper {
   max-width: 1400px;
   width: 100%;
-  margin: 0 auto 1rem;
+  margin: 0 auto 1.5rem;
   text-align: center;
 }
 
@@ -24,7 +24,7 @@
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   align-items: center;
   width: 100%;
@@ -34,6 +34,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding-right: 2rem;
 }
 
 .hero-buttons {
@@ -44,28 +45,63 @@
 }
 
 .hero-image-mobile {
-  display: flex;
-  justify-content: center;
-  order: -1;
-}
-
-.hero-image-desktop {
   display: none;
 }
 
+.hero-image-desktop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-picture-container {
+  margin: 2rem 0;
+}
+
 /* ========================================
-   RESPONSIVE BREAKPOINTS
+   TABLET VIEW
+   ======================================== */
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 7rem 1.5rem 2rem;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .hero-content {
+    padding-right: 0;
+  }
+
+  .hero-image-mobile {
+    display: flex;
+    justify-content: center;
+    order: -1;
+  }
+
+  .hero-image-desktop {
+    display: none;
+  }
+
+  .profile-picture-container {
+    margin: 0;
+  }
+}
+
+/* ========================================
+   MOBILE VIEW
    ======================================== */
 
 @media (max-width: 480px) {
   .hero-section {
-    padding: 5rem 1rem 2rem 1rem;
-    justify-content: flex-start;
+    padding: 5.5rem 1rem 2rem;
   }
 
   .hero-quote-wrapper {
     margin: 0 auto 1rem;
-    padding-top: 0;
   }
 
   .hero-container {
@@ -74,53 +110,5 @@
 
   .hero-buttons {
     gap: 1rem;
-  }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-  .hero-section {
-    padding: 2rem 1.5rem 2rem;
-  }
-
-  .hero-quote-wrapper {
-    margin: 0 auto 1.2rem;
-  }
-
-  .hero-container {
-    gap: 1.2rem;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .hero-section {
-    padding: 3rem 1.5rem 2rem;
-  }
-}
-
-@media (min-width: 1025px) {
-  .hero-section {
-    padding: 5rem 2rem 2rem;
-  }
-
-  .hero-container {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .hero-image-mobile {
-    display: none;
-  }
-
-  .hero-image-desktop {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .hero-content {
-    padding-right: 2rem;
-  }
-
-  .profile-picture-container {
-    margin: 2rem 0;
   }
 }
