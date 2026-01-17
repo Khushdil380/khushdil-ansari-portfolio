@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import CloseButton from "../Utility/CloseButton";
 import Button from "../Utility/Button";
 import "./RequestResumeModal.css";
+import "./AnimatedBorder.css";
 
 const RequestResumeModal = ({ isOpen, onClose }) => {
   const { theme } = useTheme();
@@ -66,13 +67,15 @@ const RequestResumeModal = ({ isOpen, onClose }) => {
   return (
     <div className="resume-modal-overlay" onClick={onClose}>
       <div
-        className="resume-modal-content"
+        className="resume-modal-content animated-border"
         onClick={(e) => e.stopPropagation()}
         style={{
           "--secondary-bg": theme.secondaryBg,
           "--heading-color": theme.heading,
           "--content-color": theme.content,
           "--accent-color": theme.accent,
+          "--primary-bg": theme.primaryBg,
+          "--card-bg": theme.secondaryBg,
         }}
       >
         <div className="resume-modal-header">

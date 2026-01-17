@@ -11,8 +11,9 @@
   align-items: center;
   justify-content: center;
   z-index: 2000;
-  padding: 1rem;
+  padding: 1.5rem;
   animation: fadeIn 0.3s ease;
+  overflow-y: auto;
 }
 
 @keyframes fadeIn {
@@ -26,14 +27,25 @@
 
 /* Modal Content */
 .resume-modal-content {
-  background-color: var(--secondary-bg);
+  background-color: transparent;
   border-radius: 12px;
   max-width: 600px;
   width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  max-height: fit-content;
   animation: slideUp 0.3s ease;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+  margin: auto;
+}
+
+.resume-modal-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--card-bg);
+  border-radius: 12px;
+  z-index: 0;
 }
 
 @keyframes slideUp {
@@ -54,6 +66,8 @@
   align-items: center;
   padding: 1.5rem 2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1;
 }
 
 .resume-modal-title {
@@ -66,6 +80,8 @@
 /* Form */
 .resume-form {
   padding: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .form-group {
