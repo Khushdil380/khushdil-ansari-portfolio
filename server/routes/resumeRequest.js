@@ -46,38 +46,31 @@ router.post("/", resumeRequestValidation, async (req, res) => {
 
   const { companyName, receiverEmail, requirement, description } = req.body;
 
-  // Send success response immediately (no try-catch to block response)
-  res.status(200).json({
-    success: true,
-    message: "Resume request submitted successfully!",
-  });
+  // Log the request
+  console.log("[Resume Request] Processing request for:", companyName);
 
-  // Send email in background using setImmediate (true fire and forget)
-  setImmediate(() => {
-    console.log("[Resume Request] Starting email send process...");
-    console.log("[Resume Request] Data:", {
+  // Send email first (but don't wait for it to complete)
+  resumeEmailService
+    .sendResumeRequestNotification({
       companyName,
       receiverEmail,
       requirement,
-      description: description ? "provided" : "not provided",
+      description,
+    })
+    .then(() => {
+      console.log(
+        `[Resume Request] ✓ Email sent successfully for ${companyName}`,
+      );
+    })
+    .catch((error) => {
+      console.error("[Resume Request] ✗ Failed to send email:", error);
+      console.error("[Resume Request] Error details:", error.message);
     });
 
-    resumeEmailService
-      .sendResumeRequestNotification({
-        companyName,
-        receiverEmail,
-        requirement,
-        description,
-      })
-      .then(() => {
-        console.log(
-          `[Resume Request] ✓ Email sent successfully for ${companyName}`,
-        );
-      })
-      .catch((error) => {
-        console.error("[Resume Request] ✗ Failed to send email:", error);
-        console.error("[Resume Request] Error details:", error.message);
-      });
+  // Send success response immediately (don't await email)
+  res.status(200).json({
+    success: true,
+    message: "Resume request submitted successfully!",
   });
 });
 
