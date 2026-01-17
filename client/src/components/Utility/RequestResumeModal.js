@@ -48,6 +48,10 @@ const RequestResumeModal = ({ isOpen, onClose }) => {
           requirement: "",
           description: "",
         });
+        // Auto-hide success message after 5 seconds
+        setTimeout(() => {
+          setSubmitStatus(null);
+        }, 5000);
       } else {
         setSubmitStatus("error");
       }

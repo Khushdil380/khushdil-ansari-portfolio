@@ -2,10 +2,10 @@
 
 /**
  * EMAIL SERVICE - Centralized email handling for portfolio
- * 
+ *
  * This service manages all email functionality using Nodemailer with Gmail SMTP.
  * Environment variables required: EMAIL_USER, EMAIL_APP_PASSWORD
- * 
+ *
  * Functions:
  * 1. createTransporter() - Creates Gmail SMTP transporter
  * 2. sendThankYouEmail() - Sends confirmation to contact form users
