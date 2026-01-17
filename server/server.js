@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const contactRoutes = require("./routes/contact");
+const resumeRequestRoutes = require("./routes/resumeRequest");
 
 // Load environment variables
 dotenv.config();
@@ -28,7 +29,7 @@ app.use(
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  }),
 );
 
 app.use(express.json());
@@ -36,6 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/api/contact", contactRoutes);
+app.use("/api/resume-request", resumeRequestRoutes);
 
 // Health check
 app.get("/api/health", (req, res) => {
