@@ -99,7 +99,78 @@ const sendNotificationEmail = async ({ fullName, email, title, message }) => {
   }
 };
 
+// ===== RESUME REQUEST EMAIL =====
+// Send resume request notification to admin
+const sendResumeRequestEmail = async ({
+  companyName,
+  receiverEmail,
+  requirement,
+  description,
+}) => {
+  try {
+    const transporter = createTransporter();
+
+    const mailOptions = {
+      from: {
+        name: "Portfolio Resume Request",
+        address: process.env.EMAIL_USER,
+      },
+      to: process.env.EMAIL_USER,
+      subject: `🎯 Resume Request from ${companyName}`,
+      html: `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+          .header { background: #0E1524; color: #BED600; padding: 20px; border-radius: 10px 10px 0 0; }
+          .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
+          .field { margin: 15px 0; padding: 10px; background: white; border-left: 4px solid #E32227; }
+          .label { font-weight: bold; color: #E32227; }
+          .highlight { background: #BED600; color: #0E1524; padding: 4px 8px; border-radius: 4px; }
+          h2 { margin: 0; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h2>🎯 New Resume Request</h2>
+          </div>
+          <div class="content">
+            <div class="field">
+              <span class="label">Company Name:</span> <span class="highlight">${companyName}</span>
+            </div>
+            <div class="field">
+              <span class="label">Receiver Email:</span> ${receiverEmail}
+            </div>
+            <div class="field">
+              <span class="label">Position/Role:</span> ${requirement}
+            </div>
+            ${
+              description
+                ? `<div class="field"><span class="label">Details:</span><br>${description.replace(/\n/g, "<br>")}</div>`
+                : ""
+            }
+            <div class="field" style="background: #E3F2FD; border-left-color: #2196F3;">
+              <strong>📧 Action Required:</strong> Send your resume to ${receiverEmail}
+            </div>
+          </div>
+        </div>
+      </body>
+      </html>
+    `,
+      replyTo: receiverEmail,
+    };
+
+    await transporter.sendMail(mailOptions);
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   sendThankYouEmail,
   sendNotificationEmail,
+  sendResumeRequestEmail,
 };

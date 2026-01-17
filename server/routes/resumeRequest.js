@@ -1,6 +1,6 @@
 const express = require("express");
 const { body, validationResult } = require("express-validator");
-const resumeEmailService = require("../services/resumeEmailService");
+const emailService = require("../services/emailService");
 
 const router = express.Router();
 
@@ -34,44 +34,48 @@ const resumeRequestValidation = [
 
 // POST /api/resume-request
 router.post("/", resumeRequestValidation, async (req, res) => {
-  // Check for validation errors
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({
+  try {
+    // Check for validation errors
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        success: false,
+        message: "Validation failed",
+        errors: errors.array(),
+      });
+    }
+
+    const { companyName, receiverEmail, requirement, description } = req.body;
+
+    try {
+      // Send resume request email (no user confirmation email needed)
+      await emailService.sendResumeRequestEmail({
+        companyName,
+        receiverEmail,
+        requirement,
+        description,
+      });
+
+      return res.status(200).json({
+        success: true,
+        message: "Resume request submitted successfully!",
+      });
+    } catch (emailError) {
+      // Still return success to user even if email fails
+      console.error("Email error:", emailError);
+      return res.status(200).json({
+        success: true,
+        message:
+          "Your request has been received! We'll process it shortly.",
+      });
+    }
+  } catch (error) {
+    console.error("Resume request error:", error);
+    res.status(500).json({
       success: false,
-      message: "Validation failed",
-      errors: errors.array(),
+      message: "Failed to submit resume request. Please try again later.",
     });
   }
-
-  const { companyName, receiverEmail, requirement, description } = req.body;
-
-  // Log the request
-  console.log("[Resume Request] Processing request for:", companyName);
-
-  // Send email first (but don't wait for it to complete)
-  resumeEmailService
-    .sendResumeRequestNotification({
-      companyName,
-      receiverEmail,
-      requirement,
-      description,
-    })
-    .then(() => {
-      console.log(
-        `[Resume Request] ✓ Email sent successfully for ${companyName}`,
-      );
-    })
-    .catch((error) => {
-      console.error("[Resume Request] ✗ Failed to send email:", error);
-      console.error("[Resume Request] Error details:", error.message);
-    });
-
-  // Send success response immediately (don't await email)
-  res.status(200).json({
-    success: true,
-    message: "Resume request submitted successfully!",
-  });
 });
 
 module.exports = router;
