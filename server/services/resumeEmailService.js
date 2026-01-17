@@ -7,7 +7,7 @@ const createTransporter = () => {
     throw new Error("Email configuration is missing");
   }
 
-  return nodemailer.createTransporter({
+  return nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: process.env.EMAIL_USER,
