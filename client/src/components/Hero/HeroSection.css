@@ -44,6 +44,10 @@
   flex-wrap: wrap;
 }
 
+.hero-resume-request {
+  margin-top: 1.5rem;
+}
+
 .hero-image-mobile {
   display: none;
 }

@@ -4,7 +4,6 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  margin: 1.5rem 0;
   transition: transform 0.3s ease;
   display: inline-block;
   border-radius: 12px;
@@ -38,20 +37,12 @@
 }
 
 @media (max-width: 768px) {
-  .resume-request-button {
-    margin: 1rem 0;
-  }
-
   .resume-request-gif {
     width: 180px;
   }
 }
 
 @media (max-width: 480px) {
-  .resume-request-button {
-    margin: 0.75rem 0;
-  }
-
   .resume-request-gif {
     width: 150px;
   }
