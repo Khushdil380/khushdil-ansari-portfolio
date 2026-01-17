@@ -47,28 +47,23 @@ router.post("/", resumeRequestValidation, async (req, res) => {
 
     const { companyName, receiverEmail, requirement, description } = req.body;
 
-    try {
-      // Send resume request email (no user confirmation email needed)
-      await emailService.sendResumeRequestEmail({
+    // Send response immediately (don't wait for email)
+    res.status(200).json({
+      success: true,
+      message: "Resume request submitted successfully!",
+    });
+
+    // Send email in background (fire and forget)
+    emailService
+      .sendResumeRequestEmail({
         companyName,
         receiverEmail,
         requirement,
         description,
+      })
+      .catch((error) => {
+        console.error("Resume request email error:", error);
       });
-
-      return res.status(200).json({
-        success: true,
-        message: "Resume request submitted successfully!",
-      });
-    } catch (emailError) {
-      // Still return success to user even if email fails
-      console.error("Email error:", emailError);
-      return res.status(200).json({
-        success: true,
-        message:
-          "Your request has been received! We'll process it shortly.",
-      });
-    }
   } catch (error) {
     console.error("Resume request error:", error);
     res.status(500).json({
