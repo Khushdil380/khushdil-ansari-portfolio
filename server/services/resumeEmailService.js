@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer");
 // Create transporter
 const createTransporter = () => {
   if (!process.env.EMAIL_USER || !process.env.EMAIL_APP_PASSWORD) {
+    console.error("Email configuration is missing - EMAIL_USER or EMAIL_APP_PASSWORD not set");
     throw new Error("Email configuration is missing");
   }
 

@@ -34,26 +34,26 @@ const resumeRequestValidation = [
 
 // POST /api/resume-request
 router.post("/", resumeRequestValidation, async (req, res) => {
-  try {
-    // Check for validation errors
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({
-        success: false,
-        message: "Validation failed",
-        errors: errors.array(),
-      });
-    }
-
-    const { companyName, receiverEmail, requirement, description } = req.body;
-
-    // Send success response immediately
-    res.status(200).json({
-      success: true,
-      message: "Resume request submitted successfully!",
+  // Check for validation errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      success: false,
+      message: "Validation failed",
+      errors: errors.array(),
     });
+  }
 
-    // Send email in background (no await, fire and forget)
+  const { companyName, receiverEmail, requirement, description } = req.body;
+
+  // Send success response immediately (no try-catch to block response)
+  res.status(200).json({
+    success: true,
+    message: "Resume request submitted successfully!",
+  });
+
+  // Send email in background using setImmediate (true fire and forget)
+  setImmediate(() => {
     resumeEmailService
       .sendResumeRequestNotification({
         companyName,
@@ -61,16 +61,13 @@ router.post("/", resumeRequestValidation, async (req, res) => {
         requirement,
         description,
       })
+      .then(() => {
+        console.log(`Resume request email sent successfully for ${companyName}`);
+      })
       .catch((error) => {
         console.error("Failed to send resume request email:", error);
       });
-  } catch (error) {
-    console.error("Resume request error:", error);
-    res.status(500).json({
-      success: false,
-      message: "Failed to submit resume request. Please try again later.",
-    });
-  }
+  });
 });
 
 module.exports = router;
