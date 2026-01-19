@@ -15,7 +15,7 @@ const HeadlineComponent = ({ onRoleChange }) => {
       "Programmer",
       "Problem Solver",
     ],
-    []
+    [],
   );
 
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -36,7 +36,6 @@ const HeadlineComponent = ({ onRoleChange }) => {
 
   useEffect(() => {
     const currentRole = roles[currentRoleIndex];
-
     const typingSpeed = isDeleting ? 70 : 150;
     const pauseTime = isDeleting ? 1000 : 3000;
 
@@ -54,7 +53,7 @@ const HeadlineComponent = ({ onRoleChange }) => {
     const timeout = setTimeout(() => {
       setCharIndex((prev) => prev + (isDeleting ? -1 : 1));
       setDisplayedRole(
-        currentRole.substring(0, charIndex + (isDeleting ? -1 : 1))
+        currentRole.substring(0, charIndex + (isDeleting ? -1 : 1)),
       );
     }, typingSpeed);
 
@@ -64,8 +63,11 @@ const HeadlineComponent = ({ onRoleChange }) => {
   return (
     <div className="headline-component">
       <h2 className="headline-text" style={{ color: theme.subheading }}>
-        I Am <span className="role-text">{displayedRole}</span>
-        <span className="cursor">|</span>
+        I Am{" "}
+        <span className="role-text">
+          {displayedRole}
+          <span className="cursor">|</span>
+        </span>
       </h2>
     </div>
   );

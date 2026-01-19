@@ -13,6 +13,8 @@
   font-weight: 700;
   display: inline-block;
   min-width: 200px;
+  font-family:
+    "Roboto Mono", "Fira Mono", "Menlo", "Monaco", "Consolas", monospace;
 }
 
 .cursor {
