@@ -9,6 +9,7 @@ const RequestResumeButton = ({ onClick }) => {
 
   return (
     <button
+      type="button"
       className="resume-request-button animated-border"
       onClick={onClick}
       aria-label="Request Resume"
