@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import WorkExperience from "./WorkExperience";
 import EducationItem from "./EducationItem";
@@ -8,6 +8,48 @@ import "./EducationSection.css";
 
 const EducationSection = () => {
   const { theme } = useTheme();
+  const [animationTrigger, setAnimationTrigger] = useState({});
+
+  // Continuous random skill animation
+  useEffect(() => {
+    let timeoutId;
+    let isActive = true;
+
+    const triggerRandomAnimation = () => {
+      if (!isActive) return;
+
+      // Random delay between 3-5 seconds
+      const randomDelay = Math.random() * 2000 + 3000;
+
+      timeoutId = setTimeout(() => {
+        if (!isActive) return;
+
+        // Pick random skill
+        const randomIndex = Math.floor(Math.random() * skillsData.length);
+        const randomSkillId = skillsData[randomIndex].id;
+
+        // Trigger animation for this skill by incrementing its counter
+        setAnimationTrigger((prev) => ({
+          ...prev,
+          [randomSkillId]: (prev[randomSkillId] || 0) + 1,
+        }));
+
+        // Schedule next animation
+        triggerRandomAnimation();
+      }, randomDelay);
+    };
+
+    // Start the animation cycle
+    triggerRandomAnimation();
+
+    // Cleanup
+    return () => {
+      isActive = false;
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, []);
 
   return (
     <section
@@ -52,7 +94,11 @@ const EducationSection = () => {
           </h2>
           <div className="education-section__skills">
             {skillsData.map((skill) => (
-              <SkillItem key={skill.id} skill={skill} />
+              <SkillItem
+                key={skill.id}
+                skill={skill}
+                triggerAnimation={animationTrigger[skill.id] || 0}
+              />
             ))}
           </div>
         </div>

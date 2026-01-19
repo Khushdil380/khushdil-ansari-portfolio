@@ -20,7 +20,7 @@ const ProfilePicture = () => {
       },
       {
         rootMargin: "50px", // Start loading slightly before visible
-      }
+      },
     );
 
     if (containerRef.current) {
@@ -39,17 +39,15 @@ const ProfilePicture = () => {
     <div className="profile-picture-container" ref={containerRef}>
       <div className="profile-picture">
         {/* Placeholder skeleton */}
-        {!isLoaded && (
-          <div className="profile-skeleton" />
-        )}
-        
+        {!isLoaded && <div className="profile-skeleton" />}
+
         {/* Actual image - only load when in view */}
         {isInView && (
           <img
             ref={imgRef}
             src="/profile/profile-on-hero.gif"
             alt="Profile"
-            className={`profile-image ${isLoaded ? 'loaded' : 'loading'}`}
+            className={`profile-image ${isLoaded ? "loaded" : "loading"}`}
             onLoad={handleImageLoad}
             loading="lazy"
           />

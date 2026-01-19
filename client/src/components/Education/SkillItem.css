@@ -8,8 +8,13 @@
   gap: 1rem;
 }
 
-.skill-item__bar-container {
+.skill-item__bar-wrapper {
   flex: 1;
+  position: relative;
+}
+
+.skill-item__bar-container {
+  width: 100%;
   height: 14px;
   border: 2px solid;
   border-radius: 20px;
@@ -27,10 +32,52 @@
 
 .skill-item__bar-fill {
   height: 100%;
-  transition: width 1s ease-out;
+  transition: none;
   position: relative;
   background: linear-gradient(90deg, #e32227 0%, #ff4444 100%);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.skill-item__bar-fill--animated {
+  transition: width 1.2s ease-out;
+}
+
+.skill-item__tooltip {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  z-index: 100;
+  pointer-events: none;
+  animation: tooltipFadeIn 0.2s ease-out;
+}
+
+.skill-item__tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.9);
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 @media (max-width: 768px) {

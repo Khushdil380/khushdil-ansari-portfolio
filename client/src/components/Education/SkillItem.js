@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import PropTypes from "prop-types";
 import "../Utility/TechIconStyles.css";
@@ -14,9 +14,12 @@ import pythonIcon from "../../assets/techIcons/python.svg";
 import reactIcon from "../../assets/techIcons/react.svg";
 import sqlIcon from "../../assets/techIcons/sql.svg";
 
-const SkillItem = ({ skill }) => {
+const SkillItem = ({ skill, triggerAnimation }) => {
   const { theme } = useTheme();
   const bubbleModuleRef = useRef(null);
+  const [animatedWidth, setAnimatedWidth] = useState(0);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   // Map skill names to icons
   const skillIcons = {
@@ -48,6 +51,33 @@ const SkillItem = ({ skill }) => {
     bubbleModuleRef.current(skill.name);
   };
 
+  // Initial animation on mount - wait 1 second then animate
+  useEffect(() => {
+    const initialTimer = setTimeout(() => {
+      setIsAnimating(true);
+      setAnimatedWidth(skill.proficiency);
+    }, 1000);
+
+    return () => clearTimeout(initialTimer);
+  }, [skill.proficiency]);
+
+  // Handle random animation triggers from parent
+  useEffect(() => {
+    if (triggerAnimation > 0) {
+      // First, disable transition and reset to 0 instantly
+      setIsAnimating(false);
+      setAnimatedWidth(0);
+
+      // After a short delay, enable transition and animate to target
+      const animateTimer = setTimeout(() => {
+        setIsAnimating(true);
+        setAnimatedWidth(skill.proficiency);
+      }, 100);
+
+      return () => clearTimeout(animateTimer);
+    }
+  }, [triggerAnimation, skill.proficiency]);
+
   return (
     <div className="skill-item">
       <div className="skill-item__row">
@@ -72,21 +102,30 @@ const SkillItem = ({ skill }) => {
           )}
         </div>
         <div
-          className="skill-item__bar-container"
-          onClick={handleSkillClick}
-          role="button"
-          tabIndex={0}
-          onKeyPress={(e) => e.key === "Enter" && handleSkillClick()}
-          style={{
-            borderColor: theme.subheading,
-          }}
+          className="skill-item__bar-wrapper"
+          onMouseEnter={() => setShowTooltip(true)}
+          onMouseLeave={() => setShowTooltip(false)}
         >
+          {showTooltip && (
+            <div className="skill-item__tooltip">{skill.proficiency}%</div>
+          )}
           <div
-            className="skill-item__bar-fill"
+            className="skill-item__bar-container"
+            onClick={handleSkillClick}
+            role="button"
+            tabIndex={0}
+            onKeyPress={(e) => e.key === "Enter" && handleSkillClick()}
             style={{
-              width: `${skill.proficiency}%`,
+              borderColor: theme.subheading,
             }}
-          />
+          >
+            <div
+              className={`skill-item__bar-fill ${isAnimating ? "skill-item__bar-fill--animated" : ""}`}
+              style={{
+                width: `${animatedWidth}%`,
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -99,6 +138,7 @@ SkillItem.propTypes = {
     proficiency: PropTypes.number.isRequired,
     githubRepo: PropTypes.string.isRequired,
   }).isRequired,
+  triggerAnimation: PropTypes.number,
 };
 
 export default SkillItem;
