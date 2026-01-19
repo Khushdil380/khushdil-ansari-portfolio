@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
 import QuoteComponent from "./QuoteComponent";
@@ -8,8 +8,10 @@ import DescriptionComponent from "./DescriptionComponent";
 import AnimatedBackground from "./AnimatedBackground";
 import Button from "../Utility/Button";
 import RequestResumeButton from "../Utility/RequestResumeButton";
-import RequestResumeModal from "../Utility/RequestResumeModal";
 import "./HeroSection.css";
+
+// Lazy load the modal - only loads when user clicks the button
+const RequestResumeModal = lazy(() => import("../Utility/RequestResumeModal"));
 
 const HeroSection = () => {
   const { theme } = useTheme();
@@ -72,11 +74,15 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Resume Request Modal */}
-      <RequestResumeModal
-        isOpen={isResumeModalOpen}
-        onClose={() => setIsResumeModalOpen(false)}
-      />
+      {/* Resume Request Modal - Lazy loaded */}
+      {isResumeModalOpen && (
+        <Suspense fallback={null}>
+          <RequestResumeModal
+            isOpen={isResumeModalOpen}
+            onClose={() => setIsResumeModalOpen(false)}
+          />
+        </Suspense>
+      )}
     </section>
   );
 };
