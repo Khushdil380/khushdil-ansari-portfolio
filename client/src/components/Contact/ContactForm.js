@@ -1,17 +1,50 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import Button from "../Utility/Button";
+import PropTypes from "prop-types";
 import "./ContactForm.css";
 
-// Lazy load the resume request components
-const RequestResumeButton = lazy(() =>
-  import("../Utility/RequestResumeButton")
+/**
+ * =============================================================================
+ * LAZY LOADED COMPONENTS - Resume Request Feature
+ * =============================================================================
+ * These components are lazy loaded to improve initial page load performance.
+ * They only load when the user interacts with the resume request button.
+ *
+ * To remove resume request feature:
+ * 1. Delete these lazy imports
+ * 2. Remove RequestResumeButton from contact-form__actions-left div
+ * 3. Remove ContactFormWithModal wrapper at the bottom
+ * 4. Export ContactForm directly
+ * 5. Clean up unused CSS: .contact-form__actions-left styles
+ */
+const RequestResumeButton = lazy(
+  () => import("../Utility/RequestResumeButton"),
 );
-const RequestResumeModal = lazy(() =>
-  import("../Utility/RequestResumeModal")
-);
+const RequestResumeModal = lazy(() => import("../Utility/RequestResumeModal"));
 
-const ContactForm = () => {
+/**
+ * =============================================================================
+ * CONTACT FORM COMPONENT
+ * =============================================================================
+ * Main contact form for user inquiries with validation and API submission.
+ *
+ * Props:
+ * @param {function} onResumeRequest - Callback to open resume request modal
+ *
+ * Features:
+ * - Form validation with real-time error display
+ * - Auto-dismiss success/error messages (6 seconds)
+ * - API integration for email submission
+ * - Resume request button integration (left side of actions)
+ *
+ * Layout Structure:
+ * - Form fields: Full Name, Email, Title, Message
+ * - Action buttons row:
+ *   - Left: Resume Request Button (lazy loaded)
+ *   - Right: Clear + Submit buttons
+ */
+const ContactForm = ({ onResumeRequest }) => {
   const { theme } = useTheme();
   const [formData, setFormData] = useState({
     fullName: "",
@@ -22,7 +55,6 @@ const ContactForm = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
-  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   // Auto-dismiss success/error message after 6 seconds
   useEffect(() => {
@@ -274,11 +306,31 @@ const ContactForm = () => {
         </div>
       )}
 
+      {/* 
+        =======================================================================
+        ACTION BUTTONS ROW - Three-button layout
+        =======================================================================
+        Layout: [Resume Request]  <--- space --->  [Clear] [Submit]
+        
+        Structure:
+        - contact-form__actions: Main container (space-between alignment)
+          - contact-form__actions-left: Resume request button (left side)
+          - contact-form__actions-right: Clear + Submit buttons (right side)
+        
+        Responsive behavior:
+        - Desktop: Resume left, Clear/Submit right with full-width spacing
+        - Mobile: Same layout maintained for consistency
+        
+        To remove resume button:
+        - Delete contact-form__actions-left div
+        - Update CSS: change justify-content to flex-end
+        - Keep only contact-form__actions-right div
+      */}
       <div className="contact-form__actions">
         {/* Resume Request Button - Left side */}
         <div className="contact-form__actions-left">
           <Suspense fallback={null}>
-            <RequestResumeButton onClick={() => setIsResumeModalOpen(true)} />
+            <RequestResumeButton onClick={onResumeRequest} />
           </Suspense>
         </div>
 
@@ -304,8 +356,55 @@ const ContactForm = () => {
           </Button>
         </div>
       </div>
+    </form>
+  );
+};
 
-      {/* Resume Request Modal - Lazy loaded */}
+ContactForm.propTypes = {
+  onResumeRequest: PropTypes.func.isRequired,
+};
+
+/**
+ * =============================================================================
+ * WRAPPER COMPONENT - Contact Form with Modal
+ * =============================================================================
+ * This wrapper manages the resume request modal state and prevents nested forms.
+ *
+ * Architecture Decision:
+ * - Modal is rendered OUTSIDE the contact form to avoid nested <form> elements
+ * - Modal state is managed at this level, not inside ContactForm
+ * - ContactForm receives onResumeRequest callback to trigger modal
+ *
+ * Why this pattern:
+ * - Prevents form submission conflicts (nested forms cause page refresh)
+ * - Maintains proper HTML structure (forms cannot be nested)
+ * - Allows modal to overlay entire page without form constraints
+ * - Enables proper lazy loading of modal only when needed
+ *
+ * To integrate elsewhere:
+ * - Import ContactFormWithModal (not ContactForm directly)
+ * - This component handles all modal logic internally
+ *
+ * To remove modal feature:
+ * - Delete this wrapper component
+ * - Export ContactForm directly: `export default ContactForm;`
+ * - Remove onResumeRequest prop from ContactForm
+ * - Remove lazy imports at the top
+ */
+const ContactFormWithModal = () => {
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+
+  return (
+    <>
+      {/* Contact Form with resume request trigger */}
+      <ContactForm onResumeRequest={() => setIsResumeModalOpen(true)} />
+
+      {/* 
+        Resume Request Modal - Rendered outside form 
+        - Only loads when user clicks resume request button
+        - Positioned outside ContactForm to prevent nested form issues
+        - Fallback is null (no loading indicator during lazy load)
+      */}
       {isResumeModalOpen && (
         <Suspense fallback={null}>
           <RequestResumeModal
@@ -314,8 +413,8 @@ const ContactForm = () => {
           />
         </Suspense>
       )}
-    </form>
+    </>
   );
 };
 
-export default ContactForm;
+export default ContactFormWithModal;
