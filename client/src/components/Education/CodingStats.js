@@ -29,8 +29,8 @@ const CodingStats = () => {
             className="coding-stats__button"
             onClick={() => handlePlatformClick(platform)}
             style={{
-              borderColor: theme.accent,
-              color: theme.text,
+              "--coding-border-color": theme.subheading,
+              "--coding-text-color": theme.content,
             }}
           >
             {platform.name}
