@@ -7,9 +7,9 @@ const QuoteComponent = () => {
 
   const quotes = useMemo(
     () => [
-      "Turning ideas into elegant code, one line at a time.",
+      "The harder you work, the luckier you get.",
       "Building digital solutions that make a difference.",
-      "Crafting the future through innovative software development.",
+      "Quality is better than quantity.",
     ],
     []
   );
