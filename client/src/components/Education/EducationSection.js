@@ -3,6 +3,7 @@ import { useTheme } from "../../context/ThemeContext";
 import WorkExperience from "./WorkExperience";
 import EducationItem from "./EducationItem";
 import SkillItem from "./SkillItem";
+import CodingStats from "./CodingStats";
 import { workExperienceData, educationData, skillsData } from "./educationData";
 import "./EducationSection.css";
 
@@ -85,7 +86,7 @@ const EducationSection = () => {
           </div>
         </div>
 
-        <div className="education-section__right">
+        <div className="education-section__middle">
           <h2
             className="education-section__title"
             style={{ color: theme.heading }}
@@ -101,6 +102,10 @@ const EducationSection = () => {
               />
             ))}
           </div>
+        </div>
+
+        <div className="education-section__far-right">
+          <CodingStats />
         </div>
       </div>
     </section>

@@ -9,14 +9,14 @@
   margin: 0 auto;
   padding-top: 70px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
+  grid-template-columns: 1.2fr 1.1fr 0.7fr;
+  gap: 1.5rem;
 }
 
 .education-section__left {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .education-section__work,
@@ -36,6 +36,23 @@
 .education-section__skills {
   display: flex;
   flex-direction: column;
+}
+
+.education-section__middle,
+.education-section__far-right {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1200px) {
+  .education-section__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .education-section__far-right {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 992px) {
