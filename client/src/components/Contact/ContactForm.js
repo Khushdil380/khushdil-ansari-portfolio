@@ -1,7 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import Button from "../Utility/Button";
 import "./ContactForm.css";
+
+// Lazy load the resume request components
+const RequestResumeButton = lazy(() =>
+  import("../Utility/RequestResumeButton")
+);
+const RequestResumeModal = lazy(() =>
+  import("../Utility/RequestResumeModal")
+);
 
 const ContactForm = () => {
   const { theme } = useTheme();
@@ -14,6 +22,7 @@ const ContactForm = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   // Auto-dismiss success/error message after 6 seconds
   useEffect(() => {
@@ -266,25 +275,45 @@ const ContactForm = () => {
       )}
 
       <div className="contact-form__actions">
-        <Button
-          type="button"
-          onClick={handleClear}
-          variant="secondary"
-          disabled={isSubmitting}
-        >
-          Clear
-        </Button>
-        <Button type="submit" variant="primary" disabled={isSubmitting}>
-          {isSubmitting ? (
-            <span className="contact-form__button-content">
-              <LoadingSpinner />
-              Sending...
-            </span>
-          ) : (
-            "Submit"
-          )}
-        </Button>
+        {/* Resume Request Button - Left side */}
+        <div className="contact-form__actions-left">
+          <Suspense fallback={null}>
+            <RequestResumeButton onClick={() => setIsResumeModalOpen(true)} />
+          </Suspense>
+        </div>
+
+        {/* Form Action Buttons - Right side */}
+        <div className="contact-form__actions-right">
+          <Button
+            type="button"
+            onClick={handleClear}
+            variant="secondary"
+            disabled={isSubmitting}
+          >
+            Clear
+          </Button>
+          <Button type="submit" variant="primary" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <span className="contact-form__button-content">
+                <LoadingSpinner />
+                Sending...
+              </span>
+            ) : (
+              "Submit"
+            )}
+          </Button>
+        </div>
       </div>
+
+      {/* Resume Request Modal - Lazy loaded */}
+      {isResumeModalOpen && (
+        <Suspense fallback={null}>
+          <RequestResumeModal
+            isOpen={isResumeModalOpen}
+            onClose={() => setIsResumeModalOpen(false)}
+          />
+        </Suspense>
+      )}
     </form>
   );
 };
