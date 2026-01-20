@@ -12,7 +12,7 @@ const HeadlineComponent = ({ onRoleChange }) => {
       "Web Developer",
       "Android Developer",
       "Problem Solver",
-      "Database Administrator",
+      "Database Administrator"
     ],
     [],
   );

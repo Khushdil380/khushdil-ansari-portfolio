@@ -3,7 +3,7 @@ import { useTheme } from "../../context/ThemeContext";
 import PropTypes from "prop-types";
 import "./DescriptionComponent.css";
 
-const DescriptionComponent = ({ currentRole = "Software Engineer" }) => {
+const DescriptionComponent = ({ currentRole = "Web Developer" }) => {
   const { theme } = useTheme();
 
   const descriptions = {
