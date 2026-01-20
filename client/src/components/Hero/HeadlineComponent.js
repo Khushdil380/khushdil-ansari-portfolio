@@ -9,11 +9,10 @@ const HeadlineComponent = ({ onRoleChange }) => {
 
   const roles = useMemo(
     () => [
-      "Software Engineer",
       "Web Developer",
-      "Full Stack Developer",
-      "Programmer",
+      "Android Developer",
       "Problem Solver",
+      "Database Administrator",
     ],
     [],
   );

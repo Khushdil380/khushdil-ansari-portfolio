@@ -7,16 +7,17 @@ const DescriptionComponent = ({ currentRole = "Software Engineer" }) => {
   const { theme } = useTheme();
 
   const descriptions = {
-    "Software Engineer":
-      "Passionate about crafting scalable and efficient software solutions using modern technologies and best practices.",
     "Web Developer":
-      "Creating responsive and user-friendly web applications that deliver exceptional user experiences across all devices.",
-    "Full Stack Developer":
-      "Building end-to-end applications with expertise in both frontend and backend technologies, ensuring seamless integration.",
-    Programmer:
-      "Writing clean, maintainable code and solving complex problems with elegant algorithmic solutions.",
+      "I design and develop responsive websites and web applications using HTML, CSS, JavaScript, and modern frameworks.",
+
+    "Android Developer":
+      " I build high-performance Android applications using Java and Kotlin, with a focus on user experience and material design.",
+    
     "Problem Solver":
-      "Analyzing challenges from multiple angles and developing innovative solutions that drive business value.",
+      " I tackle complex coding challenges, applying logical thinking and algorithmic skills to create efficient solutions.",
+    
+    "Database Administrator":
+      "I design, implement, and manage relational databases, ensuring data integrity, security, and optimal performance.",
   };
 
   const currentDescription =
