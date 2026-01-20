@@ -1,0 +1,7 @@
+/* Styles for ServiceModalRight (right layout) */
+.service-modal__right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow: hidden;
+}

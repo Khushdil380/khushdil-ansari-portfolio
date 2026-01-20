@@ -1,0 +1,62 @@
+/* Common and modal container styles */
+.service-modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+.service-modal__content {
+  border-radius: 16px;
+  width: 98%;
+  max-width: 1400px;
+  max-height: 96vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.4s ease;
+}
+.service-modal__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+}
+.service-modal__layout {
+  display: grid;
+  grid-template-columns: 0.8fr 2.2fr;
+  gap: 1.5rem;
+  padding: 4rem 1.5rem 1.5rem;
+  min-height: 100%;
+}
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+}
+@keyframes scrollRight {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes scrollLeft {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

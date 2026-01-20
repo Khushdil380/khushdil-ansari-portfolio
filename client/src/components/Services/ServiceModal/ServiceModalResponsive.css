@@ -1,0 +1,65 @@
+/* Responsive styles for ServiceModal and children */
+@media (max-width: 968px) {
+  .service-modal__layout {
+    grid-template-columns: 1fr;
+  }
+  .service-modal__left {
+    border-right: none;
+    border-bottom: 2px solid var(--border-color);
+    padding-right: 0;
+    padding-bottom: 1.5rem;
+  }
+  .service-modal__project-card,
+  .service-modal__testimonial-card {
+    width: 300px;
+  }
+}
+@media (max-width: 768px) {
+  .service-modal__content {
+    max-height: 98vh;
+  }
+  .service-modal__layout {
+    padding: 3.5rem 1rem 1rem;
+    gap: 1rem;
+  }
+  .service-modal__close {
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    width: 35px;
+    height: 35px;
+  }
+  .service-modal__icon {
+    font-size: 3rem;
+  }
+  .service-modal__title {
+    font-size: 1.5rem;
+  }
+  .service-modal__description {
+    font-size: 0.9rem;
+  }
+  .service-modal__project-card,
+  .service-modal__testimonial-card {
+    width: 280px;
+  }
+  .service-modal__project-card {
+    height: 260px;
+  }
+  .service-modal__testimonial-card {
+    height: 220px;
+    padding: 3rem 1rem 1rem;
+  }
+  .service-modal__testimonial-profile {
+    width: 4rem;
+    height: 4rem;
+    top: -2rem;
+  }
+  .service-modal__testimonials {
+    padding-top: 1.5rem;
+  }
+  .service-modal__testimonial-text {
+    font-size: 0.8rem;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+}

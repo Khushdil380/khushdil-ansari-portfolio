@@ -1,0 +1,58 @@
+/* Styles for ServiceProjects (projects carousel) */
+.service-modal__projects {
+  flex: 1;
+  position: relative;
+  padding-top: 2rem;
+}
+.service-modal__projects-carousel {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: scrollRight 50s linear infinite;
+}
+.service-modal__right:hover .service-modal__projects-carousel {
+  animation-play-state: paused;
+}
+.service-modal__project-card {
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  width: 320px;
+  gap: 0.75rem;
+  height: 280px;
+  flex-shrink: 0;
+}
+.service-modal__project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+.service-modal__project-name {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  font-family: "Roboto Slab", serif;
+}
+.service-modal__project-description {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  opacity: 0.9;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-family: "Roboto Slab", serif;
+}
+.service-modal__project-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+.service-modal__project-buttons .button {
+  flex: 1;
+  font-size: 0.75rem;
+}
