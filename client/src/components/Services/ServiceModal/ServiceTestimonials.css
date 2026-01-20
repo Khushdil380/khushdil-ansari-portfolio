@@ -41,12 +41,16 @@
   border: 3px solid var(--border-color);
   overflow: hidden;
   z-index: 1;
-  background-color: inherit;
+  background-color: var(
+    --card-bg,
+    #e3edfa
+  ); /* fallback to a light color if not set */
 }
 .service-modal__testimonial-profile img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  background: transparent;
 }
 .service-modal__testimonial-text {
   font-size: 0.85rem;
