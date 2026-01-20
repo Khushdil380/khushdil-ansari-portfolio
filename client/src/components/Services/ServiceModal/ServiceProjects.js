@@ -20,7 +20,10 @@ const ServiceProjects = ({ projects, theme }) => {
             >
               {project.name}
             </h4>
-            <p className="service-modal__project-description">
+            <p
+              className="service-modal__project-description"
+              style={{ color: theme.content }}
+            >
               {project.description}
             </p>
             <div className="service-modal__project-buttons">
