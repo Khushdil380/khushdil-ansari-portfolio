@@ -16,7 +16,7 @@ const RequestResumeModal = lazy(() => import("../Utility/RequestResumeModal"));
 const HeroSection = () => {
   const { theme } = useTheme();
   const navigate = useNavigate();
-  const [currentRole, setCurrentRole] = useState("Software Engineer");
+  const [currentRole, setCurrentRole] = useState("Web Developer");
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   const handleRoleChange = (role) => {
