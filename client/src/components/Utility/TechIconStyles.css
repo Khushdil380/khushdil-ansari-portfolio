@@ -9,14 +9,12 @@
 /* Base icon circle styling */
 .tech-icon-circle {
   border-radius: 50%;
-  border: 2px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   transition: all 0.3s ease;
   overflow: hidden;
-  background-color: #ffffff;
   position: relative;
   flex-shrink: 0;
 }
