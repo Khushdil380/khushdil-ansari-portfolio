@@ -8,6 +8,7 @@
   background-color: transparent;
   position: relative;
   isolation: isolate;
+  overflow: visible;
 }
 
 .resume-modal-wrapper.animated-border .universal-modal__content::before {
@@ -22,6 +23,7 @@
 .resume-modal-wrapper .universal-modal__body {
   position: relative;
   z-index: 1;
+  overflow: visible;
 }
 
 /* Modal Header */

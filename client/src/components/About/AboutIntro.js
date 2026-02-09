@@ -2,6 +2,7 @@ import React from "react";
 import { useTheme } from "../../context/ThemeContext";
 import PropTypes from "prop-types";
 import Button from "../Utility/Button";
+import ProfilePicture from "../Hero/ProfilePicture";
 import "./AboutIntro.css";
 
 const AboutIntro = ({ onKnowMore }) => {
@@ -11,9 +12,7 @@ const AboutIntro = ({ onKnowMore }) => {
     <div className="about-intro">
       {/* Left Section - Photo and Details */}
       <div className="about-left">
-        <div className="about-profile-pic">
-          <div className="about-profile-placeholder">KA</div>
-        </div>
+        <ProfilePicture imagePath="/profile/profile-pic-about.gif" />
         <h2 className="about-name" style={{ color: theme.heading }}>
           KHUSHDIL ANSARI (HE)
         </h2>

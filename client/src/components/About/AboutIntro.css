@@ -14,36 +14,8 @@
   text-align: center;
 }
 
-.about-profile-pic {
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 4px solid var(--accent-color, #e32227);
+.about-left .profile-picture-container {
   margin-bottom: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.about-profile-pic:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px var(--accent-color, #e32227);
-}
-
-.about-profile-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(
-    135deg,
-    var(--heading-color, #bed600),
-    var(--subheading-color, #8be030)
-  );
-  color: #ffffff;
-  font-size: 5rem;
-  font-weight: 700;
-  font-family: "Roboto Slab", serif;
 }
 
 .about-name {
@@ -115,11 +87,6 @@
 @media (max-width: 480px) {
   .about-intro {
     gap: 2rem;
-  }
-
-  .about-profile-pic {
-    width: 220px;
-    height: 220px;
   }
 
   .about-name {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { useTheme } from "../../context/ThemeContext";
 import CloseButton from "./CloseButton";
@@ -28,6 +28,21 @@ const UniversalModal = ({
   customClass = "",
 }) => {
   const { theme } = useTheme();
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      // Save current overflow value
+      const originalOverflow = document.body.style.overflow;
+      // Lock scroll
+      document.body.style.overflow = "hidden";
+
+      // Cleanup: restore original overflow when modal closes
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [isOpen]);
 
   // Handle backdrop click
   const handleBackdropClick = (e) => {

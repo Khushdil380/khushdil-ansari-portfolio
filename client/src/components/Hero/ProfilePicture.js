@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import "./ProfilePicture.css";
 
-const ProfilePicture = () => {
+const ProfilePicture = ({ imagePath = "/profile/profile-on-hero.gif" }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const imgRef = useRef(null);
@@ -45,7 +46,7 @@ const ProfilePicture = () => {
         {isInView && (
           <img
             ref={imgRef}
-            src="/profile/profile-on-hero.gif"
+            src={imagePath}
             alt="Profile"
             className={`profile-image ${isLoaded ? "loaded" : "loading"}`}
             onLoad={handleImageLoad}
@@ -55,6 +56,10 @@ const ProfilePicture = () => {
       </div>
     </div>
   );
+};
+
+ProfilePicture.propTypes = {
+  imagePath: PropTypes.string,
 };
 
 export default ProfilePicture;
