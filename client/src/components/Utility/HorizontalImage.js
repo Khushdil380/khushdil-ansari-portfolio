@@ -3,27 +3,44 @@ import PropTypes from "prop-types";
 import { useTheme } from "../../context/ThemeContext";
 import "./HorizontalImage.css";
 
-const HorizontalImage = ({ imagePath, alt = "Image", className = "", loading = "lazy", preload = false }) => {
+const HorizontalImage = ({
+  imagePath,
+  alt = "Image",
+  className = "",
+  loading = "lazy",
+  preload = false,
+}) => {
   const { theme } = useTheme();
   const [isImageLoaded, setIsImageLoaded] = useState(preload);
+  const [isInView, setIsInView] = useState(preload);
   const imageRef = useRef(null);
+
+  // Reset loading state when imagePath changes (for switching images)
+  useEffect(() => {
+    if (!preload) {
+      setIsImageLoaded(false);
+      setIsInView(false);
+    }
+  }, [imagePath, preload]);
 
   useEffect(() => {
     // Skip observer if preload is true (eager loading)
     if (preload) {
       setIsImageLoaded(true);
+      setIsInView(true);
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !isImageLoaded) {
-            setIsImageLoaded(true);
+          if (entry.isIntersecting) {
+            setIsInView(true);
+            observer.disconnect();
           }
         });
       },
-      { threshold: 0.1 },
+      { rootMargin: "50px" },
     );
 
     if (imageRef.current) {
@@ -35,7 +52,7 @@ const HorizontalImage = ({ imagePath, alt = "Image", className = "", loading = "
         observer.unobserve(imageRef.current);
       }
     };
-  }, [isImageLoaded, preload]);
+  }, [imagePath, preload]);
 
   return (
     <div
@@ -45,7 +62,16 @@ const HorizontalImage = ({ imagePath, alt = "Image", className = "", loading = "
         backgroundColor: theme.primaryBg,
       }}
     >
-      {!isImageLoaded ? (
+      {isInView && (
+        <img
+          src={imagePath}
+          alt={alt}
+          className={`horizontal-image ${isImageLoaded ? "loaded" : ""}`}
+          loading={loading}
+          onLoad={() => setIsImageLoaded(true)}
+        />
+      )}
+      {!isImageLoaded && (
         <div
           className="horizontal-image-placeholder"
           style={{
@@ -54,14 +80,6 @@ const HorizontalImage = ({ imagePath, alt = "Image", className = "", loading = "
         >
           <span style={{ color: theme.subheading }}>Loading...</span>
         </div>
-      ) : (
-        <img
-          src={imagePath}
-          alt={alt}
-          className="horizontal-image"
-          loading={loading}
-          onLoad={() => setIsImageLoaded(true)}
-        />
       )}
     </div>
   );

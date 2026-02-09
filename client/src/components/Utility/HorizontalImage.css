@@ -8,9 +8,13 @@
   justify-content: center;
   overflow: hidden;
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .horizontal-image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -20,6 +24,7 @@
   font-weight: 600;
   border: 2px solid;
   border-radius: 12px;
+  z-index: 1;
 }
 
 .horizontal-image {
@@ -27,7 +32,14 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+  opacity: 0;
+}
+
+.horizontal-image.loaded {
+  opacity: 1;
 }
 
 .horizontal-image-container:hover .horizontal-image {
