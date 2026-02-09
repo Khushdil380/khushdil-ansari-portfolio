@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTheme } from "../../context/ThemeContext";
+import CodingStatsModal from "./CodingStatsModal";
 import "./CodingStats.css";
 
 const CodingStats = () => {
   const { theme } = useTheme();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPlatform, setSelectedPlatform] = useState(null);
 
   const codingPlatforms = [
     { id: 1, name: "LeetCode", url: "#" },
@@ -13,8 +16,8 @@ const CodingStats = () => {
   ];
 
   const handlePlatformClick = (platform) => {
-    // Placeholder for future functionality
-    console.log(`Clicked on ${platform.name}`);
+    setSelectedPlatform(platform);
+    setIsModalOpen(true);
   };
 
   return (
@@ -37,6 +40,13 @@ const CodingStats = () => {
           </button>
         ))}
       </div>
+
+      {/* Coding Stats Modal */}
+      <CodingStatsModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        platform={selectedPlatform}
+      />
     </div>
   );
 };

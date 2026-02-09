@@ -14,7 +14,7 @@ import pythonIcon from "../../assets/techIcons/python.svg";
 import reactIcon from "../../assets/techIcons/react.svg";
 import sqlIcon from "../../assets/techIcons/sql.svg";
 
-const SkillItem = ({ skill, triggerAnimation }) => {
+const SkillItem = ({ skill, triggerAnimation, onSkillClick }) => {
   const { theme } = useTheme();
   const bubbleModuleRef = useRef(null);
   const [animatedWidth, setAnimatedWidth] = useState(0);
@@ -34,7 +34,13 @@ const SkillItem = ({ skill, triggerAnimation }) => {
   };
 
   const handleSkillClick = () => {
-    window.open(skill.githubRepo, "_blank", "noopener,noreferrer");
+    // If onSkillClick is provided, use it to open modal
+    // Otherwise, fallback to opening GitHub repo
+    if (onSkillClick) {
+      onSkillClick(skill);
+    } else {
+      window.open(skill.githubRepo, "_blank", "noopener,noreferrer");
+    }
   };
 
   const handleIconHover = async () => {

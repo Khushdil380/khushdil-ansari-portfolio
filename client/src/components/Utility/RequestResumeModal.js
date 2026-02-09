@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import PropTypes from "prop-types";
-import CloseButton from "../Utility/CloseButton";
+import UniversalModal from "./UniversalModal";
 import Button from "../Utility/Button";
 import "./RequestResumeModal.css";
 import "./AnimatedBorder.css";
@@ -63,29 +63,21 @@ const RequestResumeModal = ({ isOpen, onClose }) => {
     }
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="resume-modal-overlay">
-      <div
-        className="resume-modal-content animated-border"
-        style={{
-          "--secondary-bg": theme.secondaryBg,
-          "--heading-color": theme.heading,
-          "--content-color": theme.content,
-          "--accent-color": theme.accent,
-          "--primary-bg": theme.primaryBg,
-          "--card-bg": theme.secondaryBg,
-        }}
-      >
-        <div className="resume-modal-header">
-          <h2 className="resume-modal-title" style={{ color: theme.heading }}>
-            Request Resume
-          </h2>
-          <CloseButton onClick={onClose} />
-        </div>
+    <UniversalModal
+      isOpen={isOpen}
+      onClose={onClose}
+      size="small"
+      closeOnBackdropClick={false}
+      customClass="resume-modal-wrapper animated-border"
+    >
+      <div className="resume-modal-header">
+        <h2 className="resume-modal-title" style={{ color: theme.heading }}>
+          Request Resume
+        </h2>
+      </div>
 
-        <form onSubmit={handleSubmit} className="resume-form">
+      <form onSubmit={handleSubmit} className="resume-form">
           <div className="form-group">
             <input
               type="text"
@@ -188,8 +180,7 @@ const RequestResumeModal = ({ isOpen, onClose }) => {
             </Button>
           </div>
         </form>
-      </div>
-    </div>
+    </UniversalModal>
   );
 };
 

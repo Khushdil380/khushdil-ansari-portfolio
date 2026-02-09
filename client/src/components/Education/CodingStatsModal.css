@@ -1,0 +1,151 @@
+/* ==========================================
+   CODING STATS MODAL - Specific Styles
+   Uses UniversalModal as base
+   ========================================== */
+
+/* Modal Content */
+.coding-stats-modal__content {
+  padding: 2rem;
+}
+
+/* Header Section */
+.coding-stats-modal__header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.coding-stats-modal__title {
+  font-family: "Roboto Slab", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.coding-stats-modal__subtitle {
+  font-family: "Roboto Slab", serif;
+  font-size: 1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Stats Grid */
+.coding-stats-modal__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.coding-stats-modal__card {
+  border: 2px solid;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.coding-stats-modal__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.coding-stats-modal__card-title {
+  font-family: "Roboto Slab", serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.coding-stats-modal__card-value {
+  font-family: "Roboto Slab", serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  line-height: 1;
+}
+
+.coding-stats-modal__card-label {
+  font-family: "Roboto Slab", serif;
+  font-size: 0.85rem;
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* Placeholder Section */
+.coding-stats-modal__placeholder {
+  text-align: center;
+  padding: 3rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+}
+
+.coding-stats-modal__placeholder p {
+  font-family: "Roboto Slab", serif;
+  margin: 0.5rem 0;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+/* Tablet */
+@media (max-width: 968px) {
+  .coding-stats-modal__content {
+    padding: 1.5rem;
+  }
+
+  .coding-stats-modal__title {
+    font-size: 1.75rem;
+  }
+
+  .coding-stats-modal__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .coding-stats-modal__card-value {
+    font-size: 2rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .coding-stats-modal__content {
+    padding: 1rem;
+  }
+
+  .coding-stats-modal__header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .coding-stats-modal__title {
+    font-size: 1.5rem;
+  }
+
+  .coding-stats-modal__subtitle {
+    font-size: 0.9rem;
+  }
+
+  .coding-stats-modal__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .coding-stats-modal__card {
+    padding: 1.25rem;
+  }
+
+  .coding-stats-modal__card-value {
+    font-size: 1.75rem;
+  }
+
+  .coding-stats-modal__placeholder {
+    padding: 2rem 1rem;
+  }
+}

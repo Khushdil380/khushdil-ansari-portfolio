@@ -1,62 +1,27 @@
-/* Modal Overlay */
-.resume-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  padding: 1.5rem;
-  animation: fadeIn 0.3s ease;
-  overflow-y: auto;
-}
+/* ==========================================
+   RESUME REQUEST MODAL - Specific Styles
+   Uses UniversalModal as base
+   ========================================== */
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Modal Content */
-.resume-modal-content {
+/* Animated Border Wrapper */
+.resume-modal-wrapper.animated-border .universal-modal__content {
   background-color: transparent;
-  border-radius: 12px;
-  max-width: 600px;
-  width: 100%;
-  max-height: fit-content;
-  animation: slideUp 0.3s ease;
   position: relative;
   isolation: isolate;
-  overflow: visible;
-  margin: auto;
 }
 
-.resume-modal-content::before {
+.resume-modal-wrapper.animated-border .universal-modal__content::before {
   content: "";
   position: absolute;
   inset: 0;
   background: var(--card-bg);
-  border-radius: 12px;
+  border-radius: 16px;
   z-index: 0;
 }
 
-@keyframes slideUp {
-  from {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.resume-modal-wrapper .universal-modal__body {
+  position: relative;
+  z-index: 1;
 }
 
 /* Modal Header */
@@ -66,8 +31,6 @@
   align-items: center;
   padding: 1.5rem 2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-  z-index: 1;
 }
 
 .resume-modal-title {
@@ -80,8 +43,6 @@
 /* Form */
 .resume-form {
   padding: 2rem;
-  position: relative;
-  z-index: 1;
 }
 
 .form-group {

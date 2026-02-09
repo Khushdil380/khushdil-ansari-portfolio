@@ -4,12 +4,15 @@ import WorkExperience from "./WorkExperience";
 import EducationItem from "./EducationItem";
 import SkillItem from "./SkillItem";
 import CodingStats from "./CodingStats";
+import CodingStatsModal from "./CodingStatsModal";
 import { workExperienceData, educationData, skillsData } from "./educationData";
 import "./EducationSection.css";
 
 const EducationSection = () => {
   const { theme } = useTheme();
   const [animationTrigger, setAnimationTrigger] = useState({});
+  const [isSkillModalOpen, setIsSkillModalOpen] = useState(false);
+  const [selectedSkill, setSelectedSkill] = useState(null);
 
   // Continuous random skill animation
   useEffect(() => {
@@ -52,6 +55,17 @@ const EducationSection = () => {
     };
   }, []);
 
+  // Handle skill click to open modal
+  const handleSkillClick = (skill) => {
+    // Convert skill to platform format for modal
+    setSelectedSkill({
+      id: skill.id,
+      name: skill.name,
+      url: skill.githubRepo,
+    });
+    setIsSkillModalOpen(true);
+  };
+
   return (
     <section
       className="education-section"
@@ -88,15 +102,23 @@ const EducationSection = () => {
 
         <div className="education-section__middle">
           <h2
-            className="education-section__title"
-            style={{ color: theme.heading }}
-          >
-            Skills
-          </h2>
-          <div className="education-section__skills">
-            {skillsData.map((skill) => (
-              <SkillItem
-                key={skill.id}
+            cl  onSkillClick={handleSkillClick}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="education-section__far-right">
+          <CodingStats />
+        </div>
+      </div>
+
+      {/* Skills Coding Stats Modal */}
+      <CodingStatsModal
+        isOpen={isSkillModalOpen}
+        onClose={() => setIsSkillModalOpen(false)}
+        platform={selectedSkill}
+      /     key={skill.id}
                 skill={skill}
                 triggerAnimation={animationTrigger[skill.id] || 0}
               />
