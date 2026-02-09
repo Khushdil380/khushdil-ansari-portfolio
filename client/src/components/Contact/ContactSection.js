@@ -1,37 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { useTheme } from "../../context/ThemeContext";
 import ContactForm from "./ContactForm";
 import SocialIcon from "../Utility/SocialIcon";
+import HorizontalImage from "../Utility/HorizontalImage";
 import contactAnimation from "../../assets/contact-animation.gif";
 import "./ContactSection.css";
 
 const ContactSection = () => {
   const { theme } = useTheme();
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-  const imageRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !isImageLoaded) {
-            setIsImageLoaded(true);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (imageRef.current) {
-      observer.observe(imageRef.current);
-    }
-
-    return () => {
-      if (imageRef.current) {
-        observer.unobserve(imageRef.current);
-      }
-    };
-  }, [isImageLoaded]);
 
   const socialLinks = [
     { platform: "GitHub", url: "https://github.com/Khushdil380" },
@@ -64,26 +40,11 @@ const ContactSection = () => {
     >
       <div className="contact-section__container">
         <div className="contact-section__left">
-          <div
-            ref={imageRef}
-            className="contact-section__image-container"
-            style={{
-              backgroundColor: theme.primaryBg,
-            }}
-          >
-            {!isImageLoaded ? (
-              <div className="contact-section__image-placeholder">
-                <span style={{ color: theme.subheading }}>Loading...</span>
-              </div>
-            ) : (
-              <img
-                src={contactAnimation}
-                alt="Contact Animation"
-                className="contact-section__image"
-                loading="lazy"
-              />
-            )}
-          </div>
+          <HorizontalImage
+            imagePath={contactAnimation}
+            alt="Contact Animation"
+            className="contact-section__image"
+          />
 
           <h2
             className="contact-section__title"

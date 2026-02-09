@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import HorizontalImage from "../Utility/HorizontalImage";
 import "./StoryCard.css";
 
 const StoryCard = ({ story, theme }) => {
@@ -7,14 +8,11 @@ const StoryCard = ({ story, theme }) => {
     <div className="story-card">
       {/* Image Section */}
       <div className="story-image-section">
-        <div
-          className="story-image-placeholder"
-          style={{
-            borderColor: theme.subheading,
-          }}
-        >
-          <span style={{ color: theme.subheading }}>Image - {story.id}</span>
-        </div>
+        <HorizontalImage
+          imagePath={`/about-image/${story.id}.png`}
+          alt={`Story ${story.id}`}
+          className="story-image"
+        />
       </div>
 
       {/* Content Section */}
