@@ -12,6 +12,8 @@ const StoryCard = ({ story, theme }) => {
           imagePath={`/about-image/${story.id}.png`}
           alt={`Story ${story.id}`}
           className="story-image"
+          loading="eager"
+          preload={true}
         />
       </div>
 

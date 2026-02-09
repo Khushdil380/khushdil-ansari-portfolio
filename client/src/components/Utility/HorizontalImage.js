@@ -3,12 +3,18 @@ import PropTypes from "prop-types";
 import { useTheme } from "../../context/ThemeContext";
 import "./HorizontalImage.css";
 
-const HorizontalImage = ({ imagePath, alt = "Image", className = "" }) => {
+const HorizontalImage = ({ imagePath, alt = "Image", className = "", loading = "lazy", preload = false }) => {
   const { theme } = useTheme();
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(preload);
   const imageRef = useRef(null);
 
   useEffect(() => {
+    // Skip observer if preload is true (eager loading)
+    if (preload) {
+      setIsImageLoaded(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -29,7 +35,7 @@ const HorizontalImage = ({ imagePath, alt = "Image", className = "" }) => {
         observer.unobserve(imageRef.current);
       }
     };
-  }, [isImageLoaded]);
+  }, [isImageLoaded, preload]);
 
   return (
     <div
@@ -53,6 +59,7 @@ const HorizontalImage = ({ imagePath, alt = "Image", className = "" }) => {
           src={imagePath}
           alt={alt}
           className="horizontal-image"
+          loading={loading}
           onLoad={() => setIsImageLoaded(true)}
         />
       )}
@@ -64,6 +71,8 @@ HorizontalImage.propTypes = {
   imagePath: PropTypes.string.isRequired,
   alt: PropTypes.string,
   className: PropTypes.string,
+  loading: PropTypes.oneOf(["lazy", "eager"]),
+  preload: PropTypes.bool,
 };
 
 export default HorizontalImage;

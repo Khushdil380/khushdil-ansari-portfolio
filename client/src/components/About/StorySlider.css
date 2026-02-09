@@ -1,7 +1,7 @@
 .story-slider {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
   animation: fadeIn 0.5s ease-in;
 }
 
