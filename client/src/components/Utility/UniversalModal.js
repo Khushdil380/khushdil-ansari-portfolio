@@ -6,10 +6,10 @@ import "./UniversalModal.css";
 
 /**
  * UniversalModal - Centralized modal component for all modal needs
- * 
+ *
  * Supports multiple sizes and custom content rendering
  * Used by: Services (Know More), Resume Request, Skills, Education (Coding Stats)
- * 
+ *
  * @param {boolean} isOpen - Controls modal visibility
  * @param {function} onClose - Callback when modal closes
  * @param {string} size - Modal size: 'small' (600px), 'medium' (900px), 'large' (1200px), 'xlarge' (1400px)
@@ -31,7 +31,10 @@ const UniversalModal = ({
 
   // Handle backdrop click
   const handleBackdropClick = (e) => {
-    if (closeOnBackdropClick && e.target.classList.contains("universal-modal")) {
+    if (
+      closeOnBackdropClick &&
+      e.target.classList.contains("universal-modal")
+    ) {
       onClose();
     }
   };
@@ -66,9 +69,7 @@ const UniversalModal = ({
         )}
 
         {/* Modal Content */}
-        <div className="universal-modal__body">
-          {children}
-        </div>
+        <div className="universal-modal__body">{children}</div>
       </div>
     </div>
   );

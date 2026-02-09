@@ -102,7 +102,18 @@ const EducationSection = () => {
 
         <div className="education-section__middle">
           <h2
-            cl  onSkillClick={handleSkillClick}
+            className="education-section__title"
+            style={{ color: theme.heading }}
+          >
+            Skills
+          </h2>
+          <div className="education-section__skills">
+            {skillsData.map((skill) => (
+              <SkillItem
+                key={skill.id}
+                skill={skill}
+                triggerAnimation={animationTrigger[skill.id] || 0}
+                onSkillClick={handleSkillClick}
               />
             ))}
           </div>
@@ -118,18 +129,7 @@ const EducationSection = () => {
         isOpen={isSkillModalOpen}
         onClose={() => setIsSkillModalOpen(false)}
         platform={selectedSkill}
-      /     key={skill.id}
-                skill={skill}
-                triggerAnimation={animationTrigger[skill.id] || 0}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div className="education-section__far-right">
-          <CodingStats />
-        </div>
-      </div>
+      />
     </section>
   );
 };

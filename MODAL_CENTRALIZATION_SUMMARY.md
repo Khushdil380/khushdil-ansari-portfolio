@@ -7,14 +7,17 @@ Successfully created a **centralized modal system** (`UniversalModal`) that cons
 ## 📦 What Was Created
 
 ### 1. UniversalModal Component
+
 **Location**: `client/src/components/Utility/`
 
 #### Files Created:
+
 - ✅ `UniversalModal.js` - Core modal component
 - ✅ `UniversalModal.css` - Responsive styling
 - ✅ `UNIVERSAL_MODAL.md` - Complete documentation
 
 #### Features:
+
 - **4 Size Options**: small (600px), medium (900px), large (1200px), xlarge (1400px)
 - **Theme Integration**: Automatic theme color application
 - **Flexible Props**: Control backdrop clicks, close button visibility
@@ -25,9 +28,11 @@ Successfully created a **centralized modal system** (`UniversalModal`) that cons
 ## 🔄 Refactored Components
 
 ### 1. Resume Request Modal
+
 **File**: `client/src/components/Utility/RequestResumeModal.js`
 
 **Changes**:
+
 - ✅ Now uses `UniversalModal` with `size="small"`
 - ✅ Removed duplicate overlay/content structure
 - ✅ Simplified CSS (removed redundant styles)
@@ -39,9 +44,11 @@ Successfully created a **centralized modal system** (`UniversalModal`) that cons
 **After**: Clean implementation using UniversalModal
 
 ### 2. Service Modal
+
 **File**: `client/src/components/Services/ServiceModal/ServiceModal.js`
 
 **Changes**:
+
 - ✅ Now uses `UniversalModal` with `size="xlarge"`
 - ✅ Removed custom overlay/backdrop logic
 - ✅ Simplified CSS (removed redundant styles)
@@ -54,12 +61,12 @@ Successfully created a **centralized modal system** (`UniversalModal`) that cons
 
 ## 📊 Size Mapping
 
-| Component | Size | Max Width | Backdrop Click | Current Usage |
-|-----------|------|-----------|----------------|---------------|
-| RequestResumeModal | `small` | 600px | ❌ No | Home page |
-| ServiceModal | `xlarge` | 1400px | ✅ Yes | Services page |
-| **Future: SkillsStatsModal** | `medium` | 900px | ✅ Yes | Skills page |
-| **Future: EducationStatsModal** | `medium` | 900px | ✅ Yes | Education page |
+| Component                       | Size     | Max Width | Backdrop Click | Current Usage  |
+| ------------------------------- | -------- | --------- | -------------- | -------------- |
+| RequestResumeModal              | `small`  | 600px     | ❌ No          | Home page      |
+| ServiceModal                    | `xlarge` | 1400px    | ✅ Yes         | Services page  |
+| **Future: SkillsStatsModal**    | `medium` | 900px     | ✅ Yes         | Skills page    |
+| **Future: EducationStatsModal** | `medium` | 900px     | ✅ Yes         | Education page |
 
 ## 🎨 UI/UX Preservation
 
@@ -114,7 +121,7 @@ const SkillsStatsModal = ({ isOpen, onClose, skillData }) => {
         <h2 style={{ color: theme.heading }}>
           {skillData.name} - Coding Statistics
         </h2>
-        
+
         {/* Your coding stats content here */}
         <div className="stats-grid">
           {/* Projects count, lines of code, etc. */}
@@ -141,9 +148,7 @@ const handleSkillClick = (skill) => {
 return (
   <>
     {/* Skill items */}
-    <div onClick={() => handleSkillClick(skill)}>
-      {skill.name}
-    </div>
+    <div onClick={() => handleSkillClick(skill)}>{skill.name}</div>
 
     {/* Stats Modal */}
     <SkillsStatsModal
@@ -189,21 +194,25 @@ client/src/components/
 ## 🎯 Benefits Achieved
 
 ### 1. Code Reusability
+
 - Single modal implementation for all use cases
 - Reduced code duplication by ~60%
 - Easier maintenance and updates
 
 ### 2. Consistency
+
 - Identical modal behavior across portfolio
 - Standardized animations and transitions
 - Consistent theme integration
 
 ### 3. Flexibility
+
 - Easy to create new modals (just wrap content)
 - Configurable sizes for different needs
 - Custom styling support
 
 ### 4. Maintainability
+
 - Changes to modal base affect all modals
 - Centralized bug fixes
 - Clear documentation
@@ -211,6 +220,7 @@ client/src/components/
 ## 🧪 Testing Checklist
 
 ### Resume Request Modal (Home Page)
+
 - [ ] Click resume request button
 - [ ] Modal opens with form
 - [ ] Fill form and submit
@@ -221,6 +231,7 @@ client/src/components/
 - [ ] Check mobile responsiveness
 
 ### Service Modal (Services Page)
+
 - [ ] Click "Know More" on any service card
 - [ ] Modal opens with service details
 - [ ] Left side shows icon, title, description, buttons
@@ -232,6 +243,7 @@ client/src/components/
 - [ ] Check mobile responsiveness (single column layout)
 
 ### General
+
 - [ ] Theme colors apply correctly
 - [ ] All animations smooth
 - [ ] No console errors
@@ -241,6 +253,7 @@ client/src/components/
 ## 📝 Next Steps
 
 ### For Skills Page Coding Stats:
+
 1. Create `SkillsStatsModal.js` component
 2. Define stats data structure
 3. Create stats visualization (charts, numbers, etc.)
@@ -248,6 +261,7 @@ client/src/components/
 5. Integrate modal with Skills page
 
 ### For Education Page Coding Stats:
+
 1. Create `EducationStatsModal.js` component
 2. Reuse stats data structure from Skills
 3. Create education-specific stats layout
@@ -257,6 +271,7 @@ client/src/components/
 ## 🎨 Styling Notes
 
 ### Custom Modal Styling:
+
 ```css
 /* Add to your component's CSS file */
 .my-modal-class .universal-modal__content {
@@ -270,6 +285,7 @@ client/src/components/
 ```
 
 ### Using Animated Border:
+
 ```javascript
 <UniversalModal customClass="animated-border my-modal">
   {/* Content */}
@@ -281,9 +297,11 @@ Then add border-specific styles to your CSS.
 ## 📚 Documentation
 
 Complete documentation available at:
+
 - `client/src/components/Utility/UNIVERSAL_MODAL.md`
 
 Includes:
+
 - Full API reference
 - Usage examples
 - Size guide
@@ -306,6 +324,7 @@ Includes:
 ## 🎉 Result
 
 You now have a **centralized, flexible, and maintainable modal system** that:
+
 - Works across all pages (Home, Services, Skills, Education)
 - Supports multiple sizes (small to xlarge)
 - Maintains consistent behavior and styling

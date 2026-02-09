@@ -78,108 +78,108 @@ const RequestResumeModal = ({ isOpen, onClose }) => {
       </div>
 
       <form onSubmit={handleSubmit} className="resume-form">
-          <div className="form-group">
-            <input
-              type="text"
-              id="companyName"
-              name="companyName"
-              value={formData.companyName}
-              onChange={handleChange}
-              required
-              placeholder="Company Name *"
-              style={{
-                backgroundColor: theme.primaryBg,
-                color: theme.content,
-                borderColor: theme.subheading,
-              }}
-            />
+        <div className="form-group">
+          <input
+            type="text"
+            id="companyName"
+            name="companyName"
+            value={formData.companyName}
+            onChange={handleChange}
+            required
+            placeholder="Company Name *"
+            style={{
+              backgroundColor: theme.primaryBg,
+              color: theme.content,
+              borderColor: theme.subheading,
+            }}
+          />
+        </div>
+
+        <div className="form-group">
+          <input
+            type="email"
+            id="receiverEmail"
+            name="receiverEmail"
+            value={formData.receiverEmail}
+            onChange={handleChange}
+            required
+            placeholder="Receiver Email *"
+            style={{
+              backgroundColor: theme.primaryBg,
+              color: theme.content,
+              borderColor: theme.subheading,
+            }}
+          />
+        </div>
+
+        <div className="form-group">
+          <input
+            type="text"
+            id="requirement"
+            name="requirement"
+            value={formData.requirement}
+            onChange={handleChange}
+            required
+            placeholder="Position/Role Requirement *"
+            style={{
+              backgroundColor: theme.primaryBg,
+              color: theme.content,
+              borderColor: theme.subheading,
+            }}
+          />
+        </div>
+
+        <div className="form-group">
+          <textarea
+            id="description"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            rows="4"
+            placeholder="Additional details (Optional)"
+            style={{
+              backgroundColor: theme.primaryBg,
+              color: theme.content,
+              borderColor: theme.subheading,
+            }}
+          />
+        </div>
+
+        {submitStatus === "success" && (
+          <div
+            className="submit-message success"
+            style={{ color: theme.accent }}
+          >
+            ✓ Request sent successfully!
           </div>
+        )}
 
-          <div className="form-group">
-            <input
-              type="email"
-              id="receiverEmail"
-              name="receiverEmail"
-              value={formData.receiverEmail}
-              onChange={handleChange}
-              required
-              placeholder="Receiver Email *"
-              style={{
-                backgroundColor: theme.primaryBg,
-                color: theme.content,
-                borderColor: theme.subheading,
-              }}
-            />
+        {submitStatus === "error" && (
+          <div className="submit-message error" style={{ color: "#ff4444" }}>
+            ✗ Failed to send request. Please try again.
           </div>
+        )}
 
-          <div className="form-group">
-            <input
-              type="text"
-              id="requirement"
-              name="requirement"
-              value={formData.requirement}
-              onChange={handleChange}
-              required
-              placeholder="Position/Role Requirement *"
-              style={{
-                backgroundColor: theme.primaryBg,
-                color: theme.content,
-                borderColor: theme.subheading,
-              }}
-            />
-          </div>
-
-          <div className="form-group">
-            <textarea
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              rows="4"
-              placeholder="Additional details (Optional)"
-              style={{
-                backgroundColor: theme.primaryBg,
-                color: theme.content,
-                borderColor: theme.subheading,
-              }}
-            />
-          </div>
-
-          {submitStatus === "success" && (
-            <div
-              className="submit-message success"
-              style={{ color: theme.accent }}
-            >
-              ✓ Request sent successfully!
-            </div>
-          )}
-
-          {submitStatus === "error" && (
-            <div className="submit-message error" style={{ color: "#ff4444" }}>
-              ✗ Failed to send request. Please try again.
-            </div>
-          )}
-
-          <div className="form-actions">
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Sending..." : "Submit Request"}
-            </Button>
-            <Button
-              type="button"
-              variant="secondary"
-              onClick={() =>
-                setFormData({
-                  companyName: "",
-                  receiverEmail: "",
-                  requirement: "",
-                  description: "",
-                })
-              }
-            >
-              Clear
-            </Button>
-          </div>
-        </form>
+        <div className="form-actions">
+          <Button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Sending..." : "Submit Request"}
+          </Button>
+          <Button
+            type="button"
+            variant="secondary"
+            onClick={() =>
+              setFormData({
+                companyName: "",
+                receiverEmail: "",
+                requirement: "",
+                description: "",
+              })
+            }
+          >
+            Clear
+          </Button>
+        </div>
+      </form>
     </UniversalModal>
   );
 };

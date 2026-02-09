@@ -92,8 +92,13 @@ const SkillItem = ({ skill, triggerAnimation, onSkillClick }) => {
           style={{
             "--border-color": theme.subheading,
             "--accent-color": theme.accent,
+            cursor: "pointer",
           }}
+          onClick={handleSkillClick}
           onMouseEnter={handleIconHover}
+          role="button"
+          tabIndex={0}
+          onKeyPress={(e) => e.key === "Enter" && handleSkillClick()}
         >
           {skillIcons[skill.name] ? (
             <img
@@ -140,11 +145,13 @@ const SkillItem = ({ skill, triggerAnimation, onSkillClick }) => {
 
 SkillItem.propTypes = {
   skill: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     proficiency: PropTypes.number.isRequired,
     githubRepo: PropTypes.string.isRequired,
   }).isRequired,
   triggerAnimation: PropTypes.number,
+  onSkillClick: PropTypes.func,
 };
 
 export default SkillItem;

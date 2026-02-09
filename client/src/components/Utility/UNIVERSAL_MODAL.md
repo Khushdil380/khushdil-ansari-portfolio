@@ -22,15 +22,15 @@
 
 ## 📦 Props
 
-| Prop | Type | Required | Default | Description |
-|------|------|----------|---------|-------------|
-| `isOpen` | boolean | Yes | - | Controls modal visibility |
-| `onClose` | function | Yes | - | Callback when modal closes |
-| `size` | string | No | "medium" | Modal size: "small", "medium", "large", "xlarge" |
-| `children` | node | Yes | - | Content to render inside modal |
-| `showCloseButton` | boolean | No | true | Show/hide close button |
-| `closeOnBackdropClick` | boolean | No | true | Allow closing on backdrop click |
-| `customClass` | string | No | "" | Additional CSS class for styling |
+| Prop                   | Type     | Required | Default  | Description                                      |
+| ---------------------- | -------- | -------- | -------- | ------------------------------------------------ |
+| `isOpen`               | boolean  | Yes      | -        | Controls modal visibility                        |
+| `onClose`              | function | Yes      | -        | Callback when modal closes                       |
+| `size`                 | string   | No       | "medium" | Modal size: "small", "medium", "large", "xlarge" |
+| `children`             | node     | Yes      | -        | Content to render inside modal                   |
+| `showCloseButton`      | boolean  | No       | true     | Show/hide close button                           |
+| `closeOnBackdropClick` | boolean  | No       | true     | Allow closing on backdrop click                  |
+| `customClass`          | string   | No       | ""       | Additional CSS class for styling                 |
 
 ## 🔧 Usage Examples
 
@@ -46,7 +46,7 @@ const MyComponent = () => {
   return (
     <>
       <button onClick={() => setIsOpen(true)}>Open Modal</button>
-      
+
       <UniversalModal
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
@@ -71,9 +71,7 @@ const MyComponent = () => {
   size="small"
   closeOnBackdropClick={false}
 >
-  <form onSubmit={handleSubmit}>
-    {/* Form fields */}
-  </form>
+  <form onSubmit={handleSubmit}>{/* Form fields */}</form>
 </UniversalModal>
 ```
 
@@ -86,9 +84,7 @@ const MyComponent = () => {
   size="xlarge"
   customClass="my-custom-modal"
 >
-  <div className="complex-layout">
-    {/* Projects, testimonials, etc. */}
-  </div>
+  <div className="complex-layout">{/* Projects, testimonials, etc. */}</div>
 </UniversalModal>
 ```
 
@@ -111,16 +107,17 @@ const MyComponent = () => {
 
 ## 🎨 Size Guide
 
-| Size | Max Width | Best For |
-|------|-----------|----------|
-| `small` | 600px | Forms, alerts, confirmations |
-| `medium` | 900px | General content, moderate details |
-| `large` | 1200px | Rich content, galleries, data tables |
-| `xlarge` | 1400px | Complex layouts, dashboards |
+| Size     | Max Width | Best For                             |
+| -------- | --------- | ------------------------------------ |
+| `small`  | 600px     | Forms, alerts, confirmations         |
+| `medium` | 900px     | General content, moderate details    |
+| `large`  | 1200px    | Rich content, galleries, data tables |
+| `xlarge` | 1400px    | Complex layouts, dashboards          |
 
 ## 🏗️ Current Implementations
 
 ### 1. Resume Request Modal
+
 **Location**: `Utility/RequestResumeModal.js`  
 **Size**: `small`  
 **Backdrop Click**: Disabled  
@@ -139,6 +136,7 @@ const MyComponent = () => {
 ```
 
 ### 2. Service Modal
+
 **Location**: `Services/ServiceModal/ServiceModal.js`  
 **Size**: `xlarge`  
 **Backdrop Click**: Enabled  
@@ -157,11 +155,13 @@ const MyComponent = () => {
 ```
 
 ### 3. Future: Skills Coding Stats
+
 **Planned Location**: `Skills/SkillsStatsModal.js`  
 **Size**: `medium` or `large`  
 **Usage**: Display coding statistics when clicking on skills
 
 ### 4. Future: Education Coding Stats
+
 **Planned Location**: `Education/EducationStatsModal.js`  
 **Size**: `medium` or `large`  
 **Usage**: Display coding statistics in education section
@@ -171,6 +171,7 @@ const MyComponent = () => {
 ### Theme Variables Available
 
 All modals automatically receive theme CSS variables:
+
 - `--accent-color`
 - `--border-color`
 - `--heading-color`
@@ -184,12 +185,11 @@ All modals automatically receive theme CSS variables:
 Add custom classes via `customClass` prop:
 
 ```javascript
-<UniversalModal customClass="my-modal">
-  {/* Content */}
-</UniversalModal>
+<UniversalModal customClass="my-modal">{/* Content */}</UniversalModal>
 ```
 
 Then in your CSS:
+
 ```css
 .my-modal .universal-modal__content {
   /* Custom styles */
@@ -203,16 +203,19 @@ Then in your CSS:
 ## 📱 Responsive Behavior
 
 ### Desktop (> 768px)
+
 - Full specified size (600px - 1400px)
 - 1rem padding around modal
 - Standard close button size
 
 ### Tablet (≤ 768px)
+
 - 100% width with constraints
 - 0.5rem padding
 - Slightly smaller close button
 
 ### Mobile (≤ 480px)
+
 - Full width with minimal padding
 - 0.25rem padding
 - Compact close button
@@ -220,18 +223,22 @@ Then in your CSS:
 ## ⚙️ Technical Details
 
 ### Z-Index
+
 - Modal overlay: `z-index: 1000`
 - Close button: `z-index: 10` (relative to modal)
 
 ### Animations
+
 - **Overlay**: Fade-in (0.3s ease)
 - **Content**: Slide-up (0.4s ease)
 
 ### Backdrop
+
 - Color: `rgba(0, 0, 0, 0.75)`
 - Blur: `8px` (with webkit fallback)
 
 ### Scroll Behavior
+
 - Overlay: `overflow-y: auto` (allows scrolling when content is tall)
 - Content: `overflow-y: auto`, `overflow-x: hidden`
 
@@ -240,6 +247,7 @@ Then in your CSS:
 ### From ServiceModal to UniversalModal
 
 **Before:**
+
 ```javascript
 <div className="service-modal" onClick={handleBackdropClick}>
   <div className="service-modal__content">
@@ -250,6 +258,7 @@ Then in your CSS:
 ```
 
 **After:**
+
 ```javascript
 <UniversalModal isOpen={true} onClose={onClose} size="xlarge">
   {/* Content */}
@@ -259,6 +268,7 @@ Then in your CSS:
 ### From RequestResumeModal to UniversalModal
 
 **Before:**
+
 ```javascript
 <div className="resume-modal-overlay">
   <div className="resume-modal-content">
@@ -269,6 +279,7 @@ Then in your CSS:
 ```
 
 **After:**
+
 ```javascript
 <UniversalModal isOpen={isOpen} onClose={onClose} size="small">
   {/* Content */}
@@ -278,18 +289,22 @@ Then in your CSS:
 ## 🐛 Common Issues
 
 ### Modal Not Closing on Backdrop Click
+
 - Ensure `closeOnBackdropClick={true}` is set
 - Check if custom content is capturing click events
 
 ### Content Overflow
+
 - Add padding to your content wrapper
 - Use `overflow-y: auto` on child elements if needed
 
 ### Theme Colors Not Applying
+
 - Check if ThemeContext is properly configured
 - Verify CSS variables are being used in child styles
 
 ### Modal Not Scrolling
+
 - Modal has `overflow-y: auto` by default
 - Ensure content height exceeds modal height
 
