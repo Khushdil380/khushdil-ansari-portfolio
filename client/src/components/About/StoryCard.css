@@ -94,7 +94,7 @@
 /* Mobile */
 @media (max-width: 768px) {
   .story-card {
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .story-title {
@@ -104,6 +104,6 @@
 
   .story-text {
     font-size: 1rem;
-    max-height: 250px;
+    max-height: 400px;
   }
 }
