@@ -11,46 +11,38 @@ const HorizontalImage = ({
   preload = false,
 }) => {
   const { theme } = useTheme();
-  const [isImageLoaded, setIsImageLoaded] = useState(preload);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [isInView, setIsInView] = useState(preload);
   const imageRef = useRef(null);
 
-  // Reset loading state when imagePath changes (for switching images)
+  // Reset loading state when imagePath changes
   useEffect(() => {
-    if (!preload) {
-      setIsImageLoaded(false);
+    setIsImageLoaded(false);
+    if (preload) {
+      setIsInView(true);
+    } else {
       setIsInView(false);
     }
   }, [imagePath, preload]);
 
   useEffect(() => {
-    // Skip observer if preload is true (eager loading)
-    if (preload) {
-      setIsImageLoaded(true);
-      setIsInView(true);
-      return;
-    }
+    if (preload) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsInView(true);
-            observer.disconnect();
-          }
-        });
+        if (entries[0].isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
       },
       { rootMargin: "50px" },
     );
 
-    if (imageRef.current) {
-      observer.observe(imageRef.current);
-    }
+    const currentRef = imageRef.current;
+    if (currentRef) observer.observe(currentRef);
 
     return () => {
-      if (imageRef.current) {
-        observer.unobserve(imageRef.current);
-      }
+      if (currentRef) observer.unobserve(currentRef);
     };
   }, [imagePath, preload]);
 
@@ -75,11 +67,9 @@ const HorizontalImage = ({
         <div
           className="horizontal-image-placeholder"
           style={{
-            borderColor: theme.subheading,
+            backgroundColor: theme.secondaryBg,
           }}
-        >
-          <span style={{ color: theme.subheading }}>Loading...</span>
-        </div>
+        />
       )}
     </div>
   );

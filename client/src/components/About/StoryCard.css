@@ -95,6 +95,7 @@
 @media (max-width: 768px) {
   .story-card {
     gap: 1.5rem;
+    min-height: 520px;
   }
 
   .story-title {
